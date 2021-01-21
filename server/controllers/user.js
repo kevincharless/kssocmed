@@ -15,9 +15,31 @@ export const signin = async (req, res) => {
 
         if(!isPasswordCorrect) return res.status(400).json({ message: "Password is incorrect" });
 
-        const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'JWTSecret', { expiresIn: '1h' });
+        const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.jwtSecret, { expiresIn: '1h' });
 
         res.status(200).json({ result: existingUser, token });
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong." });
+    }
+}
+
+export const signup = async (req, res) => {
+    const { firstName, lastName, email, password, confirmPassword} = req.body;
+
+    try {
+        const existingUser = await User.findOne({ email });
+
+        if(existingUser) return res.status(400).json({ message: "User already exist." });
+
+        if(password !== confirmPassword) return res.status(400).json({ message: "Password don't match." });
+
+        const hashedPassword = await bcrypt.hach(password, 12);
+        
+        const result = await User.crate({ name: `${firstName} ${lastName}`, email, password: hashedPassword });
+
+        const token = jwt.sign({ email: result, id: result._id }, process.env.jwtSecret, { expiresIn: '1h' });
+
+        res.status(200).json({ result, token });
     } catch (error) {
         res.status(500).json({ message: "Something went wrong." });
     }
