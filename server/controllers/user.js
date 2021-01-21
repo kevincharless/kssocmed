@@ -15,13 +15,18 @@ export const signin = async (req, res) => {
 
         if(!isPasswordCorrect) return res.status(400).json({ message: "Password is incorrect" });
 
+<<<<<<< HEAD
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.jwtSecret, { expiresIn: '1h' });
+=======
+        const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, { expiresIn: '1h' });
+>>>>>>> bc17d382fb59771fe38680b80491cd400ec35750
 
         res.status(200).json({ result: existingUser, token });
     } catch (error) {
         res.status(500).json({ message: "Something went wrong." });
     }
 }
+<<<<<<< HEAD
 
 export const signup = async (req, res) => {
     const { firstName, lastName, email, password, confirmPassword} = req.body;
@@ -44,3 +49,5 @@ export const signup = async (req, res) => {
         res.status(500).json({ message: "Something went wrong." });
     }
 }
+=======
+>>>>>>> bc17d382fb59771fe38680b80491cd400ec35750
