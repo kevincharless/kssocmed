@@ -22,20 +22,22 @@ const Authentication = () => {
                     <AuthenticationDescription>Sign {!isSignUp ? 'In' : 'Up'} and find new friends from all over the world</AuthenticationDescription>
                 </AuthenticationRow>
                 <InputSection>
-                    <AuthenticationRow>
-                        <InputDiv> 
-                                <InputIcon>
-                                    <BsFillPersonFill />
-                                </InputIcon>
-                                <Input class="input-field" type="text" placeholder="First Name" half /> 
-                        </InputDiv>
-                        <InputDiv> 
-                                <InputIcon>
-                                    <BsFillPersonFill />
-                                </InputIcon>
-                                <Input class="input-field" type="text" placeholder="Last Name" half /> 
-                        </InputDiv>
-                    </AuthenticationRow>
+                    {isSignUp && (
+                        <AuthenticationRow>
+                            <InputDiv> 
+                                    <InputIcon>
+                                        <BsFillPersonFill />
+                                    </InputIcon>
+                                    <Input class="input-field" type="text" placeholder="First Name" half /> 
+                            </InputDiv>
+                            <InputDiv> 
+                                    <InputIcon>
+                                        <BsFillPersonFill />
+                                    </InputIcon>
+                                    <Input class="input-field" type="text" placeholder="Last Name" half /> 
+                            </InputDiv>
+                        </AuthenticationRow>
+                    )}
                     <AuthenticationRow>
                         <InputDiv> 
                                 <InputIcon>
