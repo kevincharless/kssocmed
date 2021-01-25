@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -9,5 +9,13 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Poppins', sans-serif;
     }
 `
+
+    export const Row = styled.div`
+        display: flex;
+        height: 100vh;
+
+        justify-content: center;
+        align-items: center;
+    `
 
 export default GlobalStyle
