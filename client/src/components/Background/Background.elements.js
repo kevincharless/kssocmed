@@ -7,7 +7,7 @@ export const BackgroundDiv = styled.div`
     overflow:hidden;
     top: 0;
     left: 0;
-    background: linear-gradient(255.44deg, #1FFF84 0%, #1F85FF 100%);
+    background-image: linear-gradient(270deg, #2af598 0%, #009efd 100%);
 `
 
 export const BackgroundEllipse1 = styled.div`
@@ -18,7 +18,7 @@ export const BackgroundEllipse1 = styled.div`
     top: -26%;
 
     border-radius: 100%;
-    background: linear-gradient(180deg, #1FFF84 0%, #1F85FF 100%);
+    background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
     filter: blur(200px);
 `
 export const BackgroundEllipse2 = styled.div`
@@ -29,7 +29,7 @@ export const BackgroundEllipse2 = styled.div`
     top: 63%;
 
     border-radius: 100%;
-    background: linear-gradient(180deg, #1FFF84 0%, #1F85FF 100%);
+    background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
     filter: blur(200px);
     transform: rotate(-180deg);
 `
@@ -46,6 +46,12 @@ export const GlassEllipse1 = styled.div`
 
     border-radius: 100%;
     transform: rotate(90deg);
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        background: none;
+        backdrop-filter: none;
+    }
 `
 
 export const GlassEllipse2 = styled.div`
@@ -60,6 +66,12 @@ export const GlassEllipse2 = styled.div`
 
     border-radius: 100%;
     transform: rotate(-90deg);
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        background: none;
+        backdrop-filter: none;
+    }
 `
 
 export const Glass = styled.div`
@@ -71,4 +83,10 @@ export const Glass = styled.div`
 
     background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.16) 100%);
     backdrop-filter: blur(100px);
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.16) 50%);
+        backdrop-filter: blur(50px);
+    }
 `

@@ -12,6 +12,12 @@ export const Glass = styled.div`
     border-image-source: radial-gradient(100% 316.05% at 0% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
 
     padding: 4rem 0;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.16) 0%);
+        backdrop-filter: blur(0);
+    }
 `
 
 export const AuthenticationTitle = styled.h3`
@@ -57,31 +63,10 @@ export const InputSection = styled.div`
     flex-direction: column;
 `
 
-
 export const InputDiv = styled.div`
     margin-bottom: 10px;
-    padding: 1rem 0;
-    margin: 0 1rem;
-`
+    margin: 1rem 1rem;
 
-export const InputIcon = styled.div`
-    font-size: 2rem;
-    position: absolute;
-    margin: 10px;
-    color: #176D84; 
-    min-width: 50px; 
-    text-align: center;
-    opacity: 50%;
-    z-index: 1;
-
-    @media only screen and (max-width: 960px) {
-    /* For Mobile and Tablet: */
-        font-size: 1.6rem;
-    }
-`
-
-export const Input = styled.input`
-    padding: 0 4rem;
     width: ${({half}) => (half ? '14rem' : '30rem')};
     height: 3.5rem;
 
@@ -92,6 +77,40 @@ export const Input = styled.input`
     border: 2px solid;
 
     border-image-source: radial-gradient(100% 316.05% at 0% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
+    opacity: 0.5;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        width: ${({half}) => (half ? '9rem' : '20rem')};
+        height: 3rem;
+    }
+`
+
+export const InputIcon = styled.div`
+    font-size: 2rem;
+    position: absolute;
+    margin: 0.7rem 1rem;
+    color: #176D84; 
+    min-width: 50px; 
+    opacity: 50%;
+    z-index: 0;
+    width: ${({half}) => (half ? '12rem' : '28rem')};
+    display: flex;
+    justify-content: space-between;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 1.5rem;
+        width: ${({half}) => (half ? '8rem' : '18rem')};
+    }
+`
+
+export const Input = styled.input`
+    position: absolute;
+    padding-left: 3.5rem;
+    z-index: 1;
+    width: ${({half}) => (half ? '10rem' : '26rem')};
+    height: 3.5rem;
 
     font-family: Poppins;
     font-style: normal;
@@ -100,19 +119,25 @@ export const Input = styled.input`
 
     color: #176D84;
 
-    opacity: 0.5;
+    /* opacity: 0.5; */
+    background: none;
+    border: none;
 
     &::placeholder {
         color: #176D84;
         opacity: 0.7;
     }
 
+    &:focus{
+    outline: none;
+}
+
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        width: ${({half}) => (half ? '9rem' : '20rem')};
+        width: ${({half}) => (half ? '8rem' : '17rem')};
         height: 3rem;
-        font-size: 0.5rem;
-        padding: 0 3rem;
+        font-size: 0.7rem;
+        padding-left: 3rem;
     }
 `
 
@@ -120,7 +145,7 @@ export const Button = styled.button`
     width: auto;
     height: 3rem;
 
-    background: linear-gradient(252.44deg, #1FFF84 0%, #1F85FF 100%);
+    background-image: linear-gradient(270deg, #2af598 0%, #009efd 100%);
     border-radius: 80px;
 
     border: none;

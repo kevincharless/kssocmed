@@ -3,15 +3,29 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { IoIosLock } from 'react-icons/io';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { BsFillPersonFill } from 'react-icons/bs';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 import { Row } from '.././../GlobalStyle';
 import { Glass, AuthenticationTitle, AuthenticationDescription, AuthenticationRow, InputSection, InputDiv, InputIcon, Input, Button, ButtonGoogle, ButtonText } from './Authentication.elements';
 
-const Authentication = () => {
-    const [isSignUp, setIsSignUo] = useState(false);
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
 
-    const handleSignUp = () => {
-        setIsSignUo(!isSignUp);
+const Authentication = () => {
+    const [formData, setFormData] = useState(initialState);
+    const [isSignUp, setIsSignUp] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword);
+    }
+
+    const handleShowConfirmPassword = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    }
+
+    const switchMode = () => {
+        setIsSignUp(!isSignUp);
     }
 
     return (
@@ -24,17 +38,17 @@ const Authentication = () => {
                 <InputSection>
                     {isSignUp && (
                         <AuthenticationRow>
-                            <InputDiv> 
-                                    <InputIcon>
+                            <InputDiv half> 
+                                    <InputIcon half>
                                         <BsFillPersonFill />
                                     </InputIcon>
-                                    <Input class="input-field" type="text" placeholder="First Name" half /> 
+                                    <Input type="text" name="firstName" placeholder="First Name" half /> 
                             </InputDiv>
-                            <InputDiv> 
-                                    <InputIcon>
+                            <InputDiv half> 
+                                    <InputIcon half>
                                         <BsFillPersonFill />
                                     </InputIcon>
-                                    <Input class="input-field" type="text" placeholder="Last Name" half /> 
+                                    <Input type="text" name="lastName" placeholder="Last Name" half /> 
                             </InputDiv>
                         </AuthenticationRow>
                     )}
@@ -43,15 +57,20 @@ const Authentication = () => {
                                 <InputIcon>
                                     <HiOutlineMail />
                                 </InputIcon>
-                                <Input class="input-field" type="email" placeholder="Email" /> 
+                                <Input type="email" name="email" placeholder="Email" /> 
                         </InputDiv>
                     </AuthenticationRow>
                     <AuthenticationRow>
                         <InputDiv> 
                                 <InputIcon>
                                     <IoIosLock />
+                                    {showPassword ? (
+                                        <FiEyeOff onClick={handleShowPassword} style={{ cursor: 'pointer' }} />
+                                    ) : (
+                                        <FiEye onClick={handleShowPassword} style={{ cursor: 'pointer' }} />
+                                    )}
                                 </InputIcon>
-                                <Input class="input-field" type="password" placeholder="Password" /> 
+                                <Input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password" />        
                         </InputDiv>
                     </AuthenticationRow>
                     {isSignUp && (
@@ -59,8 +78,13 @@ const Authentication = () => {
                             <InputDiv> 
                                     <InputIcon>
                                         <IoIosLock />
+                                        {showConfirmPassword ? (
+                                            <FiEyeOff onClick={handleShowConfirmPassword} style={{ cursor: 'pointer' }} />
+                                        ) : (
+                                            <FiEye onClick={handleShowConfirmPassword} style={{ cursor: 'pointer' }} />
+                                        )}
                                     </InputIcon>
-                                    <Input class="input-field" type="password" placeholder="Password" /> 
+                                    <Input type={showConfirmPassword ? 'text' : 'password'} name="confirmPassword" placeholder="Confirm Password" /> 
                             </InputDiv>
                         </AuthenticationRow>
                     )}
@@ -80,7 +104,7 @@ const Authentication = () => {
                 </AuthenticationRow>
                 <AuthenticationRow>
                     {!isSignUp ? 'Don’h have an account ? Please, ' : 'Already have an account ? Please, '}
-                    <ButtonText onClick={handleSignUp}>
+                    <ButtonText onClick={switchMode}>
                         Sign {isSignUp ? 'In' : 'Up'}
                     </ButtonText>
                 </AuthenticationRow>
