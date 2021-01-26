@@ -3,6 +3,7 @@ import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signIn, signUp } from '../../redux/actions/auth';
+import { AUTH } from '../../redux/constants/actionTypes';
 
 import { HiOutlineMail } from 'react-icons/hi';
 import { IoIosLock } from 'react-icons/io';
@@ -52,11 +53,20 @@ const Authentication = () => {
     }
 
     const googleSuccess = async (res) => {
-        console.log(res)
+        const result = res?.profileObj;
+        const token = res?.tokenId;
+
+        try {
+            dispatch({ type: AUTH, data: { result, token } });
+            history.push('/');
+        } catch (error) {
+            console.log(error);
+        }
     }
     
     const googleFailure = error => {
         console.log(error);
+        console.log("Google Sign In was unsuccessful. Try Again Later");
     }
 
     return (
