@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { signIn, signUp } from '../../redux/actions/auth';
 
 import { HiOutlineMail } from 'react-icons/hi';
 import { IoIosLock } from 'react-icons/io';
@@ -18,6 +21,9 @@ const Authentication = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
     }
@@ -28,6 +34,21 @@ const Authentication = () => {
 
     const switchMode = () => {
         setIsSignUp(!isSignUp);
+    }
+
+    const handleChange = e => {
+        setFormData({...formData, [e.target.name]: e.target.value });
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log('test')
+
+        if(!isSignUp) {;
+            dispatch(signIn(formData, history));
+        } else {
+            dispatch(signUp(formData, history));
+        }
     }
 
     const googleSuccess = async (res) => {
@@ -45,20 +66,20 @@ const Authentication = () => {
                 <AuthenticationRow>
                     <AuthenticationDescription>Sign {!isSignUp ? 'In' : 'Up'} and find new friends from all over the world</AuthenticationDescription>
                 </AuthenticationRow>
-                <InputSection>
+                <InputSection onSubmit={handleSubmit}>
                     {isSignUp && (
                         <AuthenticationRow>
                             <InputDiv half> 
                                     <InputIcon half>
                                         <BsFillPersonFill />
                                     </InputIcon>
-                                    <Input type="text" name="firstName" placeholder="First Name" half /> 
+                                    <Input type="text" name="firstName" placeholder="First Name" half onChange={handleChange} /> 
                             </InputDiv>
                             <InputDiv half> 
                                     <InputIcon half>
                                         <BsFillPersonFill />
                                     </InputIcon>
-                                    <Input type="text" name="lastName" placeholder="Last Name" half /> 
+                                    <Input type="text" name="lastName" placeholder="Last Name" half onChange={handleChange} /> 
                             </InputDiv>
                         </AuthenticationRow>
                     )}
@@ -67,7 +88,7 @@ const Authentication = () => {
                                 <InputIcon>
                                     <HiOutlineMail />
                                 </InputIcon>
-                                <Input type="email" name="email" placeholder="Email" /> 
+                                <Input type="email" name="email" placeholder="Email" onChange={handleChange} /> 
                         </InputDiv>
                     </AuthenticationRow>
                     <AuthenticationRow>
@@ -80,7 +101,7 @@ const Authentication = () => {
                                         <FiEye onClick={handleShowPassword} style={{ cursor: 'pointer' }} />
                                     )}
                                 </InputIcon>
-                                <Input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password" />        
+                                <Input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password" onChange={handleChange} />        
                         </InputDiv>
                     </AuthenticationRow>
                     {isSignUp && (
@@ -94,16 +115,17 @@ const Authentication = () => {
                                             <FiEye onClick={handleShowConfirmPassword} style={{ cursor: 'pointer' }} />
                                         )}
                                     </InputIcon>
-                                    <Input type={showConfirmPassword ? 'text' : 'password'} name="confirmPassword" placeholder="Confirm Password" /> 
+                                    <Input type={showConfirmPassword ? 'text' : 'password'} name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} /> 
                             </InputDiv>
                         </AuthenticationRow>
                     )}
+                    <AuthenticationRow>
+                        <Button type="submit">
+                            Sign {!isSignUp ? 'In' : 'Up'}
+                        </Button>
+                    </AuthenticationRow>
                 </InputSection>
-                <AuthenticationRow>
-                    <Button>
-                        Sign {!isSignUp ? 'In' : 'Up'}
-                    </Button>
-                </AuthenticationRow>
+                
                 <AuthenticationRow>
                     Or Sign {!isSignUp ? 'in' : 'up'} Using
                 </AuthenticationRow>

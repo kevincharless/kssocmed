@@ -56,8 +56,8 @@ export const AuthenticationDescription = styled.h5`
     color: #176D84;
 `
 
-export const InputSection = styled.div`
-    height: 50%;
+export const InputSection = styled.form`
+    height: 60%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -159,6 +159,7 @@ export const Button = styled.button`
     color: #FFFFFF;
     padding: 0 4rem;
     margin-bottom: 2rem;
+    margin-top: 1rem;
 
     &:hover {
         cursor: pointer;

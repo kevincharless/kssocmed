@@ -13,6 +13,9 @@ dotenv.config();
 // BodyParser Middleware
 app.use(express.json());
 
+// Allow Access-Control-Allow-Origin
+app.use(cors());
+
 // Routes
 app.use('/user', userRoutes);
 
