@@ -33,9 +33,9 @@ export const signup = async (req, res) => {
 
         if(password !== confirmPassword) return res.status(400).json({ message: "Password don't match." });
 
-        const hashedPassword = await bcrypt.hach(password, 12);
+        const hashedPassword = await bcrypt.hash(password, 12);
         
-        const result = await User.crate({ name: `${firstName} ${lastName}`, email, password: hashedPassword });
+        const result = await User.create({ name: `${firstName} ${lastName}`, email, password: hashedPassword });
 
         const token = jwt.sign({ email: result, id: result._id }, process.env.jwtSecret, { expiresIn: '1h' });
 

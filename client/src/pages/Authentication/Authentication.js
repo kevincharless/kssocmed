@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { GoogleLogin } from 'react-google-login';
+
 import { HiOutlineMail } from 'react-icons/hi';
 import { IoIosLock } from 'react-icons/io';
 import { AiOutlineGoogle } from 'react-icons/ai';
@@ -26,6 +28,14 @@ const Authentication = () => {
 
     const switchMode = () => {
         setIsSignUp(!isSignUp);
+    }
+
+    const googleSuccess = async (res) => {
+        console.log(res)
+    }
+    
+    const googleFailure = error => {
+        console.log(error);
     }
 
     return (
@@ -98,9 +108,20 @@ const Authentication = () => {
                     Or Sign {!isSignUp ? 'in' : 'up'} Using
                 </AuthenticationRow>
                 <AuthenticationRow>
-                    <ButtonGoogle>
-                        <AiOutlineGoogle style={{ fontSize: '2rem', margin: '0 0.8rem' }} /> Sign {!isSignUp ? 'In' : 'Up'} with Google
-                    </ButtonGoogle>
+                    <GoogleLogin
+                        clientId="287895274227-boanf2kgkn2u65sa8qghuq37a17nljld.apps.googleusercontent.com"
+                        render={(renderProps) => (
+                            <ButtonGoogle
+                                onClick={renderProps.onClick}
+                                disabled={renderProps.disabled}
+                            >
+                                <AiOutlineGoogle style={{ fontSize: '2rem', margin: '0 0.8rem' }} /> Sign {!isSignUp ? 'In' : 'Up'} with Google
+                            </ButtonGoogle>
+                        )}
+                        onSuccess={googleSuccess}
+                        onFailure={googleFailure}
+                        cookiePolicy="single_host_origin"
+                    />
                 </AuthenticationRow>
                 <AuthenticationRow>
                     {!isSignUp ? 'Don’h have an account ? Please, ' : 'Already have an account ? Please, '}
