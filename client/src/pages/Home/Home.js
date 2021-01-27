@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <> 
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
-            {/* <PageGrid isSidebarActive={isSidebarActive} /> */}
+            <PageGrid isSidebarActive={isSidebarActive} />
         </>
     )
 }

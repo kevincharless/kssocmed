@@ -8,6 +8,12 @@ export const Grid = styled.div`
     justify-content: flex-start;
     flex-direction: row;
     position: absolute;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        padding: 2rem 0;
+        padding-left: 4.5rem;
+    }
 `
 
 export const Header = styled.div`
@@ -45,8 +51,8 @@ export const InputDiv = styled.div`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        width: ${({half}) => (half ? '9rem' : '20rem')};
-        height: 3rem;
+        width: 8rem;
+        height: 2rem;
     }
 `
 
@@ -66,7 +72,7 @@ export const InputIcon = styled.div`
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
         font-size: 0.5rem;
-        width: ${({half}) => (half ? '8rem' : '18rem')};
+        width: 6rem;
     }
 `
 
@@ -74,7 +80,7 @@ export const Input = styled.input`
     position: absolute;
     padding-left: 1.5rem;
     z-index: 1;
-    width: ${({half}) => (half ? '10rem' : '26rem')};
+    width: 14rem;
     height: 2.5rem;
 
     font-family: Poppins;
@@ -99,13 +105,18 @@ export const Input = styled.input`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        width: ${({half}) => (half ? '8rem' : '17rem')};
-        height: 3rem;
-        font-size: 0.7rem;
-        padding-left: 3rem;
+        width: 8rem;
+        height: 2rem;
+        font-size: 0.5rem;
+        padding-left: 1rem;
     }
 `
 
 export const Content = styled.div`
     padding: 0 6rem;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        padding: 0 3rem;
+    }
 `

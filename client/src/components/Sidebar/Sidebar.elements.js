@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SidebarContainer = styled.div`
-    width: ${({ isSidebarActive }) => (isSidebarActive ? '300px' : '80px')};
+    width: ${({ isSidebarActive }) => (isSidebarActive ? '300px' : '60px')};
     height: 100vh;
     position: fixed;
     z-index: 999;
@@ -13,7 +13,7 @@ export const SidebarContainer = styled.div`
 
 @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-    width: ${({ isSidebarActive }) => (isSidebarActive ? '100%' : '80px')};
+    width: ${({ isSidebarActive }) => (isSidebarActive ? '100%' : '60px')};
 }
 `
 
@@ -21,6 +21,14 @@ export const SidebarRow = styled.div`
     display: grid;
     grid-row: auto;
 `
+
+export const Icon = {
+    textAlign: 'right',
+    fontSize: '2rem',
+    margin: '0.7rem',
+    cursor: 'pointer',
+    color: '#176D84'
+}
 
 export const Avatar = styled.img`
     width: 125px;
