@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
 export const BackgroundDiv = styled.div`
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
     overflow:hidden;
-    top: 0;
-    left: 0;
     background-image: linear-gradient(270deg, #2af598 0%, #009efd 100%);
 `
 

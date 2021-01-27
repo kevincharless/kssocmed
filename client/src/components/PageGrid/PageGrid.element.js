@@ -1,25 +1,21 @@
 import styled from "styled-components";
 
-export const Grid = styled.div`
-    padding: 5rem ${({ isSidebarActive }) => (isSidebarActive ? "9rem" : "15rem")};
-    padding-left: ${({ isSidebarActive }) => (isSidebarActive && "30rem")};
+export const Nav = styled.div`
+    padding: 5rem ${({ isSidebarActive }) => (isSidebarActive ? "6rem" : "8rem")};
+    padding-left: ${({ isSidebarActive }) => (isSidebarActive ? "24rem" : "12rem")};
     margin: 0;
     flex-flow: row nowrap;
-    justify-content: flex-start;
     flex-direction: row;
-    position: absolute;
 
-    @media only screen and (max-width: 960px) {
-    /* For Mobile and Tablet: */
-        padding: 2rem 0;
-        padding-left: 4.5rem;
-    }
-`
-
-export const Header = styled.div`
     display: flex;
     justify-content: space-between;
     padding-bottom: 2rem;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        padding: 3rem 0;
+        padding-left: 4.5rem;
+    }
 `
 
 export const Title = styled.h3`
@@ -29,6 +25,7 @@ export const Title = styled.h3`
     font-size: 2rem;
     display: flex;
     align-items: center;
+    z-index: 1;
 
     color: #176D84;
 `
@@ -109,14 +106,5 @@ export const Input = styled.input`
         height: 2rem;
         font-size: 0.5rem;
         padding-left: 1rem;
-    }
-`
-
-export const Content = styled.div`
-    padding: 0 6rem;
-
-    @media only screen and (max-width: 960px) {
-    /* For Mobile and Tablet: */
-        padding: 0 3rem;
     }
 `
