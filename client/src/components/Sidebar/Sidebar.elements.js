@@ -13,11 +13,7 @@ export const SidebarContainer = styled.div`
 
 @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-    width: 80px;
-
-    &::active {
-        width: 5%;
-    }
+    width: ${({ isSidebarActive }) => (isSidebarActive ? '100%' : '80px')};
 }
 `
 

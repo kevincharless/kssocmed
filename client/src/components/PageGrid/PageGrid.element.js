@@ -13,6 +13,7 @@ export const Grid = styled.div`
 export const Header = styled.div`
     display: flex;
     justify-content: space-between;
+    padding-bottom: 2rem;
 `
 
 export const Title = styled.h3`
