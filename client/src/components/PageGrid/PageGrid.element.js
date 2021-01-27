@@ -1,20 +1,22 @@
 import styled from "styled-components";
 
 export const Nav = styled.div`
-    padding: 5rem ${({ isSidebarActive }) => (isSidebarActive ? "6rem" : "8rem")};
-    padding-left: ${({ isSidebarActive }) => (isSidebarActive ? "24rem" : "12rem")};
+    /* padding: 5rem ${({ isSidebarActive }) => (isSidebarActive ? "6rem" : "8rem")};
+    padding-left: ${({ isSidebarActive }) => (isSidebarActive ? "24rem" : "12rem")}; */
+    padding: 3rem 5rem;
     margin: 0;
     flex-flow: row nowrap;
     flex-direction: row;
+    width:100%;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-bottom: 2rem;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        padding: 3rem 0;
-        padding-left: 4.5rem;
+        padding: 3rem 1rem;
     }
 `
 
@@ -23,8 +25,6 @@ export const Title = styled.h3`
     font-style: normal;
     font-weight: bold;
     font-size: 2rem;
-    display: flex;
-    align-items: center;
     z-index: 1;
 
     color: #176D84;

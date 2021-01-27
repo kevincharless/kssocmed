@@ -13,4 +13,4 @@ const Posts = ({ isSidebarActive }) => {
     )
 }
 
-export default Posts
+export default Posts;

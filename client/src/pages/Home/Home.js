@@ -9,11 +9,11 @@ const Home = () => {
     }
 
     return (
-        <> 
+        <div style={{ width: "100%", display: "flex" }}> 
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
             <PageGrid isSidebarActive={isSidebarActive} />
-            <Posts isSidebarActive={isSidebarActive} />
-        </>
+            {/* <Posts isSidebarActive={isSidebarActive} /> */}
+        </div>
     )
 }
 
