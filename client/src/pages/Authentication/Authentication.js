@@ -72,7 +72,9 @@ const Authentication = () => {
     return (
         <Row>
             <Glass>
-                <AuthenticationTitle>Sign {!isSignUp ? 'In' : 'Up'}</AuthenticationTitle>
+                <AuthenticationRow>
+                    <AuthenticationTitle>Sign {!isSignUp ? 'In' : 'Up'}</AuthenticationTitle>
+                </AuthenticationRow>
                 <AuthenticationRow>
                     <AuthenticationDescription>Sign {!isSignUp ? 'In' : 'Up'} and find new friends from all over the world</AuthenticationDescription>
                 </AuthenticationRow>
@@ -147,7 +149,7 @@ const Authentication = () => {
                                 onClick={renderProps.onClick}
                                 disabled={renderProps.disabled}
                             >
-                                <AiOutlineGoogle style={{ fontSize: '2rem', margin: '0 0.8rem' }} /> Sign {!isSignUp ? 'In' : 'Up'} with Google
+                                <AiOutlineGoogle style={{ fontSize: '1.5rem', margin: '0 0.8rem' }} /> Sign {!isSignUp ? 'In' : 'Up'} with Google
                             </ButtonGoogle>
                         )}
                         onSuccess={googleSuccess}
