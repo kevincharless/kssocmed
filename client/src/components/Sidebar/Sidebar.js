@@ -1,22 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { SidebarContainer, SidebarRow, Avatar, AvatarName, AvatarDescription } from './Sidebar.elements';
 import { GiHamburgerMenu } from 'react-icons/gi'
 
 import kevin from '../../assets/images/twibonhmps.jpg'
 
-const Sidebar = () => {
-    const [isSidebarActive, setIsSitebarActive] = useState(true);
-
-    const toggleSitebar = () => {
-        setIsSitebarActive(!isSidebarActive);
-    }
-
+const Sidebar = ({ isSidebarActive, toggleSitebar }) => {
     return (
         <SidebarContainer isSidebarActive={isSidebarActive}>
             <SidebarRow style={{ justifyContent: 'right' }}>
-                <GiHamburgerMenu onClick={toggleSitebar} style={{ textAlign: 'right', fontSize: '3rem' }} />
+                <GiHamburgerMenu onClick={toggleSitebar} style={{ textAlign: 'right', fontSize: '3rem', margin: '1rem', cursor: 'pointer' }} />
             </SidebarRow>
-            <SidebarRow>
+            <SidebarRow style={{ padding: '6rem 0' }}>
                 <Avatar src={kevin} isSidebarActive={isSidebarActive} />
                 <AvatarName isSidebarActive={isSidebarActive}>Kevin Charles</AvatarName>
                 <AvatarDescription isSidebarActive={isSidebarActive}>Full Stack Programmer</AvatarDescription>

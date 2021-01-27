@@ -80,52 +80,52 @@ const Authentication = () => {
                     {isSignUp && (
                         <AuthenticationRow>
                             <InputDiv half> 
-                                    <InputIcon half>
-                                        <BsFillPersonFill />
-                                    </InputIcon>
-                                    <Input type="text" name="firstName" placeholder="First Name" half onChange={handleChange} /> 
+                                <InputIcon half>
+                                    <BsFillPersonFill />
+                                </InputIcon>
+                                <Input type="text" name="firstName" placeholder="First Name" half onChange={handleChange} /> 
                             </InputDiv>
                             <InputDiv half> 
-                                    <InputIcon half>
-                                        <BsFillPersonFill />
-                                    </InputIcon>
-                                    <Input type="text" name="lastName" placeholder="Last Name" half onChange={handleChange} /> 
+                                <InputIcon half>
+                                    <BsFillPersonFill />
+                                </InputIcon>
+                                <Input type="text" name="lastName" placeholder="Last Name" half onChange={handleChange} /> 
                             </InputDiv>
                         </AuthenticationRow>
                     )}
                     <AuthenticationRow>
                         <InputDiv> 
-                                <InputIcon>
-                                    <HiOutlineMail />
-                                </InputIcon>
-                                <Input type="email" name="email" placeholder="Email" onChange={handleChange} /> 
+                            <InputIcon>
+                                <HiOutlineMail />
+                            </InputIcon>
+                            <Input type="email" name="email" placeholder="Email" onChange={handleChange} /> 
                         </InputDiv>
                     </AuthenticationRow>
                     <AuthenticationRow>
                         <InputDiv> 
-                                <InputIcon>
-                                    <IoIosLock />
-                                    {showPassword ? (
-                                        <FiEyeOff onClick={handleShowPassword} style={{ cursor: 'pointer' }} />
-                                    ) : (
-                                        <FiEye onClick={handleShowPassword} style={{ cursor: 'pointer' }} />
-                                    )}
-                                </InputIcon>
-                                <Input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password" onChange={handleChange} />        
+                            <InputIcon>
+                                <IoIosLock />
+                                {showPassword ? (
+                                    <FiEyeOff onClick={handleShowPassword} style={{ cursor: 'pointer' }} />
+                                ) : (
+                                    <FiEye onClick={handleShowPassword} style={{ cursor: 'pointer' }} />
+                                )}
+                            </InputIcon>
+                            <Input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password" onChange={handleChange} />        
                         </InputDiv>
                     </AuthenticationRow>
                     {isSignUp && (
                         <AuthenticationRow>
                             <InputDiv> 
                                     <InputIcon>
-                                        <IoIosLock />
-                                        {showConfirmPassword ? (
-                                            <FiEyeOff onClick={handleShowConfirmPassword} style={{ cursor: 'pointer' }} />
-                                        ) : (
-                                            <FiEye onClick={handleShowConfirmPassword} style={{ cursor: 'pointer' }} />
-                                        )}
-                                    </InputIcon>
-                                    <Input type={showConfirmPassword ? 'text' : 'password'} name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} /> 
+                                    <IoIosLock />
+                                    {showConfirmPassword ? (
+                                        <FiEyeOff onClick={handleShowConfirmPassword} style={{ cursor: 'pointer' }} />
+                                    ) : (
+                                        <FiEye onClick={handleShowConfirmPassword} style={{ cursor: 'pointer' }} />
+                                    )}
+                                </InputIcon>
+                                <Input type={showConfirmPassword ? 'text' : 'password'} name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} /> 
                             </InputDiv>
                         </AuthenticationRow>
                     )}

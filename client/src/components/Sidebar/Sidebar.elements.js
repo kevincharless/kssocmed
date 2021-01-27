@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 export const SidebarContainer = styled.div`
-    position: absolute;
     width: ${({ isSidebarActive }) => (isSidebarActive ? '300px' : '80px')};
-    height: 100%;
-    left: 0;
-    top: 0;
+    height: 100vh;
+    position: fixed;
+    z-index: 999;
     
     border-right: 4px solid rgba(255, 255, 255, 0);
     background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.16) 100%);
@@ -17,7 +16,7 @@ export const SidebarContainer = styled.div`
     width: 80px;
 
     &::active {
-        width: 100%;
+        width: 5%;
     }
 }
 `
