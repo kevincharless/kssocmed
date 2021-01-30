@@ -20,7 +20,7 @@ export const Header = styled.div`
     display: grid;
     display: flex;
     grid-row: auto;
-    padding: 1.2rem;
+    padding: 1rem;
     align-items: center;
     justify-content: space-between;
     
@@ -32,8 +32,8 @@ export const Avatar = styled.div`
 `
 
 export const AvatarPicture = styled.img`
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 80px;
     margin-right: 0.8rem;
     
@@ -43,9 +43,61 @@ export const AvatarPicture = styled.img`
 export const AvatarName = styled.h3`
     font-style: normal;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     text-align: center;
 
     display: block;
     color: #176D84;
+`
+
+export const MoreDropDown = styled.div`
+    position: relative;
+    display: inline-block;
+`
+
+export const More = styled.div`
+    display: ${({ isMoreActive }) => (isMoreActive ? 'block' : 'none')};
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 10rem;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+    min-width: 5rem;
+    }
+`
+
+export const MoreContent = styled.a`
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: #176D84;
+    font-size: 1rem;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        padding: 0.3rem 0.5rem;
+        font-size: 0.5rem;
+    }
+
+    &:hover {
+        background-color: ${({deleteButton}) => (deleteButton ? '#DC211A' : '#176D84')};
+        color: white;
+        cursor: pointer;
+    }
+`
+
+export const PostContentPicture = styled.div`
+    width: 100%;
+    height: 50%;
+    background-color: darkblue;
+    overflow: hidden;
+`
+
+export const PostPicture = styled.img`
+    width: 100%;
+    height: 100%;
 `

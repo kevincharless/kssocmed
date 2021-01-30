@@ -29,20 +29,35 @@ export const SidebarRow = styled.div`
     grid-row: auto;
 `
 
-export const Icon = {
+export const SidebarContent = styled.div`
+    height: 85%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`
+
+export const IconHamburger = {
     textAlign: 'right',
     fontSize: '2rem',
     margin: '0.7rem',
     cursor: 'pointer',
-    color: '#176D84'
+    color: '#176D84',
+}
+
+export const IconLogout = {
+    fontSize: '2rem',
+    margin: '0.7rem',
+    cursor: 'pointer',
+    color: '#DC211A',
+    opacity: '0.9'
 }
 
 export const Avatar = styled.img`
-    width: 125px;
-    height: 125px;
+    width: ${({ isSidebarActive }) => (isSidebarActive ? '100px' : '30px')};
+    height: ${({ isSidebarActive }) => (isSidebarActive ? '100px' : '30px')};
     border-radius: 80px;
     
-    display: ${({ isSidebarActive }) => (isSidebarActive ? 'block' : 'none')};
     margin-left: auto;
     margin-right: auto;
 `
@@ -55,7 +70,7 @@ export const AvatarName = styled.h3`
     text-align: center;
     height: 3rem;
 
-    display: ${({ isSidebarActive }) => (isSidebarActive ? 'block' : 'none')};
+    display: ${({ isSidebarActive }) => (!isSidebarActive && 'none')};
     color: #176D84;
 `
 
@@ -66,6 +81,74 @@ export const AvatarDescription = styled.h5`
     text-align: center;
     height: 1.5rem;
 
-    display: ${({ isSidebarActive }) => (isSidebarActive ? 'block' : 'none')};
+    display: ${({ isSidebarActive }) => (!isSidebarActive && 'none')};
     color: #176D84;
+`
+
+export const ButtonGroup = styled.ul`
+    margin-left: auto;
+    margin-right: auto;
+`
+
+export const ButtonGroupList = styled.li`
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+
+    color: #1FBBC9;
+
+    padding-bottom: 1rem;
+`
+
+export const ButtonIcon = styled.img`
+    width: 2rem;
+    margin-right: ${({ isSidebarActive }) => (isSidebarActive && '1.2rem')};
+
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+export const ButtonText = styled.p`
+    display: ${({ isSidebarActive }) => (!isSidebarActive && 'none')};
+
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+export const LogoutButton = styled.button`
+    background: none;
+    display: ${({ isSidebarActive }) => (!isSidebarActive && 'none')};
+    
+    text-decoration: inherit;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+
+    color: #1FBBC9;
+    margin: 0 5rem;
+    padding: 0.3rem;
+
+    border: 2px solid;
+    border-image-slice: 1;
+    border-radius: 8rem;
+    border-image-source: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
+
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
+        border: 2px solid  rgba(255,255,255,0.8);
+        border-radius: 8rem;
+        color:white;
+    }
 `
