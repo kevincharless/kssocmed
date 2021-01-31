@@ -17,6 +17,7 @@ import { Glass, AuthenticationTitle, AuthenticationDescription, AuthenticationRo
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
 
 const Authentication = () => {
+    const user = localStorage.getItem('profile');
     const [formData, setFormData] = useState(initialState);
     const [isSignUp, setIsSignUp] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
@@ -43,7 +44,6 @@ const Authentication = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('test')
 
         if(!isSignUp) {;
             dispatch(signIn(formData, history));
@@ -68,6 +68,8 @@ const Authentication = () => {
         console.log(error);
         console.log("Google Sign In was unsuccessful. Try Again Later");
     }
+
+    if(user) history.push('/');
 
     return (
         <Row>

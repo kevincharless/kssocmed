@@ -62,6 +62,28 @@ export const Avatar = styled.img`
     margin-right: auto;
 `
 
+export const AvatarTag = styled.div`
+    width: ${({ isSidebarActive }) => (isSidebarActive ? '100px' : '30px')};
+    height: ${({ isSidebarActive }) => (isSidebarActive ? '100px' : '30px')};
+    border: 1px solid #176D84;
+    border-radius: 80px;
+    
+    margin: auto;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: capitalize;
+
+    display: ${({ isSidebarActive }) => (!isSidebarActive && 'none')};
+    color: #176D84;
+`
+
 export const AvatarName = styled.h3`
     padding: 1rem;
     font-style: normal;
@@ -69,6 +91,7 @@ export const AvatarName = styled.h3`
     font-size: 1.5rem;
     text-align: center;
     height: 3rem;
+    text-transform: capitalize;
 
     display: ${({ isSidebarActive }) => (!isSidebarActive && 'none')};
     color: #176D84;

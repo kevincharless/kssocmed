@@ -1,5 +1,9 @@
-import React from 'react'
-import { Div, SidebarContainer, SidebarRow, SidebarContent, IconHamburger, IconLogout, Avatar, AvatarName, AvatarDescription, ButtonGroup, ButtonGroupList, ButtonIcon, ButtonText, LogoutButton } from './Sidebar.elements';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { LOGOUT } from '../../redux/constants/actionTypes';
+
+import { Div, SidebarContainer, SidebarRow, SidebarContent, IconHamburger, IconLogout, Avatar, AvatarTag, AvatarName, AvatarDescription, ButtonGroup, ButtonGroupList, ButtonIcon, ButtonText, LogoutButton } from './Sidebar.elements';
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { BiLogOut } from 'react-icons/bi';
 
@@ -8,9 +12,20 @@ import explore from '../../assets/images/explore.svg';
 import profile from '../../assets/images/user.svg';
 import faq from '../../assets/images/help.svg';
 
-import kevin from '../../assets/images/twibonhmps.jpg'
+const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile }) => {
+    const user = userProfile?.result;
 
-const Sidebar = ({ isSidebarActive, toggleSitebar }) => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const logout = () => {
+        dispatch({ type: LOGOUT });
+
+        clearUserProfile();
+
+        history.push('/');
+    }
+    
     return (
         <Div isSidebarActive={isSidebarActive}>
             <SidebarContainer isSidebarActive={isSidebarActive}>
@@ -19,8 +34,12 @@ const Sidebar = ({ isSidebarActive, toggleSitebar }) => {
                 </SidebarRow>
                 <SidebarContent>
                     <SidebarRow style={{ padding: '2rem 0' }}>
-                        <Avatar src={kevin} isSidebarActive={isSidebarActive} />
-                        <AvatarName isSidebarActive={isSidebarActive}>Kevin Charles</AvatarName>
+                        {user?.imageUrl ? (
+                            <Avatar src={user?.imageUrl} isSidebarActive={isSidebarActive} />
+                        ) : (
+                            <AvatarTag isSidebarActive={isSidebarActive}>{user?.name.split(' ').map(function(item){return item[0]}).join('')}</AvatarTag>
+                        )}
+                        <AvatarName isSidebarActive={isSidebarActive}>{user?.name}</AvatarName>
                         <AvatarDescription isSidebarActive={isSidebarActive}>Full Stack Programmer</AvatarDescription>
                     </SidebarRow>
                     <SidebarRow>
@@ -44,7 +63,7 @@ const Sidebar = ({ isSidebarActive, toggleSitebar }) => {
                         </ButtonGroup>
                     </SidebarRow>
                     <SidebarRow style={{ padding: '2rem 0' }}>
-                        <LogoutButton isSidebarActive={isSidebarActive}>Logout</LogoutButton>
+                        <LogoutButton isSidebarActive={isSidebarActive} onClick={logout}>Logout</LogoutButton>
                         {!isSidebarActive && <BiLogOut style={IconLogout} />}
                     </SidebarRow>
                 </SidebarContent>
