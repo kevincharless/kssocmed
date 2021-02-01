@@ -138,6 +138,11 @@ export const Input = styled.input`
         padding-left: 3rem;
     }
 `
+export const ErrorMessage = styled.p`
+    color: #DC211A;
+    font-weight: bold;
+    padding-left: 12rem;
+`
 
 export const Button = styled.button`
     width: auto;

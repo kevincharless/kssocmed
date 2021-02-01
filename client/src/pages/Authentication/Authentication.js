@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signIn, signUp } from '../../redux/actions/auth';
 import { AUTH } from '../../redux/constants/actionTypes';
@@ -12,17 +12,18 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 import { Row } from '.././../GlobalStyle';
-import { Glass, AuthenticationTitle, AuthenticationDescription, AuthenticationRow, InputSection, InputDiv, InputIcon, Input, Button, ButtonGoogle, ButtonText } from './Authentication.elements';
+import { Glass, AuthenticationTitle, AuthenticationDescription, AuthenticationRow, InputSection, InputDiv, InputIcon, Input, ErrorMessage, Button, ButtonGoogle, ButtonText } from './Authentication.elements';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
 
 const Authentication = () => {
     const user = localStorage.getItem('profile');
+    const errorMessage = useSelector(state => state.auth.errorMessage);
     const [formData, setFormData] = useState(initialState);
     const [isSignUp, setIsSignUp] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+    console.log(errorMessage)
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -133,6 +134,9 @@ const Authentication = () => {
                             </InputDiv>
                         </AuthenticationRow>
                     )}
+                    <AuthenticationRow>
+                    {errorMessage && (<ErrorMessage>* {errorMessage}</ErrorMessage>)}
+                    </AuthenticationRow>
                     <AuthenticationRow>
                         <Button type="submit">
                             Sign {!isSignUp ? 'In' : 'Up'}

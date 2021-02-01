@@ -1,4 +1,4 @@
-import { AUTH } from "../constants/actionTypes";
+import { AUTH, ERROR } from "../constants/actionTypes";
 import * as api from '../../axios';
 
 export const signIn = (formData, history) => async dispatch => {
@@ -9,7 +9,9 @@ export const signIn = (formData, history) => async dispatch => {
 
         history.push('/');
     } catch (error) {
-        console.log(error);
+        const message = error.response.data.message;
+
+        dispatch({ type: ERROR, message });
     }
 }
 

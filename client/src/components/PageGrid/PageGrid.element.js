@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Nav = styled.div`
-    /* padding: 5rem ${({ isSidebarActive }) => (isSidebarActive ? "6rem" : "8rem")};
-    padding-left: ${({ isSidebarActive }) => (isSidebarActive ? "24rem" : "12rem")}; */
     padding: 3rem 5rem;
     margin: 0;
     flex-flow: row nowrap;
