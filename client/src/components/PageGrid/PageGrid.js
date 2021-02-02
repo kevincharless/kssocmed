@@ -5,7 +5,7 @@ import NewPostForm from '../NewPostForm/NewPostForm';
 import Posts from '../Posts/Posts';
 import { Nav, Title, InputDiv, InputIcon, Input } from './PageGrid.element';
 
-const PageGrid = ({ isSidebarActive, userProfile }) => {
+const PageGrid = ({ isSidebarActive, userProfile, currentPostId, setCurrentPostId }) => {
     const user = userProfile.result;
 
     return (
@@ -22,8 +22,8 @@ const PageGrid = ({ isSidebarActive, userProfile }) => {
                 </InputDiv>
             </Nav>
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                <NewPostForm user={user} />
-                <Posts />
+                <NewPostForm user={user} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+                <Posts setCurrentPostId={setCurrentPostId} />
             </div>
         </div>
     )

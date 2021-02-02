@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Sidebar, PageGrid } from '../../components';
 
 const Home = () => {
+    const [currentPostId, setCurrentPostId] = useState();
     const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
     const [isSidebarActive, setIsSitebarActive] = useState(true);
 
@@ -21,7 +22,7 @@ const Home = () => {
     return (
         <div style={{ width: "100%", display: "flex" }}> 
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} userProfile={userProfile} clearUserProfile={clearUserProfile} />
-            <PageGrid isSidebarActive={isSidebarActive} userProfile={userProfile} />
+            <PageGrid isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
         </div>
     )
 }

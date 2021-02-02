@@ -1,8 +1,9 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
+import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
 
 const app = express();
@@ -13,11 +14,19 @@ dotenv.config();
 // BodyParser Middleware
 app.use(express.json());
 
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 // Allow Access-Control-Allow-Origin
 app.use(cors());
 
 // Routes
+app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
+
+// Api Landingpage
+app.get('/', (req, res) => {
+    res.send('Hello to KCSOCMED API');
+})
 
 // Server Port
 const PORT = process.env.PORT || 5000

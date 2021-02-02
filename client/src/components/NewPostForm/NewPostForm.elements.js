@@ -4,8 +4,6 @@ export const Container = styled.div`
     width: 26rem;
     margin-bottom: 3rem;
     position: absolute;
-    display: flex;
-    flex-direction: row;
     z-index: 999;
 `
 
