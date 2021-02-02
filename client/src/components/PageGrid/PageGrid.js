@@ -6,7 +6,7 @@ import Posts from '../Posts/Posts';
 import { Nav, Title, InputDiv, InputIcon, Input } from './PageGrid.element';
 
 const PageGrid = ({ isSidebarActive, userProfile, currentPostId, setCurrentPostId }) => {
-    const user = userProfile.result;
+    const user = userProfile?.result;
 
     return (
         <div style={{ width: '100%' }}>

@@ -7,7 +7,7 @@ import { RiMoreFill } from 'react-icons/ri';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { deletePost, likePost } from '../../../redux/actions/posts';
 
-import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button } from './Post.element';
+import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption } from './Post.element';
 import kevin from '../../../assets/images/twibonhmps.jpg';
 import tesla from '../../../assets/images/tesla.jpg';
 
@@ -51,11 +51,16 @@ console.log(post);
         <Card>
             <Header>
                 <Avatar>
-                    {user?.imageUrl ? (
-                        <AvatarPicture src={user?.imageUrl} />
+                    {post.creatorImage.includes('/') ? (
+                        <AvatarPicture src={post.creatorImage} onError={i => i.target.style.display='none'} />
+                    ) : (
+                        <AvatarTag>{post.creatorImage}</AvatarTag>
+                    )}
+                    {/* {post.imageUrl ? (
+                        
                     ) : (
                         <AvatarTag>{user?.name.split(' ').map(function(item){return item[0]}).join('')}</AvatarTag>
-                    )}
+                    )} */}
                     <AvatarName>{post.name}</AvatarName>
                 </Avatar>
                 <MoreDropDown onClick={handleMoreActive}>
@@ -74,6 +79,9 @@ console.log(post);
                     <Likes />
                 </Button>
             </ButtonGroup>
+            <Caption>
+                <b>{post.name}</b>&nbsp;{post.caption}
+            </Caption>
         </Card>
     )
 }

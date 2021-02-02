@@ -45,8 +45,7 @@ export const AvatarTag = styled.div`
     height: 2rem;
     border: 1px solid #176D84;
     border-radius: 80px;
-    
-    margin: auto;
+    margin-right: 0.8rem;
     
     display: flex;
     justify-content: center;
@@ -114,7 +113,7 @@ export const MoreContent = styled.a`
 export const PostContentPicture = styled.div`
     width: 100%;
     height: 50%;
-    background-color: darkblue;
+    background-color: #176D84;
     overflow: hidden;
 `
 
@@ -126,11 +125,14 @@ export const PostPicture = styled.img`
 export const ButtonGroup = styled.div`
     width: 100%;
     padding: 0.3rem;
+    padding-bottom: 0;
+    padding-left: 0.8rem;
 `
 
 export const Button = styled.button`
     background: none;
     border: none;
+    color: #176D84;
     font-size: 1rem;
 
     &:focus {
@@ -140,4 +142,11 @@ export const Button = styled.button`
     &:hover {
         cursor: pointer;
     }
+`
+
+export const Caption = styled.div`
+    width: 100%;
+    font-size: 0.8rem;
+    color: #176D84;
+    padding-left: 0.8rem;
 `
