@@ -101,3 +101,22 @@ export const PostPicture = styled.img`
     width: 100%;
     height: 100%;
 `
+
+export const ButtonGroup = styled.div`
+    width: 100%;
+    padding: 0.4rem;
+`
+
+export const Button = styled.button`
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+`

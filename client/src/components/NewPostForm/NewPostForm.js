@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { updatePost, createPost } from '../../redux/actions/posts';
 import { Container, Avatar, AvatarTag, Input, Button } from './NewPostForm.elements';
 
 const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
@@ -17,11 +18,11 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        // if(currentPostId) {
-        //     dispatch(updatePost(currentPostId, { ...postData, name: user?.name }));
-        // } else {
-        //     dispatch(createPost({ ...postData, name: user?.name }));
-        // }
+        if(currentPostId) {
+            dispatch(updatePost(currentPostId, { ...postData, name: user?.name }));
+        } else {
+            dispatch(createPost({ ...postData, name: user?.name }));
+        }
         clear();
     }
 
@@ -44,7 +45,7 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
                     value={postData.caption}
                     onChange={e => setPostData({ ...postData, caption: e.target.value })}
                 ></Input>
-                <Button>Post</Button>
+                <Button type="submit">Post</Button>
             </div>
             <div style={{ marginLeft: '3rem' }}>
             <FileBase 

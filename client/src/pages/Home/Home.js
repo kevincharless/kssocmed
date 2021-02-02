@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Sidebar, PageGrid } from '../../components';
+import { getPosts } from '../../redux/actions/posts';
 
 const Home = () => {
     const [currentPostId, setCurrentPostId] = useState();
     const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
     const [isSidebarActive, setIsSitebarActive] = useState(true);
 
+    const dispatch = useDispatch();
     const history = useHistory();
 
     const toggleSitebar = () => {
@@ -17,7 +20,11 @@ const Home = () => {
 
     useEffect(() => {
         if(!userProfile) history.push('/auth')
-    }, [userProfile]);
+    }, [userProfile, history]);
+
+    useEffect(() => {
+        dispatch(getPosts());
+    }, [currentPostId, dispatch])
 
     return (
         <div style={{ width: "100%", display: "flex" }}> 
