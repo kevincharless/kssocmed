@@ -10,7 +10,7 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
     const post = useSelector(state => currentPostId ? state.posts.find(p => p._id === currentPostId) : null);
 
     const dispatch = useDispatch();
-    
+    console.log(postData)
     useEffect(() => {
         if(post) setPostData(post);
     }, [post])

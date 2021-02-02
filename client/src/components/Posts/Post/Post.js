@@ -7,7 +7,7 @@ import { RiMoreFill } from 'react-icons/ri';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { deletePost, likePost } from '../../../redux/actions/posts';
 
-import { Card, Header, Avatar, AvatarPicture, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button } from './Post.element';
+import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button } from './Post.element';
 import kevin from '../../../assets/images/twibonhmps.jpg';
 import tesla from '../../../assets/images/tesla.jpg';
 
@@ -15,12 +15,16 @@ import tesla from '../../../assets/images/tesla.jpg';
 const Post = ({ post, user }) => {
     const [isMoreActive, setIsMoreActive] = useState(false);
     const [like, setLike] = useState(false);
+    const [postLike, setPostLike] = useState(0);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(post.likes.length > 0) setLike(true);
+        if(post.likes.length > 0) {
+            setLike(true);
+            setPostLike(post.likes.length);
+        }
     }, [])
-
+console.log(post);
     const handleMoreActive = () => {
         setIsMoreActive(!isMoreActive);
     }
@@ -32,7 +36,7 @@ const Post = ({ post, user }) => {
 
     const Likes = () => {
         if (like) {
-            return <FcLike /> || post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
+            return <><FcLike />&nbsp;{post.likes.length}</> || post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
                 ? (
                 <><FcLike />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
             ) : (
@@ -47,8 +51,12 @@ const Post = ({ post, user }) => {
         <Card>
             <Header>
                 <Avatar>
-                    <AvatarPicture src={kevin} />
-                    <AvatarName>Kevin Charles</AvatarName>
+                    {user?.imageUrl ? (
+                        <AvatarPicture src={user?.imageUrl} />
+                    ) : (
+                        <AvatarTag>{user?.name.split(' ').map(function(item){return item[0]}).join('')}</AvatarTag>
+                    )}
+                    <AvatarName>{post.name}</AvatarName>
                 </Avatar>
                 <MoreDropDown onClick={handleMoreActive}>
                     <RiMoreFill style={{fontSize: '1.5rem', color: ' #176D84', cursor: 'pointer'}} />
@@ -59,7 +67,7 @@ const Post = ({ post, user }) => {
                 </MoreDropDown>
             </Header>
             <PostContentPicture>
-                <PostPicture src={tesla} />
+                <PostPicture src={post.selectedFile} />
             </PostContentPicture>
             <ButtonGroup>
                 <Button onClick={handleLike}>

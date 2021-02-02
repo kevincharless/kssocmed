@@ -40,6 +40,27 @@ export const AvatarPicture = styled.img`
     display: block;
 `
 
+export const AvatarTag = styled.div`
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #176D84;
+    border-radius: 80px;
+    
+    margin: auto;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #176D84;
+`
+
 export const AvatarName = styled.h3`
     font-style: normal;
     font-weight: 500;
@@ -104,13 +125,13 @@ export const PostPicture = styled.img`
 
 export const ButtonGroup = styled.div`
     width: 100%;
-    padding: 0.4rem;
+    padding: 0.3rem;
 `
 
 export const Button = styled.button`
     background: none;
     border: none;
-    font-size: 1.4rem;
+    font-size: 1rem;
 
     &:focus {
         outline: none;
