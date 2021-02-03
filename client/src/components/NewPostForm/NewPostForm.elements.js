@@ -4,19 +4,31 @@ export const Container = styled.form`
     width: 26rem;
     margin-bottom: 3rem;
     position: absolute;
-    z-index: 999;
+    z-index: 2;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        height: 1.6rem;
+        width: 16rem;
+    }
 `
 
 export const Avatar = styled.img`
-    width: ${({ isSidebarActive }) => (isSidebarActive ? '100px' : '30px')};
-    height: ${({ isSidebarActive }) => (isSidebarActive ? '100px' : '30px')};
+    width: 2rem;
+    height: 2rem;
     border-radius: 80px;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        width: 1.6rem;
+        height: 1.6rem;
+    }
     
 `
 
 export const AvatarTag = styled.div`
-    width: ${({ isSidebarActive }) => (isSidebarActive ? '100px' : '30px')};
-    height: ${({ isSidebarActive }) => (isSidebarActive ? '100px' : '30px')};
+    width: 2rem;
+    height: 2rem;
     border: 1px solid #176D84;
     border-radius: 80px;
     
@@ -30,8 +42,13 @@ export const AvatarTag = styled.div`
     text-align: center;
     text-transform: capitalize;
 
-    display: ${({ isSidebarActive }) => (!isSidebarActive && 'none')};
     color: #176D84;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        width: 1.6rem;
+        height: 1.6rem;
+    }
 `
 
 export const Input = styled.textarea`
@@ -64,6 +81,55 @@ export const Input = styled.textarea`
         border-radius: 15px;
         overflow-y: scroll;
     }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        height: 1.6rem;
+        &::placeholder {
+            font-size: 0.4rem;
+        }
+    }
+`
+
+export const AddImage = styled.img`
+    display: flex;
+    height: 2rem;
+    width: 1.2rem;
+    position: absolute;
+    margin-left: 19rem;
+    
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        height: 1.6rem;    
+        width: 1rem;
+        margin-left: 10.5rem;
+    }
+`
+
+export const AddImageEvent = styled.div`
+    border: none;
+    height: 2rem;
+    margin-left: 19rem;
+    position: absolute;
+    opacity: 0;
+    overflow: hidden;
+    width: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        height: 1.6rem;
+        width: 1rem;
+        margin-left: 10.5rem;
+    }
 `
 
 export const Button = styled.button`
@@ -75,4 +141,10 @@ export const Button = styled.button`
     color:white;
 
     margin-left: 1rem;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        height: 1.6rem;
+        font-size: 0.4rem;
+    }
 `

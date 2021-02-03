@@ -8,8 +8,6 @@ import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { deletePost, likePost } from '../../../redux/actions/posts';
 
 import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption } from './Post.element';
-import kevin from '../../../assets/images/twibonhmps.jpg';
-import tesla from '../../../assets/images/tesla.jpg';
 
 
 const Post = ({ post, user }) => {

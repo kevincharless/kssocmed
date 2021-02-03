@@ -5,5 +5,5 @@ export const Grid = styled.div`
     flex-flow: row nowrap;
     flex-direction: row;
     position: absolute;
-    padding-top: 6rem;
+    padding-top: 4rem;
 `

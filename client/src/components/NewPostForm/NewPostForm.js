@@ -3,7 +3,8 @@ import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { updatePost, createPost } from '../../redux/actions/posts';
-import { Container, Avatar, AvatarTag, Input, Button } from './NewPostForm.elements';
+import { Container, Avatar, AvatarTag, Input, AddImage, AddImageEvent, Button } from './NewPostForm.elements';
+import addImage from '../../assets/images/add.svg';
 
 const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
     const [postData, setPostData] = useState({ caption: '', selectedFile: '', creatorImage: '' });
@@ -45,15 +46,18 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
                     value={postData.caption}
                     onChange={e => setPostData({ ...postData, caption: e.target.value })}
                 ></Input>
+                <AddImage src={addImage} />
+                <AddImageEvent>
+                    <FileBase 
+                        className="addImage"
+                        multiple={false}
+                        onDone={({base64}) => setPostData({ ...postData, selectedFile: base64 })}
+                        style={{ cursor: 'pointer' }}
+                    />
+                </AddImageEvent>
                 <Button type="submit">Post</Button>
             </div>
-            <div style={{ marginLeft: '3rem' }}>
-            <FileBase 
-                type="file"
-                multiple={false}
-                onDone={({base64}) => setPostData({ ...postData, selectedFile: base64 })}
-            />
-            </div>
+            
         </Container>
     )
 }
