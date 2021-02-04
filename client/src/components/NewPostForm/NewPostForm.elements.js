@@ -36,9 +36,11 @@ export const AvatarTag = styled.div`
     justify-content: center;
     align-items: center;
 
+    padding: 1rem;
+
     font-style: normal;
     font-weight: 500;
-    font-size: 2rem;
+    font-size: 1rem;
     text-align: center;
     text-transform: capitalize;
 
@@ -46,8 +48,9 @@ export const AvatarTag = styled.div`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        width: 1.6rem;
-        height: 1.6rem;
+        width: 0.8rem;
+        height: 0.8rem;
+        padding: 0.8rem;
     }
 `
 

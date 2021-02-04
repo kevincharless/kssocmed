@@ -14,7 +14,7 @@ export const Nav = styled.div`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        padding: 3rem 1rem;
+        padding: 3rem 1rem 1rem 2rem;
     }
 `
 
