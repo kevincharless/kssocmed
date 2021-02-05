@@ -7,6 +7,7 @@ import { RiMoreFill } from 'react-icons/ri';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { deletePost, likePost } from '../../../redux/actions/posts';
 
+import Modal from '../../Modal/Modal';
 import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption } from './Post.element';
 
 
@@ -14,6 +15,8 @@ const Post = ({ post, user }) => {
     const [isMoreActive, setIsMoreActive] = useState(false);
     const [isLike, setIsLike] = useState(false);
     const [postLike, setPostLike] = useState(0);
+    const [isActive, setIsActive] = useState(false);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,10 +24,16 @@ const Post = ({ post, user }) => {
 
         setPostLike(post.likes.length);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [post])
     
     const handleMoreActive = () => {
         setIsMoreActive(!isMoreActive);
+    }
+
+    const handleDeletePost = () => {
+        dispatch(deletePost(post._id));
+
+        setIsActive(false);
     }
 
     const handleLike = () => {
@@ -46,38 +55,46 @@ const Post = ({ post, user }) => {
     };
 
     return (
-        <Card>
-            <Header>
-                <Avatar>
-                    {post.creatorImage.includes('/') ? (
-                        <AvatarPicture src={post.creatorImage} onError={i => i.target.style.display='none'} />
-                    ) : (
-                        <AvatarTag>{post.creatorImage}</AvatarTag>
+        <>
+            <Card>
+                <Header>
+                    <Avatar>
+                        {post.creatorImage.includes('/') ? (
+                            <AvatarPicture src={post.creatorImage} onError={i => i.target.style.display='none'} />
+                        ) : (
+                            <AvatarTag>{post.creatorImage}</AvatarTag>
+                        )}
+                        <AvatarName>{post.name}</AvatarName>
+                    </Avatar>
+                    {(user?.googleId === post?.creator || user?._id === post?.creator) && (
+                        <MoreDropDown onClick={handleMoreActive}>
+                            <RiMoreFill style={{fontSize: '1.5rem', color: ' #176D84', cursor: 'pointer'}} />
+                            <More isMoreActive={isMoreActive}>
+                                <MoreContent>Edit Post <FiEdit /></MoreContent>
+                                <MoreContent deleteButton onClick={() => setIsActive(true)}>Delete Post <AiFillDelete /></MoreContent>
+                            </More>
+                        </MoreDropDown>
                     )}
-                    <AvatarName>{post.name}</AvatarName>
-                </Avatar>
-                {(user?.googleId === post?.creator || user?._id === post?.creator) && (
-                    <MoreDropDown onClick={handleMoreActive}>
-                        <RiMoreFill style={{fontSize: '1.5rem', color: ' #176D84', cursor: 'pointer'}} />
-                        <More isMoreActive={isMoreActive}>
-                            <MoreContent>Edit Post <FiEdit /></MoreContent>
-                            <MoreContent deleteButton>Delete Post <AiFillDelete /></MoreContent>
-                        </More>
-                    </MoreDropDown>
-                )}
-            </Header>
-            <PostContentPicture>
-                <PostPicture src={post.selectedFile} />
-            </PostContentPicture>
-            <ButtonGroup>
-                <Button onClick={handleLike}>
-                    <Likes />
-                </Button>
-            </ButtonGroup>
-            <Caption>
-                <b>{post.name}</b>&nbsp;{post.caption}
-            </Caption>
-        </Card>
+                </Header>
+                <PostContentPicture>
+                    <PostPicture src={post.selectedFile} />
+                </PostContentPicture>
+                <ButtonGroup>
+                    <Button onClick={handleLike}>
+                        <Likes />
+                    </Button>
+                </ButtonGroup>
+                <Caption>
+                    <b>{post.name}</b>&nbsp;{post.caption}
+                </Caption>
+            </Card>
+            <Modal 
+                isActive={isActive}
+                setIsActive={setIsActive}
+                deletePost={handleDeletePost}
+                description="You want to delete this post ?"
+            />
+        </>
     )
 }
 

@@ -10,7 +10,7 @@ export const ModalDiv = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgb(255,255,255);
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.5);
 `
 
 /* Modal Content */
@@ -24,7 +24,7 @@ export const ModalContent = styled.div`
     top: 10%;
 
     background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.16) 100%);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(40px);
 
     border-radius: 40px;
     border: 4px solid;
@@ -47,7 +47,7 @@ export const ModalContent = styled.div`
 `
 
 export const ModalHeader = styled.div`
-    color: #176D84;
+    color: #DC211A;
     opacity: 0.9;
     padding: 0;
 
@@ -75,9 +75,11 @@ export const Title = styled.h2`
 `
 
 export const Description = styled.p`
+    color: white;
     text-transform: capitalize;
     padding: 0.5rem;
     text-align: center;
+    opacity: 1;
 `
 
 export const ButtonGroup = styled.div`

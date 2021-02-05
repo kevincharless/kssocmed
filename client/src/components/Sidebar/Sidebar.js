@@ -84,7 +84,12 @@ const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile
                     </SidebarContent>
                 </SidebarContainer>
             </Div>
-            <Modal isActive={isActive} setIsActive={setIsActive} logout={logout} />
+            <Modal 
+                isActive={isActive}
+                setIsActive={setIsActive}
+                logout={logout}
+                description="You want to logout ?"
+            />
         </>
     )
 }
