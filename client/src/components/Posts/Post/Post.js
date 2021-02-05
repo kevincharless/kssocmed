@@ -20,7 +20,9 @@ const Post = ({ post, user }) => {
         post.likes.includes(user?.googleId || user?._id) && setIsLike(true);
 
         setPostLike(post.likes.length);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    
     const handleMoreActive = () => {
         setIsMoreActive(!isMoreActive);
     }

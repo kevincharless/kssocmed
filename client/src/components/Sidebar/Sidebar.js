@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { LOGOUT } from '../../redux/constants/actionTypes';
+import decode from 'jwt-decode';
 
 import { Div, SidebarContainer, SidebarRow, SidebarContent, IconHamburger, IconLogout, Avatar, AvatarTag, AvatarName, AvatarDescription, ButtonGroup, ButtonGroupList, ButtonIcon, ButtonText, LogoutButton } from './Sidebar.elements';
 import { GiHamburgerMenu } from 'react-icons/gi'
@@ -18,13 +19,24 @@ const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const logout = () => {
-        dispatch({ type: LOGOUT });
+    const logout = useCallback(
+        () => {
+            dispatch({ type: LOGOUT });
+    
+            clearUserProfile();
+    
+            history.push('/');
+        }, [clearUserProfile, dispatch, history])
 
-        clearUserProfile();
+    useEffect(() => {
+        const token = userProfile?.token;
 
-        history.push('/');
-    }
+        if(token) {
+            const decodedToken = decode(token);
+
+            if(decodedToken.exp * 1000 < new Date().getTime()) logout();
+        } // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     
     return (
         <Div isSidebarActive={isSidebarActive}>
