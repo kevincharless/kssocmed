@@ -11,7 +11,7 @@ import Modal from '../../Modal/Modal';
 import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption } from './Post.element';
 
 
-const Post = ({ post, user }) => {
+const Post = ({ post, user, setCurrentPostId }) => {
     const [isMoreActive, setIsMoreActive] = useState(false);
     const [isLike, setIsLike] = useState(false);
     const [postLike, setPostLike] = useState(0);
@@ -70,7 +70,7 @@ const Post = ({ post, user }) => {
                         <MoreDropDown onClick={handleMoreActive}>
                             <RiMoreFill style={{fontSize: '1.5rem', color: ' #176D84', cursor: 'pointer'}} />
                             <More isMoreActive={isMoreActive}>
-                                <MoreContent>Edit Post <FiEdit /></MoreContent>
+                                <MoreContent onClick={() => setCurrentPostId(post._id)}>Edit Post <FiEdit /></MoreContent>
                                 <MoreContent deleteButton onClick={() => setIsActive(true)}>Delete Post <AiFillDelete /></MoreContent>
                             </More>
                         </MoreDropDown>
