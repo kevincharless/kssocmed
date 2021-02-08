@@ -76,17 +76,32 @@ const Post = ({ post, user, setCurrentPostId }) => {
                         </MoreDropDown>
                     )}
                 </Header>
-                <PostContentPicture>
-                    <PostPicture src={post.selectedFile} />
-                </PostContentPicture>
-                <ButtonGroup>
-                    <Button onClick={handleLike}>
-                        <Likes />
-                    </Button>
-                </ButtonGroup>
-                <Caption>
-                    <b>{post.name}</b>&nbsp;{post.caption}
-                </Caption>
+                {post.selectedFile ? (
+                    <>
+                        <PostContentPicture>
+                            <PostPicture src={post.selectedFile} />
+                        </PostContentPicture>
+                        <ButtonGroup>
+                            <Button onClick={handleLike}>
+                                <Likes />
+                            </Button>
+                        </ButtonGroup>
+                        <Caption>
+                            <b>{post.name}</b>&nbsp;{post.caption}
+                        </Caption>
+                    </>
+                ) : (
+                    <>
+                        <Caption captionOnly>
+                            {post.caption}
+                        </Caption>
+                        <ButtonGroup captionOnly>
+                            <Button onClick={handleLike}>
+                                <Likes />
+                            </Button>
+                        </ButtonGroup>
+                    </>
+                )}
             </Card>
             <Modal 
                 isActive={isActive}

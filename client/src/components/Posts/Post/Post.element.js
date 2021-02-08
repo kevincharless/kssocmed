@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Card = styled.div`
     width: 26rem;
-    height: 28rem;
+
     margin-bottom: 3rem;
 
     background: linear-gradient(106.09deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
@@ -12,7 +12,6 @@ export const Card = styled.div`
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
         width: 15rem;
-        height: 16rem;
     }
 `
 
@@ -85,7 +84,7 @@ export const More = styled.div`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-    min-width: 5rem;
+        min-width: 5rem;
     }
 `
 
@@ -111,22 +110,30 @@ export const MoreContent = styled.a`
 `
 
 export const PostContentPicture = styled.div`
-    width: 100%;
-    height: 50%;
+    max-width: auto;
+    height: auto;
     background-color: #176D84;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 export const PostPicture = styled.img`
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: 16rem;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        height: 8rem;
+    }
 `
 
 export const ButtonGroup = styled.div`
     width: 100%;
     padding: 0.3rem;
-    padding-bottom: 0;
-    padding-left: 0.8rem;
+    padding-bottom: ${({ captionOnly }) => (captionOnly ? '1rem' : '0')};
+    padding-left: 1rem;
 `
 
 export const Button = styled.button`
@@ -146,7 +153,8 @@ export const Button = styled.button`
 
 export const Caption = styled.div`
     width: 100%;
-    font-size: 0.8rem;
+    font-size: ${({ captionOnly }) => (captionOnly ? '1.2rem' : '0.8rem')};
+    text-transform: capitalize;
     color: #176D84;
-    padding-left: 0.8rem;
+    padding-left: 1rem;
 `

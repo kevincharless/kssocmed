@@ -24,7 +24,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getPosts());
-    }, [currentPostId, dispatch])
+    }, [dispatch])
 
     return (
         <div style={{ width: "100%", display: "flex" }}> 
