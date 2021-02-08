@@ -140,7 +140,10 @@ export const Button = styled.button`
     background: none;
     border: none;
     color: #176D84;
-    font-size: 1rem;
+    font-size: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &:focus {
         outline: none;

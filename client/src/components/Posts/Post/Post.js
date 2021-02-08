@@ -48,9 +48,9 @@ const Post = ({ post, user, setCurrentPostId }) => {
 
     const Likes = () => {
         if (isLike) {
-            return <><FcLike />&nbsp;{postLike > 2 ? `You and ${postLike - 1} others` : `${postLike} like${postLike > 1 ? 's' : ''}`}</>
+            return <><FcLike style={{ fontSize: '1.2rem' }} />&nbsp;{postLike > 2 ? `You and ${postLike - 1} others` : `${postLike} like${postLike > 1 ? 's' : ''}`}</>
         } else {
-            return <><FcLikePlaceholder />&nbsp;{postLike} {postLike <= 1 ? 'Like' : 'Likes'}</>
+            return <><FcLikePlaceholder style={{ fontSize: '1.2rem' }} />&nbsp;{postLike} {postLike <= 1 ? 'Like' : 'Likes'}</>
         }
     };
 
@@ -102,6 +102,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
                         </ButtonGroup>
                     </>
                 )}
+                
             </Card>
             <Modal 
                 isActive={isActive}
