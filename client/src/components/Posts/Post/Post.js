@@ -7,6 +7,7 @@ import { RiMoreFill } from 'react-icons/ri';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { deletePost, likePost } from '../../../redux/actions/posts';
 
+import Comment from '../../Comments/Comments';
 import Modal from '../../Modal/Modal';
 import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption } from './Post.element';
 
@@ -95,14 +96,14 @@ const Post = ({ post, user, setCurrentPostId }) => {
                         <Caption captionOnly>
                             {post.caption}
                         </Caption>
-                        <ButtonGroup captionOnly>
+                        <ButtonGroup>
                             <Button onClick={handleLike}>
                                 <Likes />
                             </Button>
                         </ButtonGroup>
                     </>
                 )}
-                
+                <Comment />
             </Card>
             <Modal 
                 isActive={isActive}

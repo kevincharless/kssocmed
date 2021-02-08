@@ -4,6 +4,7 @@ export const Card = styled.div`
     width: 26rem;
 
     margin-bottom: 3rem;
+    padding-bottom: 1rem;
 
     background: linear-gradient(106.09deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
     box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.1);
@@ -52,7 +53,7 @@ export const AvatarTag = styled.div`
 
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.75rem;
     text-align: center;
     text-transform: capitalize;
 
@@ -62,8 +63,9 @@ export const AvatarTag = styled.div`
 export const AvatarName = styled.h3`
     font-style: normal;
     font-weight: 500;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-align: center;
+    text-transform: capitalize;
 
     display: block;
     color: #176D84;
@@ -94,7 +96,7 @@ export const MoreContent = styled.a`
     text-decoration: none;
     display: block;
     color: #176D84;
-    font-size: 1rem;
+    font-size: 0.75rem;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
@@ -132,7 +134,7 @@ export const PostPicture = styled.img`
 export const ButtonGroup = styled.div`
     width: 100%;
     padding: 0.3rem;
-    padding-bottom: ${({ captionOnly }) => (captionOnly ? '1rem' : '0')};
+    padding-bottom: 0;
     padding-left: 1rem;
 `
 
@@ -140,7 +142,7 @@ export const Button = styled.button`
     background: none;
     border: none;
     color: #176D84;
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -156,7 +158,7 @@ export const Button = styled.button`
 
 export const Caption = styled.div`
     width: 100%;
-    font-size: ${({ captionOnly }) => (captionOnly ? '1.2rem' : '0.8rem')};
+    font-size: ${({ captionOnly }) => (captionOnly ? '0.8rem' : '0.75rem')};
     text-transform: capitalize;
     color: #176D84;
     padding-left: 1rem;
