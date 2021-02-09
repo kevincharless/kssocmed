@@ -18,7 +18,6 @@ export const createPost = async (req, res) =>{
     
     try {
         await newPost.save();
-
         res.status(201).json(newPost);
     } catch (error) {
         res.status(409).json({ message: error.message });
@@ -84,4 +83,22 @@ export const commentPost = async (req, res) => {
 
     const updatedPost = await Post.findByIdAndUpdate(id, post, { new: true });
     res.status(200).json(updatedPost);
+}
+
+export const deleteCommentPost = async (req, res) => {
+    const { id } = req.params;
+
+    if (!req.userId) {
+        return res.json({ message: "Unauthenticated" });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const post = await Post.findById(id);
+    const reqComment = req.body;
+
+    post.comments.filter(comment => comment._id !== reqComment._id);
+    await post.save();
+
+    res.json({ message: 'Comment deleted successfully' });
 }

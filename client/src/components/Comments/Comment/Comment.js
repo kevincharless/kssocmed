@@ -3,6 +3,7 @@ import moment from 'moment';
 import { Container, CommentCreatedAt } from './Comment.element';
 
 const Comment = ({ comment }) => {
+    console.log(comment.id)
     return (
         <>
             <Container>
