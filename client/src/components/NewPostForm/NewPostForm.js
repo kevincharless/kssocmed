@@ -33,7 +33,7 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
     }
 
     return (
-        <Container type="submit" onSubmit={handleSubmit}>
+        <Container onSubmit={handleSubmit}>
             <div style={{ display: 'flex' }}>
                 {user?.imageUrl ? (
                     <Avatar src={user?.imageUrl} />

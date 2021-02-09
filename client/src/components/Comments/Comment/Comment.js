@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Line } from './Comment.element';
+import { Container } from './Comment.element';
 
 const Comment = ({ comment }) => {
     return (

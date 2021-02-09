@@ -5,7 +5,7 @@ export const Container = styled.div`
     font-size: 0.75rem;
     text-transform: capitalize;
     color: #176D84;
-    padding-left: 1rem;
+    padding: 0.1rem 1rem;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */

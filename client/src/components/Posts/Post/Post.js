@@ -103,7 +103,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
                         </ButtonGroup>
                     </>
                 )}
-                <Comment post={post} />
+                <Comment post={post} user={user} />
             </Card>
             <Modal 
                 isActive={isActive}

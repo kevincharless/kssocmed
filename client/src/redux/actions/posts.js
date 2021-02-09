@@ -55,8 +55,6 @@ export const likePost = (id) => async (dispatch) => {
 };
 
 export const commentPost = (id, comment) => async (dispatch) => {
-    const user = JSON.parse(localStorage.getItem('profile'));
-
     try {
         const { data } = await axios.commentPost(id, comment);
 
