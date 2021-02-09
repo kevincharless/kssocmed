@@ -17,7 +17,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
     const [isLike, setIsLike] = useState(false);
     const [postLike, setPostLike] = useState(0);
     const [isActive, setIsActive] = useState(false);
-
+console.log(post)
     const dispatch = useDispatch();
 
     useEffect(() => {
