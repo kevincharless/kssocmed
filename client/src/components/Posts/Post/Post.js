@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import moment from 'moment';
 
 import { AiFillDelete } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
@@ -9,7 +10,7 @@ import { deletePost, likePost } from '../../../redux/actions/posts';
 
 import Comment from '../../Comments/Comments';
 import Modal from '../../Modal/Modal';
-import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption } from './Post.element';
+import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption, PostCreatedAt } from './Post.element';
 
 
 const Post = ({ post, user, setCurrentPostId }) => {
@@ -90,12 +91,14 @@ const Post = ({ post, user, setCurrentPostId }) => {
                         <Caption>
                             <b>{post.name}</b>&nbsp;{post.caption}
                         </Caption>
+                        <PostCreatedAt>{moment(post.createdAt).fromNow()}</PostCreatedAt>
                     </>
                 ) : (
                     <>
                         <Caption captionOnly>
                             {post.caption}
                         </Caption>
+                        <PostCreatedAt>{moment(post.createdAt).fromNow()}</PostCreatedAt>
                         <ButtonGroup>
                             <Button onClick={handleLike}>
                                 <Likes />

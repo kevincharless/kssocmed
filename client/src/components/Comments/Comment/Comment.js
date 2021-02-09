@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container } from './Comment.element';
+import moment from 'moment';
+import { Container, CommentCreatedAt } from './Comment.element';
 
 const Comment = ({ comment }) => {
     return (
@@ -7,6 +8,7 @@ const Comment = ({ comment }) => {
             <Container>
                 <b>{comment.name}</b>&nbsp;{comment.comment}
             </Container>
+            <CommentCreatedAt>{moment(comment.createdAt).fromNow()}</CommentCreatedAt>
         </>
     )
     

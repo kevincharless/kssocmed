@@ -12,3 +12,9 @@ export const Container = styled.div`
         font-size: 0.55rem;
     }
 `
+
+export const CommentCreatedAt = styled.p`
+    color: #176D84;
+    font-size: 0.5rem;
+    padding: 0 1rem;
+`

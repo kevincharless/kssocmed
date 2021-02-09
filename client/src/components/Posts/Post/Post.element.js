@@ -134,7 +134,7 @@ export const PostPicture = styled.img`
 export const ButtonGroup = styled.div`
     width: 100%;
     padding: 0.3rem;
-    padding-bottom: 0;
+    padding-bottom: 0.1rem;
     padding-left: 1rem;
 `
 
@@ -171,5 +171,16 @@ export const Caption = styled.div`
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
         font-size: ${({ captionOnly }) => (captionOnly ? '0.6rem' : '0.55rem')};
+    }
+`
+
+export const PostCreatedAt = styled.p`
+    color: #176D84;
+    font-size: 0.5rem;
+    padding-left: 1rem;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.3rem;
     }
 `
