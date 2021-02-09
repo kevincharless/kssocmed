@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, COMMENT } from '../constants/actionTypes';
 import * as axios from '../../axios';
 
 // Action Creators
@@ -53,3 +53,15 @@ export const likePost = (id) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const commentPost = (id, comment) => async (dispatch) => {
+    const user = JSON.parse(localStorage.getItem('profile'));
+
+    try {
+        const { data } = await axios.commentPost(id, comment);
+
+        dispatch({ type: COMMENT, payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
