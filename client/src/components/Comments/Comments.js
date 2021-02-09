@@ -1,14 +1,15 @@
 import React from 'react'
-import { Container, Comment, Button } from './Comments.element';
+import Comment from './Comment/Comment';
+import CommentInput from './CommentInput/CommentInput';
 
-const Comments = () => {
+const Comments = ({ post }) => {
     return (
-        <Container>
-            <Comment type="text" placeholder="Add a comment..." />
-            <Button>
-                Post
-            </Button>
-        </Container>
+        <>
+            {post.comments.map(comment => (
+                <Comment key={post._id} comment={comment} />
+            ))}
+            <CommentInput />
+        </>
     )
 }
 

@@ -17,7 +17,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
     const [isLike, setIsLike] = useState(false);
     const [postLike, setPostLike] = useState(0);
     const [isActive, setIsActive] = useState(false);
-console.log(post)
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -49,9 +49,9 @@ console.log(post)
 
     const Likes = () => {
         if (isLike) {
-            return <><FcLike style={{ fontSize: '1.2rem' }} />&nbsp;{postLike > 2 ? `You and ${postLike - 1} others` : `${postLike} like${postLike > 1 ? 's' : ''}`}</>
+            return <><FcLike style={{ fontSize: '1.1rem' }} />&nbsp;{postLike > 2 ? `You and ${postLike - 1} others` : `${postLike} like${postLike > 1 ? 's' : ''}`}</>
         } else {
-            return <><FcLikePlaceholder style={{ fontSize: '1.2rem' }} />&nbsp;{postLike} {postLike <= 1 ? 'Like' : 'Likes'}</>
+            return <><FcLikePlaceholder style={{ fontSize: '1.1rem' }} />&nbsp;{postLike} {postLike <= 1 ? 'Like' : 'Likes'}</>
         }
     };
 
@@ -103,7 +103,7 @@ console.log(post)
                         </ButtonGroup>
                     </>
                 )}
-                <Comment />
+                <Comment post={post} />
             </Card>
             <Modal 
                 isActive={isActive}

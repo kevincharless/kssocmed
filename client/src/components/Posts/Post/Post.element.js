@@ -154,6 +154,11 @@ export const Button = styled.button`
     &:hover {
         cursor: pointer;
     }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.3rem;
+    }
 `
 
 export const Caption = styled.div`
@@ -162,4 +167,9 @@ export const Caption = styled.div`
     text-transform: capitalize;
     color: #176D84;
     padding-left: 1rem;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: ${({ captionOnly }) => (captionOnly ? '0.6rem' : '0.55rem')};
+    }
 `
