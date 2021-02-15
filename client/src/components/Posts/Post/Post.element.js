@@ -80,7 +80,7 @@ export const More = styled.div`
     display: ${({ isMoreActive }) => (isMoreActive ? 'block' : 'none')};
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 10rem;
+    min-width: 8rem;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 
@@ -92,7 +92,7 @@ export const More = styled.div`
 
 export const MoreContent = styled.a`
     color: black;
-    padding: 12px 16px;
+    padding: 0.5rem;
     text-decoration: none;
     display: block;
     color: #176D84;
@@ -100,7 +100,7 @@ export const MoreContent = styled.a`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        padding: 0.3rem 0.5rem;
+        padding: 0.4rem;
         font-size: 0.5rem;
     }
 

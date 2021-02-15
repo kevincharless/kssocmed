@@ -85,6 +85,27 @@ export const commentPost = async (req, res) => {
     res.status(200).json(updatedPost);
 }
 
+export const updateCommentPost = async (req, res) => {
+    const { id } = req.params;
+
+    if (!req.userId) {
+        return res.json({ message: "Unauthenticated" });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const post = await Post.findById(id);
+    const comment = req.body;
+
+    const commentPost = await post.comments.find(c => c._id == comment._id);
+    commentPost.comment = comment.comment;
+    
+    await post.save();
+    const updatedPost = await Post.findByIdAndUpdate(id, post);
+
+    res.json(updatedPost);
+}
+
 export const deleteCommentPost = async (req, res) => {
     const { id } = req.params;
 
@@ -97,7 +118,7 @@ export const deleteCommentPost = async (req, res) => {
     const post = await Post.findById(id);
     const reqComment = req.body;
 
-    post.comments.filter(comment => comment._id !== reqComment._id);
+    post.comments.filter(comment => comment._id !== reqComment.comment._id);
     await post.save();
 
     res.json({ message: 'Comment deleted successfully' });

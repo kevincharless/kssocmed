@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, COMMENT } from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, COMMENT, UPDATECOMMENT, DELETECOMMENT } from '../constants/actionTypes';
 import * as axios from '../../axios';
 
 // Action Creators
@@ -22,9 +22,9 @@ export const createPost = (post) => async (dispatch) => {
     }
 }
 
-export const updatePost = (id, post) => async (dispatch) => {
+export const updatePost = (postId, post) => async (dispatch) => {
     try {
-        const { data } = await axios.updatePost(id, post);
+        const { data } = await axios.updatePost(postId, post);
 
         dispatch({ type: UPDATE, payload: data });
     } catch (error) {
@@ -32,21 +32,21 @@ export const updatePost = (id, post) => async (dispatch) => {
     }
 }
 
-export const deletePost = (id) => async (dispatch) => {
+export const deletePost = (postId) => async (dispatch) => {
     try {
-        await axios.deletePost(id);
+        await axios.deletePost(postId);
 
-        dispatch({ type: DELETE, payload: id });
+        dispatch({ type: DELETE, payload: postId });
     } catch (error) {
         console.log(error)
     }
 }
 
-export const likePost = (id) => async (dispatch) => {
+export const likePost = (postId) => async (dispatch) => {
     const user = JSON.parse(localStorage.getItem('profile'));
 
     try {
-        const { data } = await axios.likePost(id, user?.token);
+        const { data } = await axios.likePost(postId, user?.token);
 
         dispatch({ type: LIKE, payload: data });
     } catch (error) {
@@ -54,11 +54,21 @@ export const likePost = (id) => async (dispatch) => {
     }
 };
 
-export const commentPost = (id, comment) => async (dispatch) => {
+export const commentPost = (postId, comment) => async (dispatch) => {
     try {
-        const { data } = await axios.commentPost(id, comment);
+        const { data } = await axios.commentPost(postId, comment);
 
         dispatch({ type: COMMENT, payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateCommentPost = (postId, updatedCommentPost) => async (dispatch) => {
+    try {
+        const { data } = await axios.updateCommentPost(postId, updatedCommentPost);
+        
+        dispatch({ type: UPDATECOMMENT, postId, payload: data });
     } catch (error) {
         console.log(error);
     }

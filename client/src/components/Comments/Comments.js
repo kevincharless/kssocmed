@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Comment from './Comment/Comment';
 import CommentInput from './CommentInput/CommentInput';
 
 const Comments = ({ post, user }) => {
-    console.log(post)
+    const [CurrentCommentId, setCurrentCommentId] = useState();
+
     return (
         <>
             {post.comments.map((comment, i) => (
-                <Comment key={i} comment={comment} />
+                <Comment key={i} comment={comment} post={post} user={user} setCurrentCommentId={setCurrentCommentId} />
             ))}
-            <CommentInput post={post} user={user} />
+            <CommentInput post={post} user={user} CurrentCommentId={CurrentCommentId} setCurrentCommentId={setCurrentCommentId} />
         </>
     )
 }
