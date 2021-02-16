@@ -10,7 +10,7 @@ import { deletePost, likePost } from '../../../redux/actions/posts';
 
 import Comment from '../../Comments/Comments';
 import Modal from '../../Modal/Modal';
-import { Card, Header, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption, PostCreatedAt } from './Post.element';
+import { Card, Header, Description, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption, PostCreatedAt } from './Post.element';
 
 
 const Post = ({ post, user, setCurrentPostId }) => {
@@ -79,7 +79,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
                     )}
                 </Header>
                 {post.selectedFile ? (
-                    <>
+                    <Description>
                         <PostContentPicture>
                             <PostPicture src={post.selectedFile} />
                         </PostContentPicture>
@@ -92,7 +92,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
                             <b>{post.name}</b>&nbsp;{post.caption}
                         </Caption>
                         <PostCreatedAt>{moment(post.createdAt).fromNow()}</PostCreatedAt>
-                    </>
+                    </Description>
                 ) : (
                     <>
                         <Caption captionOnly>

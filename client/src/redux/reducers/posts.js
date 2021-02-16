@@ -5,7 +5,7 @@ const posts = (posts = [], action) => {
         case FETCH_ALL:
             return action.payload;
         case CREATE:
-            return [...posts, action.payload];
+            return [action.payload, ...posts];
         case COMMENT:
         case DELETECOMMENT:
         case UPDATECOMMENT:

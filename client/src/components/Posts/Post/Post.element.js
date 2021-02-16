@@ -26,6 +26,10 @@ export const Header = styled.div`
     
 `
 
+export const Description = styled.div`
+    padding-bottom: 0.5rem;
+`
+
 export const Avatar = styled.div`
     display: flex;
     align-items: center;

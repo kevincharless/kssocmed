@@ -23,7 +23,7 @@ const Comment = ({ comment, post, user, setCurrentCommentId }) => {
 
         setIsActive(false);
     }
-    console.log(comment)
+
     return (
         <>
             <Row>
