@@ -8,6 +8,7 @@ import { RiMoreFill } from 'react-icons/ri';
 
 import { Row, Container, CommentCreatedAt, MoreDropDown, More, MoreContent } from './Comment.element';
 import Modal from '../../Modal/Modal';
+import { deleteCommentPost } from '../../../redux/actions/posts';
 
 const Comment = ({ comment, post, user, setCurrentCommentId }) => {
     const [isMoreActive, setIsMoreActive] = useState(false);
@@ -17,9 +18,8 @@ const Comment = ({ comment, post, user, setCurrentCommentId }) => {
     const handleMoreActive = () => {
         setIsMoreActive(!isMoreActive);
     }
-
-    const handleDeletePost = () => {
-        // dispatch(deleteComment(comment._id));
+    const handleDeleteComment = () => {
+        dispatch(deleteCommentPost(post._id, comment));
 
         setIsActive(false);
     }
@@ -36,7 +36,7 @@ const Comment = ({ comment, post, user, setCurrentCommentId }) => {
                         <RiMoreFill style={{ color: ' #176D84', cursor: 'pointer' }} />
                         <More isMoreActive={isMoreActive}>
                             <MoreContent onClick={() => setCurrentCommentId(comment._id)}>Edit Post <FiEdit /></MoreContent>
-                            <MoreContent deleteButton onClick={() => setIsActive(true)}>Delete Post <AiFillDelete /></MoreContent>
+                            <MoreContent deleteButton onClick={() => handleDeleteComment()}>Delete Post <AiFillDelete /></MoreContent>
                         </More>
                     </MoreDropDown>
                 )}
@@ -44,7 +44,7 @@ const Comment = ({ comment, post, user, setCurrentCommentId }) => {
             <Modal 
                 isActive={isActive}
                 setIsActive={setIsActive}
-                deletePost={handleDeletePost}
+                deleteFunction={handleDeleteComment}
                 description="You want to delete this comment ?"
             />
         </>

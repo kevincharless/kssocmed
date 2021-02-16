@@ -12,7 +12,7 @@ router.delete('/:id', auth, deletePost);
 router.patch('/:id/likePost', auth, likePost);
 router.patch('/:id/commentPost', auth, commentPost);
 router.patch('/:id/updateCommentPost', auth, updateCommentPost);
-router.delete('/:id/deleteCommentPost', auth, deleteCommentPost);
+router.patch('/:id/deleteCommentPost', auth, deleteCommentPost);
 
 
 export default router;

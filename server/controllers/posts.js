@@ -117,9 +117,9 @@ export const deleteCommentPost = async (req, res) => {
 
     const post = await Post.findById(id);
     const reqComment = req.body;
+    
+    post.comments = post.comments.filter(comment => comment._id != reqComment._id);
 
-    post.comments.filter(comment => comment._id !== reqComment.comment._id);
-    await post.save();
-
-    res.json({ message: 'Comment deleted successfully' });
+    const updatedPost = await Post.findByIdAndUpdate(id, post, { new: true });
+    res.status(200).json(updatedPost);
 }

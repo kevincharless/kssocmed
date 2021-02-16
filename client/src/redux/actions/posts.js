@@ -64,6 +64,16 @@ export const commentPost = (postId, comment) => async (dispatch) => {
     }
 }
 
+export const deleteCommentPost = (postId, comment) => async (dispatch) => {
+    try {
+        const { data } = await axios.deleteCommentPost(postId, comment);
+        
+        dispatch({ type: DELETECOMMENT, postId, payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const updateCommentPost = (postId, updatedCommentPost) => async (dispatch) => {
     try {
         const { data } = await axios.updateCommentPost(postId, updatedCommentPost);

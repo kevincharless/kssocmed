@@ -3,7 +3,7 @@ import { ModalDiv, ModalContent, ModalHeader, ModalBody, Title, DangerIcon, Desc
 
 import danger from '../../assets/images/danger.svg';
 
-const Modal = ({ description, isActive, setIsActive, logout, deletePost }) => {
+const Modal = ({ description, isActive, setIsActive, logout, deleteFunction }) => {
     return (
         <ModalDiv isActive={isActive}>
             <ModalContent>
@@ -15,7 +15,7 @@ const Modal = ({ description, isActive, setIsActive, logout, deletePost }) => {
                     <Description>{description}</Description>
                     <ButtonGroup>
                         <Button onClick={() => setIsActive(false)}>No</Button>
-                        <Button onClick={() => logout ? logout() : deletePost() }>Yes</Button>
+                        <Button onClick={() => logout ? logout() : deleteFunction() }>Yes</Button>
                     </ButtonGroup>
                 </ModalBody>
             </ModalContent>

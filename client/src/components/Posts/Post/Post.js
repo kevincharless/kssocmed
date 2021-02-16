@@ -111,7 +111,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
             <Modal 
                 isActive={isActive}
                 setIsActive={setIsActive}
-                deletePost={handleDeletePost}
+                deleteFunction={handleDeletePost}
                 description="You want to delete this post ?"
             />
         </>

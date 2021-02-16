@@ -30,7 +30,7 @@ const CommentInput = ({ post, user, CurrentCommentId, setCurrentCommentId }) => 
         setCommentData({ _id: '', name: '', comment: '' });
         setCurrentCommentId();
     }
-console.log(commentData)
+    
     return (
         <>
             <Line />
