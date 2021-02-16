@@ -75,7 +75,8 @@ export const Title = styled.h2`
 `
 
 export const Description = styled.p`
-    color: white;
+    color: #176D84;
+    font-weight: 500;
     text-transform: capitalize;
     padding: 0.5rem;
     text-align: center;

@@ -36,7 +36,7 @@ const Comment = ({ comment, post, user, setCurrentCommentId }) => {
                         <RiMoreFill style={{ color: ' #176D84', cursor: 'pointer' }} />
                         <More isMoreActive={isMoreActive}>
                             <MoreContent onClick={() => setCurrentCommentId(comment._id)}>Edit Post <FiEdit /></MoreContent>
-                            <MoreContent deleteButton onClick={() => handleDeleteComment()}>Delete Post <AiFillDelete /></MoreContent>
+                            <MoreContent deleteButton onClick={() => setIsActive(true)}>Delete Post <AiFillDelete /></MoreContent>
                         </More>
                     </MoreDropDown>
                 )}
