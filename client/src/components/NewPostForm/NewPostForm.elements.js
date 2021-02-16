@@ -55,6 +55,8 @@ export const AvatarTag = styled.div`
 `
 
 export const Input = styled.textarea`
+    color: #176D84;
+
     width: 100%;
     height: 2rem;
 
@@ -63,6 +65,7 @@ export const Input = styled.textarea`
 
     resize: none;
     overflow: hidden;
+    font-size: 0.6rem;
 
     background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.16) 100%);
     backdrop-filter: blur(100px);
@@ -70,12 +73,11 @@ export const Input = styled.textarea`
     border-radius: 40px;
 
     border-image-source: radial-gradient(100% 316.05% at 0% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
-    opacity: 0.8;
+    opacity: 0.9;
     
     &::placeholder {
         color: #176D84;
         opacity: 0.7;
-        font-size: 0.6rem;
     }
 
     &:focus{
