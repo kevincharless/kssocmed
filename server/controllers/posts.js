@@ -79,7 +79,7 @@ export const commentPost = async (req, res) => {
     const post = await Post.findById(id);
 
     const comment = req.body;
-    post.comments.push({ ...comment, createdAt: new Date().toISOString() });
+    post.comments.push({ ...comment, creator: req.userId, createdAt: new Date().toISOString() });
 
     const updatedPost = await Post.findByIdAndUpdate(id, post, { new: true });
     res.status(200).json(updatedPost);

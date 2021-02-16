@@ -23,7 +23,7 @@ const Comment = ({ comment, post, user, setCurrentCommentId }) => {
 
         setIsActive(false);
     }
-
+    console.log(comment)
     return (
         <>
             <Row>
@@ -31,7 +31,7 @@ const Comment = ({ comment, post, user, setCurrentCommentId }) => {
                     <b>{comment.name}</b>&nbsp;{comment.comment}
                     <CommentCreatedAt>{moment(comment.createdAt).fromNow()}</CommentCreatedAt>
                 </Container>
-                {(user?.googleId === post?.creator || user?._id === post?.creator) && (
+                {(user?.googleId === comment?.creator || user?._id === comment?.creator) && (
                     <MoreDropDown onClick={handleMoreActive}>
                         <RiMoreFill style={{ color: ' #176D84', cursor: 'pointer' }} />
                         <More isMoreActive={isMoreActive}>
