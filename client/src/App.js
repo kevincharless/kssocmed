@@ -8,7 +8,6 @@ import { Background } from './components'
 import { Home, Authentication, Profile } from './pages';
 
 const App = () => {
-    const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
     const [isSidebarActive, setIsSitebarActive] = useState(true);
 
     const dispatch = useDispatch();
@@ -16,8 +15,6 @@ const App = () => {
     const toggleSitebar = () => {
         setIsSitebarActive(!isSidebarActive);
     }
-
-    const clearUserProfile = () => setUserProfile(null);
     
     useEffect(() => {
         dispatch(getPosts());
@@ -30,10 +27,10 @@ const App = () => {
         <Router>
             <Switch>
                 <Route path="/" exact>
-                    <Home userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} clearUserProfile={clearUserProfile} />
+                    <Home isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
                 <Route path="/profile">
-                    <Profile userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} clearUserProfile={clearUserProfile} />
+                    <Profile isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
                 <Route path="/auth">
                     <Authentication />

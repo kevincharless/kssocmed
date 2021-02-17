@@ -23,7 +23,7 @@ const Authentication = () => {
     const [isSignUp, setIsSignUp] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    console.log(errorMessage)
+
     const dispatch = useDispatch();
     const history = useHistory();
 

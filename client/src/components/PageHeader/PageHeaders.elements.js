@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
     padding: 3rem 5rem;
+    padding-left: ${({ isSidebarActive }) => (isSidebarActive && '8rem')};
     margin: 0;
     flex-flow: row nowrap;
     flex-direction: row;
-    width:100%;
+    width: 100%;
 
     display: flex;
     justify-content: space-between;
@@ -30,7 +31,7 @@ export const Title = styled.h3`
 
 export const InputDiv = styled.div`
     margin-bottom: 10px;
-    margin: 1rem 1rem;
+    margin: 1rem 0;
 
     width: 16rem;
     height: 2.5rem;
@@ -54,7 +55,7 @@ export const InputDiv = styled.div`
 export const InputIcon = styled.div`
     font-size: 0.9rem;
     position: absolute;
-    margin: 0.7rem 1rem;
+    margin: 0.7rem 0;
     color: #176D84; 
     min-width: 50px; 
     opacity: 50%;

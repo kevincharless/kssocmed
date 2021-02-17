@@ -17,12 +17,12 @@ export const SidebarContainer = styled.div`
     backdrop-filter: blur(100px);
 
 
-@media only screen and (max-width: 960px) {
-    /* For Mobile and Tablet: */
-    position: fixed;
-    z-index: 999;
-    width: ${({ isSidebarActive }) => (isSidebarActive ? '100%' : '60px')};
-}
+    @media only screen and (max-width: 960px) {
+        /* For Mobile and Tablet: */
+        position: fixed;
+        z-index: 999;
+        width: ${({ isSidebarActive }) => (isSidebarActive ? '100%' : '60px')};
+    }
 `
 
 export const SidebarRow = styled.div`

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Sidebar, ProfileHeader } from '../../components';
+import { Sidebar, PageHeader, ProfileHeader } from '../../components';
 
-const Profile = ({ userProfile, isSidebarActive, toggleSitebar, clearUserProfile }) => {
+const Profile = ({ isSidebarActive, toggleSitebar }) => {
+    const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
+
+    const clearUserProfile = () => setUserProfile(null);
 
     useEffect(() => {
         if(!userProfile) history.push('/auth');
@@ -13,7 +16,11 @@ const Profile = ({ userProfile, isSidebarActive, toggleSitebar, clearUserProfile
     return (
         <div style={{ width: "100%", display: "flex" }}> 
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} userProfile={userProfile} clearUserProfile={clearUserProfile} />
-            <ProfileHeader title="Profile" isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+            <div style={{ width: '100%' }}>
+                <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
+                <ProfileHeader isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+            </div>
+            
         </div>
     )
 }

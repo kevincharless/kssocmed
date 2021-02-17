@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Sidebar, PageGrid } from '../../components';
 
-const Home = ({ userProfile, isSidebarActive, toggleSitebar, clearUserProfile }) => {
+const Home = ({ isSidebarActive, toggleSitebar }) => {
+    const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
 
+    const clearUserProfile = () => setUserProfile(null);
 
     useEffect(() => {
         if(!userProfile) history.push('/auth');
