@@ -5,7 +5,7 @@ import { LOGOUT } from '../../redux/constants/actionTypes';
 import decode from 'jwt-decode';
 
 import Modal from '../Modal/Modal';
-import { Div, SidebarContainer, SidebarRow, SidebarContent, IconHamburger, IconLogout, Avatar, AvatarTag, AvatarName, AvatarDescription, ButtonGroup, ButtonGroupList, ButtonIcon, ButtonText, LogoutButton } from './Sidebar.elements';
+import { Div, SidebarContainer, SidebarRow, SidebarContent, IconHamburger, IconLogout, Avatar, AvatarTag, AvatarName, AvatarDescription, ButtonGroup, ButtonGroupList, ButtonLink, ButtonIcon, ButtonText, LogoutButton } from './Sidebar.elements';
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { BiLogOut } from 'react-icons/bi';
 
@@ -60,16 +60,20 @@ const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile
                         <SidebarRow>
                             <ButtonGroup>
                                 <ButtonGroupList>
-                                    <ButtonIcon src={home} isSidebarActive={isSidebarActive} />
-                                    <ButtonText isSidebarActive={isSidebarActive}>Home</ButtonText>
+                                    <ButtonLink to="/">
+                                        <ButtonIcon src={home} isSidebarActive={isSidebarActive} />
+                                        <ButtonText isSidebarActive={isSidebarActive}>Home</ButtonText>
+                                    </ButtonLink>
                                 </ButtonGroupList>
                                 <ButtonGroupList isSidebarActive={isSidebarActive}>
                                     <ButtonIcon src={explore} isSidebarActive={isSidebarActive} />
                                     <ButtonText isSidebarActive={isSidebarActive}>Explore</ButtonText>
                                 </ButtonGroupList>
                                 <ButtonGroupList isSidebarActive={isSidebarActive}>
-                                    <ButtonIcon src={profile} isSidebarActive={isSidebarActive} />
-                                    <ButtonText isSidebarActive={isSidebarActive}>Profile</ButtonText>
+                                    <ButtonLink to="/profile">
+                                        <ButtonIcon src={profile} isSidebarActive={isSidebarActive} />
+                                        <ButtonText isSidebarActive={isSidebarActive}>Profile</ButtonText>
+                                    </ButtonLink>
                                 </ButtonGroupList>
                                 <ButtonGroupList isSidebarActive={isSidebarActive}>
                                     <ButtonIcon src={faq} isSidebarActive={isSidebarActive} />

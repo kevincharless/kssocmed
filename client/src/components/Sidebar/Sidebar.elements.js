@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Div = styled.div`
     width: ${({ isSidebarActive }) => (isSidebarActive ? '300px' : '60px')};
@@ -125,6 +126,21 @@ export const ButtonGroupList = styled.li`
 
     padding-bottom: 1rem;
 `
+
+export const ButtonLink = styled(
+    styled(Link)`
+    display: flex;
+    align-items: center;
+
+    &:hover {
+    text-decoration: none;
+    }
+`,
+    'active'
+    )`
+    color: #1FBBC9;
+    text-decoration: none;
+`;
 
 export const ButtonIcon = styled.img`
     width: 2rem;

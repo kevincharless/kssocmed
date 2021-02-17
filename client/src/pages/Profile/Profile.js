@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Sidebar, PageGrid } from '../../components';
+import { Sidebar, ProfileHeader } from '../../components';
 
-const Home = ({ userProfile, isSidebarActive, toggleSitebar, clearUserProfile }) => {
+const Profile = ({ userProfile, isSidebarActive, toggleSitebar, clearUserProfile }) => {
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
-
 
     useEffect(() => {
         if(!userProfile) history.push('/auth');
@@ -14,9 +13,9 @@ const Home = ({ userProfile, isSidebarActive, toggleSitebar, clearUserProfile })
     return (
         <div style={{ width: "100%", display: "flex" }}> 
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} userProfile={userProfile} clearUserProfile={clearUserProfile} />
-            <PageGrid title="Home" isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+            <ProfileHeader title="Profile" isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
         </div>
     )
 }
 
-export default Home
+export default Profile;
