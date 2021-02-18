@@ -83,7 +83,7 @@ const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile
                         </SidebarRow>
                         <SidebarRow style={{ padding: '2rem 0' }}>
                             <LogoutButton isSidebarActive={isSidebarActive} onClick={() => setIsActive(true)}>Logout</LogoutButton>
-                            {!isSidebarActive && <BiLogOut style={IconLogout} />}
+                            {!isSidebarActive && <BiLogOut style={IconLogout} onClick={() => setIsActive(true)} />}
                         </SidebarRow>
                     </SidebarContent>
                 </SidebarContainer>
