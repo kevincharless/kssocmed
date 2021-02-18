@@ -27,15 +27,19 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
             <Container>
                 <Card>
                     <ImageContainer>
-                        <AddImage src={addImage} />
-                        <AddImageEvent>
-                            <FileBase 
-                                className="addImage"
-                                multiple={false}
-                                onDone={({base64}) => setFormData({ ...formData, imageUrl: base64 })}
-                                style={{ cursor: 'pointer' }}
-                            />
-                        </AddImageEvent>
+                    {editMode && (
+                        <>
+                            <AddImage src={addImage} />
+                            <AddImageEvent>
+                                <FileBase 
+                                    className="addImage"
+                                    multiple={false}
+                                    onDone={({base64}) => setFormData({ ...formData, imageUrl: base64 })}
+                                    style={{ cursor: 'pointer' }}
+                                />
+                            </AddImageEvent>
+                        </>
+                    )}
                         {profile?.imageUrl ? (
                             <ProfilePicture src={profile?.imageUrl} />
                         ) : (
