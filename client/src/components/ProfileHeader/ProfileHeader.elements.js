@@ -35,6 +35,58 @@ export const Card = styled.div`
     }
 `
 
+export const ImageContainer = styled.div`
+    position: relative;
+`
+
+export const AddImage = styled.img`
+    display: flex;
+    height: 2.4rem;
+    width: 1.6rem;
+    position: absolute;
+    z-index: 4;
+    margin-top: 6%;
+    margin-left: 52%;
+    
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        height: 1.6rem;    
+        width: 1rem;
+        margin-top: 12%;
+        margin-left: 54%;
+    }
+`
+
+export const AddImageEvent = styled.div`
+    border: none;
+    height: 2rem;
+    position: absolute;
+    z-index: 4;
+    margin-top: 6%;
+    margin-left: 52%;
+    
+    opacity: 0;
+    overflow: hidden;
+    width: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        height: 1.6rem;
+        width: 1rem;
+        margin-top: 12%;
+        margin-left: 54%;
+    }
+`
+
 export const ProfilePicture = styled.img`
     width: 5rem;
     height: 5rem;
@@ -88,6 +140,10 @@ export const ProfilePictureTag = styled.div`
     }
 `
 
+export const ButtonContainer = styled.div`
+    position: relative;
+`
+
 export const EditProfileButton = styled.button`
     background: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
     border: 2px solid  rgba(255,255,255,0.8);
@@ -104,8 +160,8 @@ export const EditProfileButton = styled.button`
     font-weight: 500;
     font-size: 0.6rem;
 
-    margin-left: ${({ isSidebarActive }) => (isSidebarActive ? '53%' : '46%')};
-    margin-top: -1.5%;
+    margin-left: 86%;
+    margin-top: -3%;
     padding: 0.3rem 0.9rem;
 
     cursor: pointer;
@@ -150,8 +206,8 @@ export const CancelEditButton = styled.button`
     font-weight: 500;
     font-size: 0.6rem;
 
-    margin-left: ${({ isSidebarActive }) => (isSidebarActive ? '43%' : '37%')};
-    margin-top: -1.5%;
+    margin-left: 70%;
+    margin-top: -3%;
     padding: 0.3rem 0.9rem;
 
     cursor: pointer;
@@ -193,8 +249,8 @@ export const SaveChangeButton = styled.button`
     font-weight: 500;
     font-size: 0.6rem;
 
-    margin-left: ${({ isSidebarActive }) => (isSidebarActive ? '52%' : '45%')};
-    margin-top: -1.5%;
+    margin-left: 84%;
+    margin-top: -3%;
     padding: 0.3rem 0.9rem;
 
     cursor: pointer;
@@ -224,7 +280,8 @@ export const SaveChangeButton = styled.button`
 `
 
 export const CardHeader = styled.div`
-    
+    display: flex;
+    flex-direction: column;
 `
 
 
@@ -257,6 +314,55 @@ export const ProfileBio = styled.p`
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
         font-size: 0.3rem;
+    }
+`
+
+export const ProfileNameEditMode = styled.input`
+    margin-top: 0.5rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #176D84;
+    background-color: none;
+    border: 1px solid #176D84;
+    border-radius: 80px;
+
+    width: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.5rem;
+        width: 6rem;
+    }
+`
+
+export const ProfileBioEditMode = styled.input`
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.5rem;
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #1EF27E;
+    background-color: none;
+    border: 1px solid #176D84;
+    border-radius: 80px;
+
+    width: 8rem;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.2rem;
+        width: 4rem;
     }
 `
 
