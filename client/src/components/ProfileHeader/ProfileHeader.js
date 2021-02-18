@@ -12,7 +12,7 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
     const [editMode, setEditMode] = useState(false);
     const posts = useSelector(state => state.posts);
     const profile = userProfile.result;
-    const postsCount = posts.filter(post => post.creator === profile._id).length
+    const postsCount = posts.filter(post => post.creator === profile._id || post.creator === profile.googleId).length
 
     useEffect(() => {
         if (editMode) {

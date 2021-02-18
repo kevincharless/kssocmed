@@ -11,7 +11,11 @@ const Posts = ({ myPosts, isSidebarActive, user, setCurrentPostId }) => {
             {myPosts ? (
                 posts.map(post => post.creator === user._id && (
                     <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />
+                ) || (
+                post.creator === user.googleId && (
+                    <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />
                 ))
+                ) 
             ) : (
                 posts.map(post => (
                     <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />
