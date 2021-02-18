@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Grid = styled.div`
-    margin: 0;
-    flex-flow: row nowrap;
-    flex-direction: row;
-    position: absolute;
-    padding-top: 4rem;
+    position: relative;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `

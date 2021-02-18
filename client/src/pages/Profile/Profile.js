@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Sidebar, PageHeader, ProfileHeader, Title } from '../../components';
+import { Sidebar, PageHeader, ProfileHeader, Title, Posts } from '../../components';
 
 const Profile = ({ isSidebarActive, toggleSitebar }) => {
     const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
-
+    
     const clearUserProfile = () => setUserProfile(null);
 
     useEffect(() => {
@@ -20,6 +20,7 @@ const Profile = ({ isSidebarActive, toggleSitebar }) => {
                 <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
                 <ProfileHeader isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
                 <Title title="My Post" />
+                <Posts myPosts isSidebarActive={isSidebarActive} user={userProfile.result} setCurrentPostId={setCurrentPostId} />
             </div>
             
         </div>

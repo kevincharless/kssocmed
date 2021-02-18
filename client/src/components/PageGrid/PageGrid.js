@@ -10,7 +10,9 @@ const PageGrid = ({ title, isSidebarActive, userProfile, currentPostId, setCurre
             
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <NewPostForm user={user} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
-                <Posts user={user} setCurrentPostId={setCurrentPostId} />
+                <div style={{ marginTop: '4rem' }}>
+                    <Posts user={user} setCurrentPostId={setCurrentPostId} />
+                </div>
             </div>
         </div>
     )

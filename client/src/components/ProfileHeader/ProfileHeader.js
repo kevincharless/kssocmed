@@ -1,9 +1,11 @@
 import React from 'react';
-import PageHeader from '../PageHeader/PageHeader';
+import { useSelector } from 'react-redux';
 import { Container, Card, ProfilePicture, ProfilePictureTag, CardHeader, ProfileName, ProfileBio, Row, Col, Count, CountDescription } from './ProfileHeader.elements';
 
 const ProfileHeader = ({ isSidebarActive, userProfile }) => {
-    const profile = userProfile.result
+    const posts = useSelector(state => state.posts);
+    const profile = userProfile.result;
+    const postsCount = posts.filter(post => post.creator === profile._id).length
 
     return (
         <>
@@ -19,7 +21,7 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
                         <ProfileBio>Full Stack Programmer</ProfileBio>
                         <Row>
                             <Col>
-                                <Count>2</Count>
+                                <Count>{postsCount}</Count>
                                 <CountDescription>Posts</CountDescription>
                             </Col>
                             <Col>
