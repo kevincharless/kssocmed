@@ -20,27 +20,35 @@ export const Container = styled.div`
 `
 
 export const Card = styled.div`
+    width: 50rem;
+    background: linear-gradient(106.09deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
 
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        width: 15rem;
+    }
 `
 
 export const ProfilePicture = styled.img`
     width: 5rem;
     height: 5rem;
     border-radius: 80px;
+    border: 1px solid white;
 
-    position: absolute;
-    top: -30%;
-    left: ${({ isSidebarActive }) => (isSidebarActive ? '57.7%' : '49%')};
-    
-    margin-left: auto;
-    margin-right: auto;
+    position: relative;
+    margin: 0 auto;
+    margin-top: -5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        width: 4rem;
-        height: 4rem;
-        top: -20%;
-        left: 46%;
+        width: 3rem;
+        height: 3rem;
     }
 `
 
@@ -51,6 +59,7 @@ export const ProfilePictureTag = styled.div`
     border-radius: 80px;
     position: relative;
     margin: 0 auto;
+    margin-top: -5%;
     
     display: flex;
     justify-content: center;
@@ -69,26 +78,16 @@ export const ProfilePictureTag = styled.div`
         width: 3rem;
         height: 3rem;
         font-size: 1.5rem;
-        top: -20%;
-        left: 44%;
     }
 `
 
 export const CardHeader = styled.div`
-    width: 50rem;
-    background: linear-gradient(106.09deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
-    box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-
-    @media only screen and (max-width: 960px) {
-    /* For Mobile and Tablet: */
-        width: 15rem;
-    }
+    
 `
 
 
 export const ProfileName = styled.p`
-    padding-top: 1.8rem;
+    padding-top: 0.5rem;
     font-style: normal;
     font-weight: 500;
     font-size: 1.2rem;
@@ -99,16 +98,15 @@ export const ProfileName = styled.p`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        padding-top: 1.5rem;
-        font-size: 0.7rem;
+        padding-top: 0.3rem;
+        font-size: 0.6rem;
     }
 `
 
 export const ProfileBio = styled.p`
-
     font-style: normal;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 0.6rem;
     text-align: center;
     text-transform: capitalize;
 
@@ -116,18 +114,18 @@ export const ProfileBio = styled.p`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        font-size: 0.6rem;
+        font-size: 0.3rem;
     }
 `
 
 export const Row = styled.div`
     display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 1.8rem 0;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    padding: 0.8rem 0;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        padding: 1rem 0;
+        padding: 0.4rem 0;
     }
 `
 
@@ -139,13 +137,13 @@ export const Count = styled.p`
     font-family: Poppins;
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.8rem;
 
     color: #176D84;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        font-size: 0.5rem;
+        font-size: 0.4rem;
     }
 `
 
@@ -153,12 +151,12 @@ export const CountDescription = styled.p`
     font-family: Poppins;
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.8rem;
 
     color: #176D84;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        font-size: 0.5rem;
+        font-size: 0.4rem;
     }
 `
