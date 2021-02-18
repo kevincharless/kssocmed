@@ -53,12 +53,14 @@ export const ProfilePicture = styled.img`
     /* For Mobile and Tablet: */
         width: 3rem;
         height: 3rem;
+        margin-top: -10%;
     }
 `
 
 export const ProfilePictureTag = styled.div`
     width: 5rem;
     height: 5rem;
+    background-color: #176D84;
     border: 1px solid #176D84;
     border-radius: 80px;
     position: relative;
@@ -75,7 +77,7 @@ export const ProfilePictureTag = styled.div`
     text-align: center;
     text-transform: capitalize;
 
-    color: #176D84;
+    color: white;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
@@ -83,6 +85,52 @@ export const ProfilePictureTag = styled.div`
         height: 3rem;
         font-size: 1.5rem;
         margin-top: -10%;
+    }
+`
+
+export const EditProfileButton = styled.button`
+    background: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
+    border: 2px solid  rgba(255,255,255,0.8);
+    border-radius: 8rem;
+    color:white;
+
+    position: absolute;
+    display: flex;
+    align-items: center;
+
+    text-decoration: inherit;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6rem;
+
+    margin-left: ${({ isSidebarActive }) => (isSidebarActive ? '53%' : '46%')};
+    margin-top: -1.5%;
+    padding: 0.3rem 0.9rem;
+
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: none;
+        border: 2px solid;
+        border-image-slice: 1;
+        border-radius: 8rem;
+        border-image-source: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
+
+        color: #1FBBC9;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.2rem;
+
+        margin-left: 70%;
+        margin-top: -5%;
+        padding: 0.15rem 0.45rem;
     }
 `
 

@@ -1,6 +1,7 @@
 import React from 'react';
+import { FiEdit } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
-import { Container, Card, ProfilePicture, ProfilePictureTag, CardHeader, ProfileName, ProfileBio, Row, Col, Count, CountDescription } from './ProfileHeader.elements';
+import { Container, Card, ProfilePicture, ProfilePictureTag, EditProfileButton, CardHeader, ProfileName, ProfileBio, Row, Col, Count, CountDescription } from './ProfileHeader.elements';
 
 const ProfileHeader = ({ isSidebarActive, userProfile }) => {
     const posts = useSelector(state => state.posts);
@@ -9,13 +10,14 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
 
     return (
         <>
-            <Container isSidebarActive={isSidebarActive}>
+            <Container>
                 <Card>
                     {profile?.imageUrl ? (
-                        <ProfilePicture src={profile?.imageUrl} isSidebarActive={isSidebarActive}/>
+                        <ProfilePicture src={profile?.imageUrl} />
                     ) : (
-                        <ProfilePictureTag isSidebarActive={isSidebarActive}>{profile?.name.split(' ').map(function(item){return item[0]}).join('')}</ProfilePictureTag>
+                        <ProfilePictureTag>{profile?.name.split(' ').map(function(item){return item[0]}).join('')}</ProfilePictureTag>
                     )}
+                    <EditProfileButton isSidebarActive={isSidebarActive}><FiEdit />&nbsp;Edit Profile</EditProfileButton>
                     <CardHeader>
                         <ProfileName>{profile?.name}</ProfileName>
                         <ProfileBio>Full Stack Programmer</ProfileBio>

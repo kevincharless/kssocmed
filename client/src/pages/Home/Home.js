@@ -6,7 +6,7 @@ const Home = ({ isSidebarActive, toggleSitebar }) => {
     const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
-
+    console.log(userProfile)
     const clearUserProfile = () => setUserProfile(null);
 
     useEffect(() => {
