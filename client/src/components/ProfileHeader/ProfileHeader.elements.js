@@ -10,11 +10,15 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: 2rem;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        padding: 3rem 1rem 1rem 2rem;
+        width: 15rem;
+        padding-bottom: 1rem;
     }
 
 `
@@ -78,6 +82,7 @@ export const ProfilePictureTag = styled.div`
         width: 3rem;
         height: 3rem;
         font-size: 1.5rem;
+        margin-top: -10%;
     }
 `
 

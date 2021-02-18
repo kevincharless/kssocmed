@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Sidebar, PageHeader, ProfileHeader } from '../../components';
+import { Sidebar, PageHeader, ProfileHeader, Title } from '../../components';
 
 const Profile = ({ isSidebarActive, toggleSitebar }) => {
     const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -19,6 +19,7 @@ const Profile = ({ isSidebarActive, toggleSitebar }) => {
             <div style={{ width: '100%' }}>
                 <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
                 <ProfileHeader isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+                <Title title="My Post" />
             </div>
             
         </div>
