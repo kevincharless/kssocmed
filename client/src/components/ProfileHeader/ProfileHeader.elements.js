@@ -134,6 +134,95 @@ export const EditProfileButton = styled.button`
     }
 `
 
+export const CancelEditButton = styled.button`
+    background: none;
+    border: 1px solid #DC211A;
+    border-radius: 8rem;
+    color: #DC211A;
+
+    position: absolute;
+    display: flex;
+    align-items: center;
+
+    text-decoration: inherit;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6rem;
+
+    margin-left: ${({ isSidebarActive }) => (isSidebarActive ? '43%' : '37%')};
+    margin-top: -1.5%;
+    padding: 0.3rem 0.9rem;
+
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: #DC211A;
+        border: 1px solid #DC211A;
+
+        color: white;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.2rem;
+
+        margin-left: 72%;
+        margin-top: 2%;
+        padding: 0.01rem 0.35rem;
+    }
+`
+
+export const SaveChangeButton = styled.button`
+    background: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
+    border: 2px solid  rgba(255,255,255,0.8);
+    border-radius: 8rem;
+    color:white;
+
+    position: absolute;
+    display: flex;
+    align-items: center;
+
+    text-decoration: inherit;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6rem;
+
+    margin-left: ${({ isSidebarActive }) => (isSidebarActive ? '52%' : '45%')};
+    margin-top: -1.5%;
+    padding: 0.3rem 0.9rem;
+
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: none;
+        border: 2px solid;
+        border-image-slice: 1;
+        border-radius: 8rem;
+        border-image-source: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
+
+        color: #1FBBC9;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.2rem;
+
+        margin-left: 70%;
+        margin-top: -6%;
+        padding: 0.05rem 0.35rem;
+    }
+`
+
 export const CardHeader = styled.div`
     
 `
