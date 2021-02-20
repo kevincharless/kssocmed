@@ -10,7 +10,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 2rem;
@@ -24,14 +23,14 @@ export const Container = styled.div`
 `
 
 export const Card = styled.div`
-    width: 50rem;
+    width: 60%;
     background: linear-gradient(106.09deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
     box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        width: 15rem;
+        width: 100%;
     }
 `
 
@@ -150,7 +149,7 @@ export const EditProfileButton = styled.button`
     border-radius: 8rem;
     color:white;
 
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -160,8 +159,9 @@ export const EditProfileButton = styled.button`
     font-weight: 500;
     font-size: 0.6rem;
 
-    margin-left: 86%;
-    margin-top: -3%;
+    margin-left: auto;
+    margin-right: 1rem;
+    margin-top: -1.2rem;
     padding: 0.3rem 0.9rem;
 
     cursor: pointer;
@@ -184,8 +184,8 @@ export const EditProfileButton = styled.button`
     /* For Mobile and Tablet: */
         font-size: 0.2rem;
 
-        margin-left: 70%;
-        margin-top: -5%;
+        margin-right: 1rem;
+        margin-top: -1rem;
         padding: 0.15rem 0.45rem;
     }
 `
@@ -196,7 +196,7 @@ export const CancelEditButton = styled.button`
     border-radius: 8rem;
     color: #DC211A;
 
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -206,9 +206,11 @@ export const CancelEditButton = styled.button`
     font-weight: 500;
     font-size: 0.6rem;
 
-    margin-left: 70%;
-    margin-top: -3%;
+    margin-left: auto;
+    margin-right: 1.4rem;
+    margin-top: -1.2rem;
     padding: 0.3rem 0.9rem;
+    top: 2.6rem;
 
     cursor: pointer;
 
@@ -227,8 +229,9 @@ export const CancelEditButton = styled.button`
     /* For Mobile and Tablet: */
         font-size: 0.2rem;
 
-        margin-left: 72%;
-        margin-top: 2%;
+        margin-right: 1.1rem;
+        margin-top: -0.8rem;
+        top: 1rem;
         padding: 0.01rem 0.35rem;
     }
 `
@@ -239,7 +242,7 @@ export const SaveChangeButton = styled.button`
     border-radius: 8rem;
     color:white;
 
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -249,8 +252,9 @@ export const SaveChangeButton = styled.button`
     font-weight: 500;
     font-size: 0.6rem;
 
-    margin-left: 84%;
-    margin-top: -3%;
+    margin-left: auto;
+    margin-right: 1rem;
+    margin-top: -1.2rem;
     padding: 0.3rem 0.9rem;
 
     cursor: pointer;
@@ -273,8 +277,8 @@ export const SaveChangeButton = styled.button`
     /* For Mobile and Tablet: */
         font-size: 0.2rem;
 
-        margin-left: 70%;
-        margin-top: -6%;
+        margin-right: 0.8rem;
+        margin-top: -0.8rem;
         padding: 0.05rem 0.35rem;
     }
 `

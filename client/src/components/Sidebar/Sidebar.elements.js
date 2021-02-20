@@ -11,6 +11,7 @@ export const SidebarContainer = styled.div`
     width: ${({ isSidebarActive }) => (isSidebarActive ? '300px' : '60px')};
     height: 100vh;
     position: fixed;
+    z-index: 999;
     
     border-right: 4px solid rgba(255, 255, 255, 0);
     background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.16) 100%);
@@ -20,7 +21,6 @@ export const SidebarContainer = styled.div`
     @media only screen and (max-width: 960px) {
         /* For Mobile and Tablet: */
         position: fixed;
-        z-index: 999;
         width: ${({ isSidebarActive }) => (isSidebarActive ? '100%' : '60px')};
     }
 `
