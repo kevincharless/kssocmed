@@ -17,13 +17,13 @@ import { Glass, AuthenticationTitle, AuthenticationDescription, AuthenticationRo
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
 
 const Authentication = () => {
-    const user = localStorage.getItem('profile');
+    const user = useSelector(state => state.auth.authData);
+
     const errorMessage = useSelector(state => state.auth.errorMessage);
     const [formData, setFormData] = useState(initialState);
     const [isSignUp, setIsSignUp] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
     const dispatch = useDispatch();
     const history = useHistory();
 

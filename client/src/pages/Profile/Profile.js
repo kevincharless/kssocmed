@@ -8,7 +8,7 @@ const Profile = ({ isSidebarActive, toggleSitebar }) => {
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
     
-    const clearUserProfile = localStorage.setItem('profile', null);
+    const clearUserProfile = localStorage.clear('profile');
 
     useEffect(() => {
         if (!userProfile) history.push('/auth');

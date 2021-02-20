@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Sidebar, PageGrid } from '../../components';
 
 const Home = ({ isSidebarActive, toggleSitebar }) => {
-    const [userProfile, setUserProfile] = useState(JSON.parse(localStorage.getItem('profile')));
+    const userProfile = useSelector(state => state.auth.authData);
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
-    console.log(userProfile)
-    const clearUserProfile = () => setUserProfile(null);
+
+    const clearUserProfile = () => localStorage.clear('profile');
 
     useEffect(() => {
         if (!userProfile) history.push('/auth');
