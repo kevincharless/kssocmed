@@ -20,7 +20,7 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
         } else {
             setFormData({ firstName: '', lastName: '', bio: '', imageUrl: ''  });
         }
-    }, [editMode])
+    }, [editMode, profile.bio, profile.familyName, profile.givenName, profile.imageUrl, profile.name])
 
     return (
         <>
