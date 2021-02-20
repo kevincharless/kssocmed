@@ -6,6 +6,7 @@ import { Grid } from './Posts.element';
 
 const Posts = ({ myPosts, isSidebarActive, user, setCurrentPostId }) => {
     const posts = useSelector(state => state.posts);
+
     return (
         <Grid isSidebarActive={isSidebarActive}>
             {myPosts ? (

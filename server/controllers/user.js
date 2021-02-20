@@ -48,13 +48,16 @@ export const signup = async (req, res) => {
 
 export const editprofile = async (req, res) => {
     const { id } = req.params;
-    const profile = req.body;
+    const { name, bio, imageUrl, email } = req.body;
 
     const existingUser = await User.findOne({ email });
 
     if(!existingUser) return res.status(404).json({ message: "No user with that email" });
+    
 
-    const updatedProfile = await User.findByIdAndUpdate(id, { ...profile, _id }, { new: true });
+    const updatedProfile = await User.findByIdAndUpdate(id, { name, bio, imageUrl, email }, { new: true });
 
-    res.json(updatedProfile);
+    const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.jwtSecret, { expiresIn: '1h' });
+
+    res.json({ result: updatedProfile, token });
 }

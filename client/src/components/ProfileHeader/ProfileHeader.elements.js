@@ -22,7 +22,7 @@ export const Container = styled.div`
 
 `
 
-export const Card = styled.div`
+export const Card = styled.form`
     width: 60%;
     background: linear-gradient(106.09deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
     box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.1);
