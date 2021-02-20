@@ -50,6 +50,7 @@ export const AddImage = styled.img`
     &:hover {
         cursor: pointer;
     }
+    
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
@@ -62,7 +63,8 @@ export const AddImage = styled.img`
 
 export const AddImageEvent = styled.div`
     border: none;
-    height: 2rem;
+    height: 2.4rem;
+    width: 1.6rem;
     position: absolute;
     z-index: 4;
     margin-top: 6%;
@@ -70,7 +72,6 @@ export const AddImageEvent = styled.div`
     
     opacity: 0;
     overflow: hidden;
-    width: 1.2rem;
     cursor: pointer;
 
     &:hover {
@@ -79,7 +80,7 @@ export const AddImageEvent = styled.div`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        height: 1.6rem;
+        height: 1.6rem;    
         width: 1rem;
         margin-top: 12%;
         margin-left: 54%;
@@ -161,7 +162,7 @@ export const EditProfileButton = styled.button`
 
     margin-left: auto;
     margin-right: 1rem;
-    margin-top: -1.2rem;
+    margin-top: -2rem;
     padding: 0.3rem 0.9rem;
 
     cursor: pointer;
@@ -208,7 +209,7 @@ export const CancelEditButton = styled.button`
 
     margin-left: auto;
     margin-right: 1.4rem;
-    margin-top: -1.2rem;
+    margin-top: -2rem;
     padding: 0.3rem 0.9rem;
     top: 2.6rem;
 
@@ -306,7 +307,7 @@ export const ProfileName = styled.p`
     }
 `
 
-export const ProfileBio = styled.p`
+export const ProfileBio = styled.div`
     font-style: normal;
     font-weight: 400;
     font-size: 0.6rem;
@@ -330,7 +331,7 @@ export const ProfileNameEditMode = styled.input`
     text-transform: capitalize;
 
     color: #176D84;
-    background-color: none;
+    background: none;
     border: 1px solid #176D84;
     border-radius: 80px;
 
@@ -338,6 +339,10 @@ export const ProfileNameEditMode = styled.input`
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0.5rem;
+
+    &:focus {
+        outline: none;
+    }
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
@@ -354,7 +359,7 @@ export const ProfileBioEditMode = styled.input`
     text-transform: capitalize;
 
     color: #1EF27E;
-    background-color: none;
+    background: none;
     border: 1px solid #176D84;
     border-radius: 80px;
 
@@ -362,6 +367,9 @@ export const ProfileBioEditMode = styled.input`
     margin-left: auto;
     margin-right: auto;
 
+    &:focus {
+        outline: none;
+    }
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */

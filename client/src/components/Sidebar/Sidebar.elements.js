@@ -106,8 +106,22 @@ export const AvatarDescription = styled.h5`
     height: 1.5rem;
 
     display: ${({ isSidebarActive }) => (!isSidebarActive && 'none')};
-    color: #176D84;
+    color: #1EF27E;
 `
+
+export const AddBioLink = styled(
+    styled(Link)`
+    color: #1EF27E;
+
+    &:hover {
+    text-decoration: none;
+    }
+`,
+    'active'
+    )`
+    color: #1EF27E;
+    text-decoration: none;
+`;
 
 export const ButtonGroup = styled.ul`
     margin-left: auto;

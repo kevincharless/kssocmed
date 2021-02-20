@@ -5,7 +5,7 @@ import { LOGOUT } from '../../redux/constants/actionTypes';
 import decode from 'jwt-decode';
 
 import Modal from '../Modal/Modal';
-import { Div, SidebarContainer, SidebarRow, SidebarContent, IconHamburger, IconLogout, Avatar, AvatarTag, AvatarName, AvatarDescription, ButtonGroup, ButtonGroupList, ButtonLink, ButtonIcon, ButtonText, LogoutButton } from './Sidebar.elements';
+import { Div, SidebarContainer, SidebarRow, SidebarContent, IconHamburger, IconLogout, Avatar, AvatarTag, AvatarName, AvatarDescription, AddBioLink, ButtonGroup, ButtonGroupList, ButtonLink, ButtonIcon, ButtonText, LogoutButton } from './Sidebar.elements';
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { BiLogOut } from 'react-icons/bi';
 
@@ -55,7 +55,7 @@ const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile
                                 <AvatarTag isSidebarActive={isSidebarActive}>{user?.name.split(' ').map(function(item){return item[0]}).join('')}</AvatarTag>
                             )}
                             <AvatarName isSidebarActive={isSidebarActive}>{user?.name}</AvatarName>
-                            <AvatarDescription isSidebarActive={isSidebarActive}>Full Stack Programmer</AvatarDescription>
+                            <AvatarDescription isSidebarActive={isSidebarActive}>{profile.bio || <AddBioLink to="/profile">add Bio</AddBioLink>}</AvatarDescription>
                         </SidebarRow>
                         <SidebarRow>
                             <ButtonGroup>

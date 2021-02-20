@@ -17,8 +17,7 @@ import { Glass, AuthenticationTitle, AuthenticationDescription, AuthenticationRo
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
 
 const Authentication = () => {
-    const user = useSelector(state => state.auth.authData);
-
+    const user = localStorage.getItem('profile');
     const errorMessage = useSelector(state => state.auth.errorMessage);
     const [formData, setFormData] = useState(initialState);
     const [isSignUp, setIsSignUp] = useState(false);

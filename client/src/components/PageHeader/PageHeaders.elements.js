@@ -95,9 +95,9 @@ export const Input = styled.input`
         opacity: 0.7;
     }
 
-    &:focus{
-    outline: none;
-}
+    &:focus {
+        outline: none;
+    }
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
