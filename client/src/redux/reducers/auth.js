@@ -1,7 +1,7 @@
 import { AUTH, LOGOUT, ERROR, EDITPROFILE } from '../constants/actionTypes';
 
 const initialState = {
-    authData: null,
+    authData: JSON.parse(localStorage.getItem('profile')),
     errorMessage: ''
 }
 

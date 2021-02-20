@@ -10,7 +10,7 @@ const Home = ({ isSidebarActive, toggleSitebar }) => {
     const clearUserProfile = () => setUserProfile(null);
 
     useEffect(() => {
-        if(!userProfile) history.push('/auth');
+        if (!userProfile) history.push('/auth');
     }, [userProfile, history]);
 
     return (
