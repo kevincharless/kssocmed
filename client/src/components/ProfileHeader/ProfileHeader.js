@@ -12,7 +12,7 @@ import addImage from '../../assets/images/add.svg';
 const ProfileHeader = ({ isSidebarActive, userProfile }) => {
     const [formData, setFormData] = useState({ name: '', bio: '', imageUrl: '', email: '' });
     const [editMode, setEditMode] = useState(false);
-    const posts = useSelector(state => state.posts);
+    const posts = useSelector(state => state.posts.posts);
     const profile = userProfile?.result;
     const userId = profile?._id;
     const postsCount = posts.filter(post => post.creator === profile._id || post.creator === profile.googleId).length;
