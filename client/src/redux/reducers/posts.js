@@ -1,21 +1,47 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, COMMENT, DELETECOMMENT, UPDATECOMMENT } from '../constants/actionTypes';
+import { FETCH_LOADING, FETCH_LOADED, FETCH_POSTS, CREATE, UPDATE, DELETE, LIKE, COMMENT, DELETECOMMENT, UPDATECOMMENT } from '../constants/actionTypes';
 
-const posts = (posts = [], action) => {
+const initialState = {
+    posts: [],
+    isLoading: true
+}
+
+const posts = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_ALL:
-            return action.payload;
+        case FETCH_LOADING:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case FETCH_LOADED: 
+            return {
+                ...state,
+                isLoading: false
+            }
+        case FETCH_POSTS:
+            return {
+                ...state,
+                posts: action.payload
+            }
         case CREATE:
-            return [action.payload, ...posts];
+            return {
+                posts: [action.payload, ...posts]
+            }
         case COMMENT:
         case DELETECOMMENT:
         case UPDATECOMMENT:
         case LIKE:
         case UPDATE:
-            return posts.map(post => post._id === action.payload._id ? action.payload : post);
+            return {
+                ...state, 
+                posts: posts.map(post => post._id === action.payload._id ? action.payload : post)
+            }
         case DELETE:
-            return posts.filter(post => post._id !== action.payload);
+            return {
+                ...state,
+                posts: posts.filter(post => post._id !== action.payload)
+            }
         default:
-            return posts;
+            return state;
     }
 }
 

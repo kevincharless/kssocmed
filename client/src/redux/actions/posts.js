@@ -1,12 +1,17 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, COMMENT, UPDATECOMMENT, DELETECOMMENT } from '../constants/actionTypes';
+import { FETCH_LOADING, FETCH_LOADED, FETCH_POSTS, CREATE, UPDATE, DELETE, LIKE, COMMENT, UPDATECOMMENT, DELETECOMMENT } from '../constants/actionTypes';
 import * as api from '../../axios';
+
+export const fetchLoading = () => ({type: FETCH_LOADING})
+export const fetchLoaded = () => ({type: FETCH_LOADED})
 
 // Action Creators
 export const getPosts = () => async (dispatch) => {
+    dispatch(fetchLoading());
     try {
         const { data } = await api.fetchPosts();
         
-        dispatch({ type: FETCH_ALL, payload: data });
+        dispatch({ type: FETCH_POSTS, payload: data });
+        dispatch(fetchLoaded());
     } catch (error) {
         console.log(error);
     }
