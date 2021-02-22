@@ -13,18 +13,17 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
     const [formData, setFormData] = useState({ name: '', bio: '', imageUrl: '', email: '' });
     const [editMode, setEditMode] = useState(false);
     const posts = useSelector(state => state.posts.posts);
-    const profile = userProfile?.result;
-    const userId = profile?._id;
-    const postsCount = posts.filter(post => post.creator === profile._id || post.creator === profile.googleId).length;
+    const userId = userProfile?._id;
+    const postsCount = posts.filter(post => post.creator === userProfile._id || post.creator === userProfile.googleId).length;
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (editMode) {
-            setFormData({ name: profile.givenName + profile.familyName || profile.name, bio: profile.bio, imageUrl: profile.imageUrl, email: profile.email })
+            setFormData({ name: userProfile.givenName + userProfile.familyName || userProfile.name, bio: userProfile.bio, imageUrl: userProfile.imageUrl, email: userProfile.email })
         } else {
             setFormData({ name: '', bio: '', imageUrl: '', email: ''  });
         }
-    }, [editMode, profile?.bio, profile?.familyName, profile?.givenName, profile?.imageUrl, profile?.name, profile?.email])
+    }, [editMode, userProfile?.bio, userProfile?.familyName, userProfile?.givenName, userProfile?.imageUrl, userProfile?.name, userProfile?.email])
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -50,10 +49,10 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
                             </AddImageEvent>
                         </>
                     )}
-                        {profile?.imageUrl ? (
-                            <ProfilePicture src={profile?.imageUrl} />
+                        {userProfile?.imageUrl ? (
+                            <ProfilePicture src={userProfile?.imageUrl} />
                         ) : (
-                            <ProfilePictureTag>{profile?.name.split(' ').map(function(item){return item[0]}).join('')}</ProfilePictureTag>
+                            <ProfilePictureTag>{userProfile?.name?.split(' ').map(function(item){return item[0]}).join('')}</ProfilePictureTag>
                         )}
                     </ImageContainer>
                     
@@ -76,8 +75,8 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
                             </>
                         ) : (
                             <>
-                                <ProfileName>{profile?.name}</ProfileName>
-                                <ProfileBio onClick={() => setEditMode(true)}>{profile?.bio || <p style={{ cursor: 'pointer' }}>add bio</p>}</ProfileBio>
+                                <ProfileName>{userProfile?.name}</ProfileName>
+                                <ProfileBio onClick={() => setEditMode(true)}>{userProfile?.bio || <p style={{ cursor: 'pointer' }}>add bio</p>}</ProfileBio>
                             </>
                         )}
                         

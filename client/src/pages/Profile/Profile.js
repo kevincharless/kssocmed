@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect  } from 'react-router-dom';
 import { Sidebar, PageHeader, ProfileHeader, Title, Posts } from '../../components';
+import { ProfilePage, Container } from './Profile.elements'
 
 const Profile = ({ isSidebarActive, toggleSitebar }) => {
     const userProfile = useSelector(state => state.auth.authData);
@@ -14,16 +15,16 @@ const Profile = ({ isSidebarActive, toggleSitebar }) => {
     }, [userProfile]);
 
     return (
-        <div style={{ width: "100%", display: "flex" }}> 
+        <ProfilePage> 
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} userProfile={userProfile} clearUserProfile={clearUserProfile} />
-            <div style={{ width: '100%' }}>
+            <Container>
                 <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
-                <ProfileHeader isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+                <ProfileHeader isSidebarActive={isSidebarActive} userProfile={userProfile?.result} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
                 <Title title="My Post" />
                 <Posts myPosts isSidebarActive={isSidebarActive} user={userProfile?.result} setCurrentPostId={setCurrentPostId} />
-            </div>
+            </Container>
             
-        </div>
+        </ProfilePage>
     )
 }
 

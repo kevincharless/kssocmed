@@ -1,4 +1,4 @@
-import { AUTH, ERROR, EDITPROFILE } from "../constants/actionTypes";
+import { AUTH, ERROR, EDITPROFILE, GET_OTHER_PROFILE } from "../constants/actionTypes";
 import * as api from '../../axios';
 
 export const signIn = (formData, history) => async dispatch => {
@@ -32,6 +32,16 @@ export const editProfile = (userId, formData) => async (dispatch) => {
         const { data } = await api.editProfile(userId, formData);
 
         dispatch({ type: EDITPROFILE, data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getOtherProfile = (userId) => async (dispatch) => {
+    try {
+        const { data } = await api.getOtherProfile(userId);
+
+        dispatch({ type: GET_OTHER_PROFILE, data });
     } catch (error) {
         console.log(error);
     }

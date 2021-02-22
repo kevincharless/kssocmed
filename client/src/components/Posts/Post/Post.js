@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import { AiFillDelete } from 'react-icons/ai';
@@ -62,9 +63,13 @@ const Post = ({ post, user, setCurrentPostId }) => {
                 <Header>
                     <Avatar>
                         {post.creatorImage.includes('/') ? (
-                            <AvatarPicture src={post.creatorImage} onError={i => i.target.style.display='none'} />
+                            <Link to={`/${post.creator}`}>
+                                <AvatarPicture src={post.creatorImage} onError={i => i.target.style.display='none'} />
+                            </Link>
                         ) : (
-                            <AvatarTag>{post.creatorImage}</AvatarTag>
+                            <Link to={`/${post.creator}`}>
+                                <AvatarTag>{post.creatorImage}</AvatarTag>
+                            </Link>
                         )}
                         <AvatarName>{post.name}</AvatarName>
                     </Avatar>

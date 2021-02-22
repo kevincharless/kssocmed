@@ -5,7 +5,7 @@ import { getPosts } from './redux/actions/posts';
 
 import GlobalStyle from './GlobalStyle';
 import { Background } from './components'
-import { Home, Authentication, Profile } from './pages';
+import { Home, Authentication, Profile, OtherProfile } from './pages';
 
 const App = () => {
     const [isSidebarActive, setIsSitebarActive] = useState(true);
@@ -32,9 +32,12 @@ const App = () => {
                 <Route path="/profile">
                     <Profile isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
-                <Route path="/auth">
+                <Route path="/auth" exact>
                     <Authentication />
                 </Route>
+                <Route path="/:id" exact>
+                    <OtherProfile isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
+                </Route> 
             </Switch>
         </Router>
         </>

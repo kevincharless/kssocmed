@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProfilePage = styled.div`
+export const OtherProfilePage = styled.div`
     display: flex;
     width: 100%;
 `
