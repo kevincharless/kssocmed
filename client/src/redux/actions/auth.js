@@ -1,5 +1,8 @@
-import { AUTH, ERROR, EDITPROFILE, GET_OTHER_PROFILE } from "../constants/actionTypes";
+import { AUTH, ERROR, EDITPROFILE, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE } from "../constants/actionTypes";
 import * as api from '../../axios';
+
+export const fetchLoading = () => ({type: FETCH_LOADING})
+export const fetchLoaded = () => ({type: FETCH_LOADED})
 
 export const signIn = (formData, history) => async dispatch => {
     try {
@@ -39,9 +42,11 @@ export const editProfile = (userId, formData) => async (dispatch) => {
 
 export const getOtherProfile = (userId) => async (dispatch) => {
     try {
+        dispatch(fetchLoading());
         const { data } = await api.getOtherProfile(userId);
 
         dispatch({ type: GET_OTHER_PROFILE, data });
+        dispatch(fetchLoaded());
     } catch (error) {
         console.log(error);
     }

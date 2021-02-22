@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Card = styled.div`
     width: 26rem;
@@ -29,6 +30,22 @@ export const Header = styled.div`
 export const Description = styled.div`
     padding-bottom: 0.5rem;
 `
+
+export const AvatarLink = styled(
+    styled(Link)`
+    display: flex;
+    align-items: center;
+
+    &:hover {
+    cursor: pointer;
+        text-decoration: none;
+        }
+    `,
+        'active'
+        )`
+        color: #1FBBC9;
+        text-decoration: none;
+`;
 
 export const Avatar = styled.div`
     display: flex;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import { AiFillDelete } from 'react-icons/ai';
@@ -11,7 +10,7 @@ import { deletePost, likePost } from '../../../redux/actions/posts';
 
 import Comment from '../../Comments/Comments';
 import Modal from '../../Modal/Modal';
-import { Card, Header, Description, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption, PostCreatedAt } from './Post.element';
+import { Card, Header, Description, AvatarLink, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption, PostCreatedAt } from './Post.element';
 
 
 const Post = ({ post, user, setCurrentPostId }) => {
@@ -63,15 +62,17 @@ const Post = ({ post, user, setCurrentPostId }) => {
                 <Header>
                     <Avatar>
                         {post.creatorImage.includes('/') ? (
-                            <Link to={`/${post.creator}`}>
+                            <AvatarLink to={`/${post.creator}`}>
                                 <AvatarPicture src={post.creatorImage} onError={i => i.target.style.display='none'} />
-                            </Link>
+                            </AvatarLink>
                         ) : (
-                            <Link to={`/${post.creator}`}>
+                            <AvatarLink to={`/${post.creator}`} styled={{ textDecoration: 'none' }}>
                                 <AvatarTag>{post.creatorImage}</AvatarTag>
-                            </Link>
+                            </AvatarLink>
                         )}
-                        <AvatarName>{post.name}</AvatarName>
+                        <AvatarLink to={`/${post.creator}`}>
+                            <AvatarName>{post.name}</AvatarName>
+                        </AvatarLink>
                     </Avatar>
                     {(user?.googleId === post?.creator || user?._id === post?.creator) && (
                         <MoreDropDown onClick={handleMoreActive}>

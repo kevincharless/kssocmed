@@ -1,18 +1,16 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Post from './Post/Post';
+import { LoadingSpinner } from '../index';
 
-import { LoadingSpinner, LoadingText, Grid } from './Posts.element';
+import { Grid } from './Posts.element';
 
 const Posts = ({ myPosts, isSidebarActive, user, setCurrentPostId }) => {
     const posts = useSelector(state => state.posts);
     
     return (
         posts.isLoading ? (
-            <>
-                <LoadingSpinner></LoadingSpinner>
-                <LoadingText>Please Wait...</LoadingText>
-            </>
+            <LoadingSpinner />
         ) : (
             <Grid isSidebarActive={isSidebarActive}>
                 {myPosts ? (

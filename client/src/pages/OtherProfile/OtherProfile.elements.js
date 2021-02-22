@@ -8,3 +8,9 @@ export const OtherProfilePage = styled.div`
 export const Container = styled.div`
     width: 100%;
 `
+
+export const Center = styled.div`
+    position: absolute;
+    left: 50%;
+    top: 43%;
+`

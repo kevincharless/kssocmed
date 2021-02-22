@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Redirect  } from 'react-router-dom';
-import { Sidebar, PageHeader, ProfileHeader, Title, Posts } from '../../components';
-import { OtherProfilePage, Container } from './OtherProfile.elements';
+import { Sidebar, PageHeader, ProfileHeader, Title, Posts, LoadingSpinner } from '../../components';
+import { OtherProfilePage, Container, Center } from './OtherProfile.elements';
 
 import { getOtherProfile } from '../../redux/actions/auth';
 
 const OtherProfile = ({ isSidebarActive, toggleSitebar }) => {
     const userProfile = useSelector(state => state.auth.authData);
     const otherProfile = useSelector(state => state.auth.otherProfile);
+    const isLoading = useSelector(state => state.auth.isLoading);
     const [currentPostId, setCurrentPostId] = useState();
     const { id } = useParams();
 
@@ -28,10 +29,18 @@ const OtherProfile = ({ isSidebarActive, toggleSitebar }) => {
         <OtherProfilePage> 
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} userProfile={userProfile} clearUserProfile={clearUserProfile} />
             <Container>
-                <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
-                <ProfileHeader isSidebarActive={isSidebarActive} userProfile={otherProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
-                <Title title="My Post" />
-                <Posts myPosts isSidebarActive={isSidebarActive} user={otherProfile} setCurrentPostId={setCurrentPostId} />
+                {isLoading ? (
+                    <Center>
+                        <LoadingSpinner />
+                    </Center>
+                ) : (
+                    <>
+                        <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
+                        <ProfileHeader isSidebarActive={isSidebarActive} userProfile={otherProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+                        <Title title="My Post" />
+                        <Posts myPosts isSidebarActive={isSidebarActive} user={otherProfile} setCurrentPostId={setCurrentPostId} />
+                    </>
+                )}
             </Container>
         </OtherProfilePage>
     )

@@ -6,5 +6,6 @@ export { default as PageGrid } from './PageGrid/PageGrid';
 export { default as PageHeader } from './PageHeader/PageHeader';
 export { default as ProfileHeader } from './ProfileHeader/ProfileHeader';
 export { default as Posts } from './Posts/Posts';
+export { default as LoadingSpinner } from './LoadingSpinner/LoadingSpinner';
 export { default as Title } from './Title/Title';
 export { default as NewPostForm } from './NewPostForm/NewPostForm';
