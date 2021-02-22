@@ -8,7 +8,7 @@ import addImage from '../../assets/images/add.svg';
 
 const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
     const [postData, setPostData] = useState({ caption: '', selectedFile: '', creatorImage: '' });
-    const post = useSelector(state => currentPostId ? state.posts.find(p => p._id === currentPostId) : null);
+    const post = useSelector(state => currentPostId ? state.posts.posts.find(p => p._id === currentPostId) : null);
 
     const dispatch = useDispatch();
 
