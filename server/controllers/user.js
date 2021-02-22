@@ -47,6 +47,37 @@ export const signup = async (req, res) => {
     }
 }
 
+export const registerGoogleAccount = async (req, res) => {
+    const { name, email, imageUrl, googleId } = req.body;
+
+    try {
+        const existingUser = await User.findOne({ email });
+
+        const hashedPassword = await bcrypt.hash(googleId, 12);
+
+
+        const result = await User.create({ name, bio: '', imageUrl, email, password: hashedPassword });
+
+        const token = jwt.sign({ email: result.email, id: result._id }, process.env.jwtSecret, { expiresIn: '1h' });
+        
+        if (existingUser) return res.status(200).json({ result: existingUser, token });
+
+        res.status(200).json({ result, token });
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong." });
+    }
+
+    
+    
+    // if (existingUser) {
+    //     const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.jwtSecret, { expiresIn: '1h' });
+
+    //     res.status(200).json({ result: existingUser, token });
+    // } else {
+    
+    // }        
+}
+
 export const editProfile = async (req, res) => {
     const { id } = req.params;
     const { name, bio, imageUrl, email } = req.body;

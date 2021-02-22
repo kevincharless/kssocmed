@@ -21,5 +21,6 @@ export const updateCommentPost = (id, updatedCommentPost) => API.patch(`/posts/$
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
+export const googleLogin = (formData) => API.post('/user/googleLogin', formData);
 export const editProfile = (userId, formData) => API.patch(`/user/${userId}/editprofile`, formData);
 export const getOtherProfile = (userId) => API.get(`/user/${userId}/getotherprofile`);

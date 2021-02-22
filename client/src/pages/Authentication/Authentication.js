@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signIn, signUp } from '../../redux/actions/auth';
 import { AUTH } from '../../redux/constants/actionTypes';
+import * as api from '../../axios';
 
 import { HiOutlineMail } from 'react-icons/hi';
 import { IoIosLock } from 'react-icons/io';
@@ -57,6 +58,7 @@ const Authentication = () => {
         const token = res?.tokenId;
 
         try {
+            await api.googleLogin(result)
             dispatch({ type: AUTH, data: { result, token } });
             history.push('/');
         } catch (error) {
