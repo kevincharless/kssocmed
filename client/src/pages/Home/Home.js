@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Sidebar, PageGrid } from '../../components';
 import { HomePage } from './Home.elements';
 
-const Home = ({ isSidebarActive, toggleSitebar }) => {
-    const userProfile = useSelector(state => state.auth.authData);
+const Home = ({ userProfile, isSidebarActive, toggleSitebar }) => {
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
 

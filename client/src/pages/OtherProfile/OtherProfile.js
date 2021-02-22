@@ -36,7 +36,7 @@ const OtherProfile = ({ isSidebarActive, toggleSitebar }) => {
                 ) : (
                     <>
                         <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
-                        <ProfileHeader isSidebarActive={isSidebarActive} userProfile={otherProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+                        <ProfileHeader otherProfile isSidebarActive={isSidebarActive} userProfile={otherProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
                         <Title title="My Post" />
                         <Posts myPosts isSidebarActive={isSidebarActive} user={otherProfile} setCurrentPostId={setCurrentPostId} />
                     </>

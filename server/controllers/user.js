@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import User from '../models/user.js';
+import Post from '../models/post.js';
 
 export const signin = async (req, res) => {
     const { email, password} = req.body;
@@ -54,6 +55,7 @@ export const editProfile = async (req, res) => {
 
     if(!existingUser) return res.status(404).json({ message: "No user with that email" });
     
+    await Post.where({ creator: String(id) }).updateMany({ name: name });
 
     const updatedProfile = await User.findByIdAndUpdate(id, { name, bio, imageUrl, email }, { new: true });
 

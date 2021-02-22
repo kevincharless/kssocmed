@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { Container, Card, ImageContainer, AddImage, AddImageEvent, ProfilePicture, ProfilePictureTag, ButtonContainer, EditProfileButton, CancelEditButton, SaveChangeButton, CardHeader, ProfileName, ProfileBio, ProfileNameEditMode, ProfileBioEditMode, Row, Col, Count, CountDescription } from './ProfileHeader.elements';
 import addImage from '../../assets/images/add.svg';
 
-const ProfileHeader = ({ isSidebarActive, userProfile }) => {
+const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
     const [formData, setFormData] = useState({ name: '', bio: '', imageUrl: '', email: '' });
     const [editMode, setEditMode] = useState(false);
     const posts = useSelector(state => state.posts.posts);
@@ -55,17 +55,18 @@ const ProfileHeader = ({ isSidebarActive, userProfile }) => {
                             <ProfilePictureTag>{userProfile?.name?.split(' ').map(function(item){return item[0]}).join('')}</ProfilePictureTag>
                         )}
                     </ImageContainer>
-                    
-                    <ButtonContainer>
-                        {editMode ? (
-                            <>
-                                <CancelEditButton isSidebarActive={isSidebarActive} onClick={() => setEditMode(false)}><GiCancel />&nbsp;Cancel Edit</CancelEditButton>
-                                <SaveChangeButton type="submit" isSidebarActive={isSidebarActive}><FaCheckCircle />&nbsp;Save Change</SaveChangeButton>
-                            </>
-                        ) : (
-                            <EditProfileButton onClick={() => setEditMode(true)}><FiEdit />&nbsp;Edit Profile</EditProfileButton>
-                        )}
-                    </ButtonContainer>
+                    {!otherProfile && (
+                        <ButtonContainer>
+                            {editMode ? (
+                                <>
+                                    <CancelEditButton isSidebarActive={isSidebarActive} onClick={() => setEditMode(false)}><GiCancel />&nbsp;Cancel Edit</CancelEditButton>
+                                    <SaveChangeButton type="submit" isSidebarActive={isSidebarActive}><FaCheckCircle />&nbsp;Save Change</SaveChangeButton>
+                                </>
+                            ) : (
+                                <EditProfileButton onClick={() => setEditMode(true)}><FiEdit />&nbsp;Edit Profile</EditProfileButton>
+                            )}
+                        </ButtonContainer>
+                    )}
                     
                     <CardHeader>
                         {editMode ? (

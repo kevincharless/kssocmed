@@ -8,3 +8,8 @@ export const Grid = styled.div`
     justify-content: center;
     align-items: center;
 `
+
+export const Center = styled.div`
+    position: absolute;
+    left: 50%;
+`

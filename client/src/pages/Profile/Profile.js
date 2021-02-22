@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Redirect  } from 'react-router-dom';
 import { Sidebar, PageHeader, ProfileHeader, Title, Posts } from '../../components';
 import { ProfilePage, Container } from './Profile.elements'
 
-const Profile = ({ isSidebarActive, toggleSitebar }) => {
-    const userProfile = useSelector(state => state.auth.authData);
+const Profile = ({ userProfile, isSidebarActive, toggleSitebar }) => {
     const [currentPostId, setCurrentPostId] = useState();
     
     const clearUserProfile = () => localStorage.clear('profile');
@@ -23,7 +21,6 @@ const Profile = ({ isSidebarActive, toggleSitebar }) => {
                 <Title title="My Post" />
                 <Posts myPosts isSidebarActive={isSidebarActive} user={userProfile?.result} setCurrentPostId={setCurrentPostId} />
             </Container>
-            
         </ProfilePage>
     )
 }
