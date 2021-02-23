@@ -62,15 +62,15 @@ const Post = ({ post, user, setCurrentPostId }) => {
                 <Header>
                     <Avatar>
                         {post.creatorImage.includes('/') ? (
-                            <AvatarLink to={`/${post.creator}`}>
+                            <AvatarLink to={post.creator === user._id ? `/profile` : `/${post.creator}`}>
                                 <AvatarPicture src={post.creatorImage} onError={i => i.target.style.display='none'} />
                             </AvatarLink>
                         ) : (
-                            <AvatarLink to={`/${post.creator}`} styled={{ textDecoration: 'none' }}>
+                            <AvatarLink to={post.creator === user._id ? `/profile` : `/${post.creator}`} styled={{ textDecoration: 'none' }}>
                                 <AvatarTag>{post.creatorImage}</AvatarTag>
                             </AvatarLink>
                         )}
-                        <AvatarLink to={`/${post.creator}`}>
+                        <AvatarLink to={post.creator === user._id ? `/profile` : `/${post.creator}`}>
                             <AvatarName>{post.name}</AvatarName>
                         </AvatarLink>
                     </Avatar>

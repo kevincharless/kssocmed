@@ -31,9 +31,9 @@ export const signup = async (req, res) => {
     try {
         const existingUser = await User.findOne({ email });
 
-        if(existingUser) return res.status(400).json({ message: "User already exist." });
+        if (existingUser) return res.status(400).json({ message: "User already exist." });
 
-        if(password !== confirmPassword) return res.status(400).json({ message: "Password don't match." });
+        if (password !== confirmPassword) return res.status(400).json({ message: "Password don't match." });
 
         const hashedPassword = await bcrypt.hash(password, 12);
         
@@ -53,8 +53,13 @@ export const registerGoogleAccount = async (req, res) => {
     try {
         const existingUser = await User.findOne({ email });
 
-        const hashedPassword = await bcrypt.hash(googleId, 12);
+        if (existingUser) {
+            const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.jwtSecret, { expiresIn: '1h' });
+    
+            res.status(200).json({ result: existingUser, token });
+        }
 
+        const hashedPassword = await bcrypt.hash(googleId, 12);
 
         const result = await User.create({ name, bio: '', imageUrl, email, password: hashedPassword });
 

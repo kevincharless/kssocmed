@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -55,11 +55,10 @@ const Authentication = () => {
 
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
-        const token = res?.tokenId;
 
         try {
-            await api.googleLogin(result)
-            dispatch({ type: AUTH, data: { result, token } });
+            const { data } = await api.googleLogin(result)
+            dispatch({ type: AUTH, data});
             history.push('/');
         } catch (error) {
             console.log(error);
@@ -71,7 +70,9 @@ const Authentication = () => {
         console.log("Google Sign In was unsuccessful. Try Again Later");
     }
 
-    if(user) history.push('/');
+    useEffect(() => {
+        if(user) history.push('/');
+    }, [history, user])
 
     return (
         <Row>
