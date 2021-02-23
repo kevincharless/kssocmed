@@ -55,7 +55,7 @@ const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile
                                 <AvatarTag isSidebarActive={isSidebarActive}>{user?.name.split(' ').map(function(item){return item[0]}).join('')}</AvatarTag>
                             )}
                             <AvatarName isSidebarActive={isSidebarActive}>{user?.name}</AvatarName>
-                            <AvatarDescription isSidebarActive={isSidebarActive}>{profile.bio || <AddBioLink to="/profile">add Bio</AddBioLink>}</AvatarDescription>
+                            <AvatarDescription isSidebarActive={isSidebarActive}>{user?.bio || <AddBioLink to="/profile">add Bio</AddBioLink>}</AvatarDescription>
                         </SidebarRow>
                         <SidebarRow>
                             <ButtonGroup>
