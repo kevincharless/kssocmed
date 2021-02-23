@@ -48,15 +48,26 @@ console.log(isPopOverActive)
                     value={postData.caption}
                     onChange={e => setPostData({ ...postData, caption: e.target.value })}
                 ></Input>
-                {currentPostId && (
+                {currentPostId ? (
                     <>
-                    <CancelEditButton onClick={clear} onMouseEnter={() => setIsPopOverActive(true)} onMouseLeave={() => setIsPopOverActive(false)}>
-                        <ImCancelCircle />
-                    </CancelEditButton>
-                    <CancelPopOver isPopOverActive={isPopOverActive}>
-                        Cancel Edit
-                    </CancelPopOver>
+                        <CancelEditButton onClick={clear} onMouseEnter={() => setIsPopOverActive(true)} onMouseLeave={() => setIsPopOverActive(false)}>
+                            <ImCancelCircle />
+                        </CancelEditButton>
+                        <CancelPopOver isPopOverActive={isPopOverActive}>
+                            Cancel Edit
+                        </CancelPopOver>
                     </>
+                ) : (
+                    (postData.caption || postData.selectedFile) && (
+                        <>
+                            <CancelEditButton onClick={clear} onMouseEnter={() => setIsPopOverActive(true)} onMouseLeave={() => setIsPopOverActive(false)}>
+                                <ImCancelCircle />
+                            </CancelEditButton>
+                            <CancelPopOver isPopOverActive={isPopOverActive}>
+                                Cancel
+                            </CancelPopOver>
+                        </>
+                    )
                 )}                
                 
                 <AddImage src={addImage} />

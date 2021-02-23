@@ -35,6 +35,30 @@ export const AddComment = styled.input`
     }
 `
 
+export const CancleEditButton = styled.button`
+    background: none;
+    border: none;
+    color: #DC211A;
+    font-size: 0.4rem;
+    font-weight: bold;
+    padding-right: 1rem;
+
+    width: 4rem;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.4rem;
+    }
+`
+
 export const Button = styled.button`
     background: none;
     border: none;
