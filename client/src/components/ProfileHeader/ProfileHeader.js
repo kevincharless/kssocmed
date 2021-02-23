@@ -16,7 +16,7 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
     const userId = userProfile?._id;
     const postsCount = posts.filter(post => post.creator === userId || post.creator === userProfile?.googleId).length;
     const dispatch = useDispatch();
-
+    console.log(otherProfile)
     useEffect(() => {
         if (editMode) {
             setFormData({ name: userProfile.givenName + userProfile.familyName || userProfile.name, bio: userProfile.bio, imageUrl: userProfile.imageUrl, email: userProfile.email })
