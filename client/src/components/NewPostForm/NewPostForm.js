@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
+import { ImCancelCircle } from 'react-icons/im';
 
 import { updatePost, createPost } from '../../redux/actions/posts';
-import { Container, Avatar, AvatarTag, Input, AddImage, AddImageEvent, Button } from './NewPostForm.elements';
+import { Container, Avatar, AvatarTag, Input, CancelEditButton, CancelPopOver, AddImage, AddImageEvent, Button } from './NewPostForm.elements';
 import addImage from '../../assets/images/add.svg';
 
 const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
+    const [isPopOverActive, setIsPopOverActive] = useState(false);
     const [postData, setPostData] = useState({ caption: '', selectedFile: '', creatorImage: '' });
     const post = useSelector(state => currentPostId ? state.posts.posts.find(p => p._id === currentPostId) : null);
 
@@ -31,7 +33,7 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
         setCurrentPostId(null);
         setPostData({ caption: '', selectedFile: '' });
     }
-
+console.log(isPopOverActive)
     return (
         <Container onSubmit={handleSubmit}>
             <div style={{ display: 'flex' }}>
@@ -46,6 +48,17 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
                     value={postData.caption}
                     onChange={e => setPostData({ ...postData, caption: e.target.value })}
                 ></Input>
+                {currentPostId && (
+                    <>
+                    <CancelEditButton onClick={clear} onMouseEnter={() => setIsPopOverActive(true)} onMouseLeave={() => setIsPopOverActive(false)}>
+                        <ImCancelCircle />
+                    </CancelEditButton>
+                    <CancelPopOver isPopOverActive={isPopOverActive}>
+                        Cancel Edit
+                    </CancelPopOver>
+                    </>
+                )}                
+                
                 <AddImage src={addImage} />
                 <AddImageEvent>
                     <FileBase 

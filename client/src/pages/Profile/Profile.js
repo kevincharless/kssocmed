@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect  } from 'react-router-dom';
-import { LoadingSpinner, Sidebar, PageHeader, ProfileHeader, Title, Posts } from '../../components';
-import { ProfilePage, Container, Center } from './Profile.elements'
+import { LoadingSpinner, Sidebar, PageHeader, ProfileHeader, Title, Posts, NewPostForm } from '../../components';
+import { ProfilePage, Container, Center, EditPostDiv } from './Profile.elements'
 import { getOtherProfile, clearOtherProfile } from '../../redux/actions/auth';
 
 const Profile = ({ userProfile, isSidebarActive, toggleSitebar }) => {
@@ -41,6 +41,11 @@ const Profile = ({ userProfile, isSidebarActive, toggleSitebar }) => {
                         <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
                         <ProfileHeader otherProfile={id} isSidebarActive={isSidebarActive} userProfile={profileData} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
                         <Title title="My Post" />
+                        {currentPostId && (
+                            <EditPostDiv>
+                                <NewPostForm user={profileData} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+                            </EditPostDiv>
+                        )}
                         <Posts myPosts isSidebarActive={isSidebarActive} user={profileData} setCurrentPostId={setCurrentPostId} />
                     </>
                 )}

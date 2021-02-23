@@ -37,7 +37,7 @@ export const More = styled.div`
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        min-width: 3.5rem;
+        min-width: 4rem;
     }
 `
 
@@ -47,11 +47,12 @@ export const MoreContent = styled.a`
     text-decoration: none;
     display: block;
     color: #176D84;
-    font-size: 0.55rem;
+    font-size: 0.5rem;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        font-size: 0.2rem;
+        padding: 0.3rem;
+        font-size: 0.1rem;
     }
 
     &:hover {

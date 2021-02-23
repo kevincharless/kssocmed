@@ -95,6 +95,55 @@ export const Input = styled.textarea`
         }
     }
 `
+export const CancelEditButton = styled.div`
+    display: flex;
+    align-items: center;
+
+    color: #DC211A;
+    font-size: 1rem;
+
+    position: absolute;
+    height: 2rem;
+    margin-left: 17.5rem;
+    
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 0.6rem;
+        height: 1.6rem;    
+        margin-left: 9.5rem;
+    }
+`
+
+export const CancelPopOver = styled.div`
+    display: ${({ isPopOverActive }) => (isPopOverActive ? 'block' : 'none')};
+    position: absolute;
+    
+    background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.16) 100%);
+    backdrop-filter: blur(100px);
+    border-radius: 40px;
+    border-image-source: radial-gradient(100% 316.05% at 0% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
+    opacity: 0.9;
+
+    color: #176D84;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+    margin-top: -0.8rem;
+    margin-left: 70%;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+    font-size: 0.3rem;
+    padding: 0.1rem 0.3rem;
+    margin-top: -0.6rem;
+    margin-left: 60%;
+    }
+`
 
 export const AddImage = styled.img`
     display: flex;
