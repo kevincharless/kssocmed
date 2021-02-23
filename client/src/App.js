@@ -30,15 +30,15 @@ const App = () => {
                 <Route path="/" exact>
                     <Home userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
-                <Route path="/:id" exact>
-                    <Profile userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
-                </Route> 
-                <Route path="/profile">
+                <Route path="/profile" exact>
                     <Profile userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
                 <Route path="/auth" exact>
                     <Authentication />
                 </Route>
+                <Route path="/:id" exact>
+                    <Profile userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
+                </Route> 
             </Switch>
         </Router>
         </>

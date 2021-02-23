@@ -6,7 +6,7 @@ import { HomePage } from './Home.elements';
 const Home = ({ userProfile, isSidebarActive, toggleSitebar }) => {
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
-    
+
     const clearUserProfile = () => localStorage.clear('profile');
 
     useEffect(() => {

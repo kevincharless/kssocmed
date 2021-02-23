@@ -16,10 +16,10 @@ const Posts = ({ myPosts, isSidebarActive, user, setCurrentPostId }) => {
         ) : (
             <Grid isSidebarActive={isSidebarActive}>
                 {myPosts ? (
-                    posts.posts.map(post => post.creator === user._id ? (
+                    posts.posts.map(post => post.creator === user?._id ? (
                         <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />
                     ) : (
-                    post.creator === user.googleId && (
+                    post.creator === user?.googleId && (
                         <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />
                     ))
                     ) 
