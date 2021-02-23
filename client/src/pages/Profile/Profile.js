@@ -18,7 +18,7 @@ const Profile = ({ userProfile, isSidebarActive, toggleSitebar }) => {
 
     useEffect(() => {
         dispatch(clearOtherProfile());
-        if (id !== 'profile') dispatch(getOtherProfile(id));
+        if (id) dispatch(getOtherProfile(id));
         setIsMount(false)
     }, [dispatch, id])
 
