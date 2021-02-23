@@ -1,8 +1,9 @@
-import { AUTH, ERROR, EDITPROFILE, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE } from "../constants/actionTypes";
+import { AUTH, ERROR, EDITPROFILE, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE, CLEAR_OTHER_PROFILE } from "../constants/actionTypes";
 import * as api from '../../axios';
 
 export const fetchLoading = () => ({type: FETCH_LOADING})
 export const fetchLoaded = () => ({type: FETCH_LOADED})
+export const clearOtherProfile = () => ({type: CLEAR_OTHER_PROFILE})
 
 export const signIn = (formData, history) => async dispatch => {
     try {

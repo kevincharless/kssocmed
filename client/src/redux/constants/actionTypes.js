@@ -9,6 +9,7 @@ export const EDITPROFILE = 'EDITPROFILE';
 export const FETCH_LOADING = 'FETCH_LOADING';
 export const FETCH_LOADED = 'FETCH_LOADED';
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const CLEAR_OTHER_PROFILE = 'CLEAR_OTHER_PROFILE';
 export const GET_OTHER_PROFILE = 'GET_OTHER_PROFILE';
 export const LIKE = 'LIKE';
 export const COMMENT = 'COMMENT';

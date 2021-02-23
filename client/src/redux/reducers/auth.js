@@ -1,4 +1,4 @@
-import { AUTH, LOGOUT, ERROR, EDITPROFILE, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE } from '../constants/actionTypes';
+import { AUTH, LOGOUT, ERROR, EDITPROFILE, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE, CLEAR_OTHER_PROFILE } from '../constants/actionTypes';
 
 const initialState = {
     authData: JSON.parse(localStorage.getItem('profile')),
@@ -21,6 +21,11 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 otherProfile: action.data
+            }
+        case CLEAR_OTHER_PROFILE:
+            return {
+                ...state,
+                otherProfile: []
             }
         case FETCH_LOADING:
             return {

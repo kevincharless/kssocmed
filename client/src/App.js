@@ -5,7 +5,7 @@ import { getPosts } from './redux/actions/posts';
 
 import GlobalStyle from './GlobalStyle';
 import { Background } from './components'
-import { Home, Authentication, Profile, OtherProfile } from './pages';
+import { Home, Authentication, Profile } from './pages';
 
 const App = () => {
     const userProfile = useSelector(state => state.auth.authData);
@@ -30,15 +30,15 @@ const App = () => {
                 <Route path="/" exact>
                     <Home userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
+                <Route path="/:id" exact>
+                    <Profile userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
+                </Route> 
                 <Route path="/profile">
                     <Profile userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
                 <Route path="/auth" exact>
                     <Authentication />
                 </Route>
-                <Route path="/:id" exact>
-                    <OtherProfile userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
-                </Route> 
             </Switch>
         </Router>
         </>

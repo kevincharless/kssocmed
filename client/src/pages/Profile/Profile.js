@@ -1,25 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect  } from 'react-router-dom';
-import { Sidebar, PageHeader, ProfileHeader, Title, Posts } from '../../components';
-import { ProfilePage, Container } from './Profile.elements'
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, Redirect  } from 'react-router-dom';
+import { LoadingSpinner, Sidebar, PageHeader, ProfileHeader, Title, Posts } from '../../components';
+import { ProfilePage, Container, Center } from './Profile.elements'
+import { getOtherProfile, clearOtherProfile } from '../../redux/actions/auth';
 
 const Profile = ({ userProfile, isSidebarActive, toggleSitebar }) => {
     const [currentPostId, setCurrentPostId] = useState();
-    
+    const [isMount, setIsMount] = useState(true);
+    const otherProfile = useSelector(state => state.auth.otherProfile);
+    const isLoading = useSelector(state => state.auth.isLoading);
+    const profileData = otherProfile.length === 0 ? userProfile?.result : otherProfile;
+    const { id } = useParams();
+
+    const dispatch = useDispatch();
     const clearUserProfile = () => localStorage.clear('profile');
+
+    useEffect(() => {
+        dispatch(clearOtherProfile());
+        if (id !== 'profile') dispatch(getOtherProfile(id));
+        setIsMount(false)
+    }, [dispatch, id])
 
     useEffect(() => {
         if (!userProfile) <Redirect to="/auth" />;
     }, [userProfile]);
 
+    if (isMount) return <Center><LoadingSpinner /></Center>
+
     return (
-        <ProfilePage> 
+        <ProfilePage>
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} userProfile={userProfile} clearUserProfile={clearUserProfile} />
             <Container>
-                <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
-                <ProfileHeader isSidebarActive={isSidebarActive} userProfile={userProfile?.result} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
-                <Title title="My Post" />
-                <Posts myPosts isSidebarActive={isSidebarActive} user={userProfile?.result} setCurrentPostId={setCurrentPostId} />
+                {isLoading ? (
+                    <Center>
+                        <LoadingSpinner />
+                    </Center>
+                ) : (
+                    <>
+                        <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
+                        <ProfileHeader otherProfile isSidebarActive={isSidebarActive} userProfile={profileData} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+                        <Title title="My Post" />
+                        <Posts myPosts isSidebarActive={isSidebarActive} user={profileData} setCurrentPostId={setCurrentPostId} />
+                    </>
+                )}
             </Container>
         </ProfilePage>
     )
