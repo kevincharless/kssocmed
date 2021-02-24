@@ -30,9 +30,27 @@ export const Title = styled.h3`
 `
 
 export const InputDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 999;
+
     margin-bottom: 10px;
     margin: 1rem 0;
 
+    width: 16rem;
+    height: 2.5rem;
+
+    backdrop-filter: blur(100px);
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        width: 8rem;
+        height: 2rem;
+    }
+`
+
+export const InputBackground = styled.div`
     width: 16rem;
     height: 2.5rem;
 
@@ -44,6 +62,9 @@ export const InputDiv = styled.div`
 
     border-image-source: radial-gradient(100% 316.05% at 0% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
     opacity: 0.5;
+
+    position: absolute;
+    z-index: 2;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
@@ -106,4 +127,90 @@ export const Input = styled.input`
         font-size: 0.5rem;
         padding-left: 1rem;
     }
+`
+
+export const SearchResult = styled.div`
+    border: 2px solid;
+
+    border-image-source: radial-gradient(100% 316.05% at 0% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
+    opacity: 1;
+
+    display: ${({ isMoreActive }) => (isMoreActive ? 'block' : 'none')};
+    position: absolute;
+    background-color: rgba(249, 249, 249, 0.8);
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 2.5rem;
+`
+
+export const SearchResultContent = styled.a`
+    color: black;
+    padding: 0.5rem;
+    text-decoration: none;
+    display: flex;
+    color: #176D84;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        padding: 0.4rem;
+        font-size: 0.5rem;
+    }
+
+    &:hover {
+        background-color:rgba(23, 109, 132, 1);
+        color: white;
+        cursor: pointer;
+    }
+`
+
+export const UserImage = styled.img`
+    width: 30px;
+    height: 30px;
+    border-radius: 80px;
+`
+
+export const UserTag = styled.div`
+    width: 30px;
+    height: 30px;
+
+    background-color: #176D84;
+
+    border: 1px solid #f9f9f9;
+    border-radius: 80px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6rem;
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #f9f9f9;
+`
+
+export const UserInfo = styled.div`
+    margin-left: 1rem;
+
+    display: flex;
+    flex-direction: column;
+
+    text-transform: capitalize;
+`
+
+export const UserName = styled.p`
+    display: flex;
+    align-items: center;
+
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: capitalize;
+`
+
+export const UserBio = styled.p`
+
+    font-size: 0.6rem;
 `

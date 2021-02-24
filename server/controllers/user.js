@@ -66,17 +66,17 @@ export const registerGoogleAccount = async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ message: "Something went wrong." });
+    }     
+}
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
     }
-
-    
-    
-    // if (existingUser) {
-    //     const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.jwtSecret, { expiresIn: '1h' });
-
-    //     res.status(200).json({ result: existingUser, token });
-    // } else {
-    
-    // }        
 }
 
 export const editProfile = async (req, res) => {

@@ -6,6 +6,7 @@ export const CREATE = 'CREATE';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';
 export const EDITPROFILE = 'EDITPROFILE';
+export const FETCH_USERS = 'FETCH_USERS';
 export const FETCH_LOADING = 'FETCH_LOADING';
 export const FETCH_LOADED = 'FETCH_LOADED';
 export const FETCH_POSTS = 'FETCH_POSTS';

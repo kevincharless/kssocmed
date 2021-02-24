@@ -33,7 +33,7 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
         setCurrentPostId(null);
         setPostData({ caption: '', selectedFile: '' });
     }
-console.log(isPopOverActive)
+
     return (
         <Container onSubmit={handleSubmit}>
             <div style={{ display: 'flex' }}>
@@ -58,7 +58,7 @@ console.log(isPopOverActive)
                         </CancelPopOver>
                     </>
                 ) : (
-                    (postData.caption || postData.selectedFile) && (
+                    (postData?.caption || postData?.selectedFile) && (
                         <>
                             <CancelEditButton onClick={clear} onMouseEnter={() => setIsPopOverActive(true)} onMouseLeave={() => setIsPopOverActive(false)}>
                                 <ImCancelCircle />

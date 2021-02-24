@@ -1,4 +1,4 @@
-import { AUTH, ERROR, EDITPROFILE, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE, CLEAR_OTHER_PROFILE } from "../constants/actionTypes";
+import { AUTH, ERROR, EDITPROFILE, FETCH_USERS, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE, CLEAR_OTHER_PROFILE } from "../constants/actionTypes";
 import * as api from '../../axios';
 
 export const fetchLoading = () => ({type: FETCH_LOADING})
@@ -26,6 +26,18 @@ export const signUp = (formData, history) => async dispatch => {
         dispatch({ type: AUTH, data });
 
         history.push('/');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getUsers = () => async (dispatch) => {
+    dispatch(fetchLoading());
+    try {
+        const { data } = await api.getUsers();
+        
+        dispatch({ type: FETCH_USERS, payload: data });
+        dispatch(fetchLoaded());
     } catch (error) {
         console.log(error);
     }
