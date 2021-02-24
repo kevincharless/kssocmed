@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Nav, Title, InputDiv, InputBackground, Input, InputIcon, SearchResult, SearchResultContent, UserImage, UserTag, UserInfo, UserName, UserBio } from './PageHeaders.elements';
 import { FaSearch } from 'react-icons/fa';
 
@@ -27,13 +28,14 @@ const PageHeader = ({ title, users, isSidebarActive}) => {
             </Title>
             <InputDiv>
                 <InputBackground>
-                <Input type="search" value={searchUser} onChange={e => setSearchUser(e.target.value)} name="search" placeholder="Search..." autocomplete="chrome-off"  />
+                <Input type="search" value={searchUser} onChange={e => setSearchUser(e.target.value)} name="search" placeholder="Search Other..." autocomplete="chrome-off"  />
                     <InputIcon>
                         <FaSearch />
                     </InputIcon>
                 </InputBackground>
                 <SearchResult isMoreActive={isActive}>
                     {searchResult.map(user => 
+                    <Link to={`/${user._id}`} style={{ textDecoration: 'none' }}>
                         <SearchResultContent searchUser={searchUser} key={user._id}>
                             {user?.imageUrl ? (
                                 <UserImage src={user?.imageUrl} isSidebarActive={isSidebarActive} />
@@ -45,6 +47,7 @@ const PageHeader = ({ title, users, isSidebarActive}) => {
                                 <UserBio>{user.bio}</UserBio>
                             </UserInfo>
                         </SearchResultContent>
+                    </Link>
                     )}
 
                     
