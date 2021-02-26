@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { editProfile } from '../../redux/actions/auth';
 import FileBase from 'react-file-base64';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaPage4 } from 'react-icons/fa';
 import { FiEdit } from 'react-icons/fi';
 import { GiCancel } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
-import { Container, Card, ImageContainer, AddImage, AddImageEvent, ProfilePicture, ProfilePictureTag, ButtonContainer, EditProfileButton, CancelEditButton, SaveChangeButton, CardHeader, ProfileName, ProfileBio, ProfileNameEditMode, ProfileBioEditMode, Row, Col, Count, CountDescription } from './ProfileHeader.elements';
+import { Container, Card, ImageContainer, AddImage, AddImageEvent, ProfilePicture, ProfilePictureTag, ButtonContainer, Button, CancelEditButton, SaveChangeButton, CardHeader, ProfileName, ProfileBio, ProfileNameEditMode, ProfileBioEditMode, Row, Col, Count, CountDescription } from './ProfileHeader.elements';
 import addImage from '../../assets/images/add.svg';
 
 const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
@@ -55,7 +55,7 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
                             <ProfilePictureTag>{userProfile?.name?.split(' ').map(function(item){return item[0]}).join('')}</ProfilePictureTag>
                         )}
                     </ImageContainer>
-                    {!otherProfile && (
+                    {!otherProfile ? (
                         <ButtonContainer>
                             {editMode ? (
                                 <>
@@ -63,9 +63,11 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
                                     <SaveChangeButton type="submit" isSidebarActive={isSidebarActive}><FaCheckCircle />&nbsp;Save Change</SaveChangeButton>
                                 </>
                             ) : (
-                                <EditProfileButton onClick={() => setEditMode(true)}><FiEdit />&nbsp;Edit Profile</EditProfileButton>
+                                <Button onClick={() => setEditMode(true)}><FiEdit />&nbsp;Edit Profile</Button>
                             )}
                         </ButtonContainer>
+                    ) : (
+                        <Button outline>Follow</Button>
                     )}
                     
                     <CardHeader>

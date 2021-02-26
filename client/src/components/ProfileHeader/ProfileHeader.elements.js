@@ -144,11 +144,11 @@ export const ButtonContainer = styled.div`
     position: relative;
 `
 
-export const EditProfileButton = styled.button`
-    background: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
-    border: 2px solid  rgba(255,255,255,0.8);
+export const Button = styled.button`
+    background: ${({ outline }) => (outline ? 'none' : 'linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round')};
+    border: ${({ outline }) => (outline ? '2px solid #1FBBC9' : '2px solid rgba(255,255,255,0.8)')};
     border-radius: 8rem;
-    color:white;
+    color: ${({ outline }) => (outline ? '#1FBBC9' : 'white')};
 
     position: relative;
     display: flex;
@@ -173,12 +173,12 @@ export const EditProfileButton = styled.button`
 
     &:hover {
         background: none;
-        border: 2px solid;
+        border: ${({ outline }) => (!outline ? '2px solid #1FBBC9' : '2px solid rgba(220, 33, 86, 0.8)')};
         border-image-slice: 1;
         border-radius: 8rem;
         border-image-source: linear-gradient(266.83deg, #1FFF84 0%, #1F85FF 100%) 0 round;
 
-        color: #1FBBC9;
+        color: ${({ outline }) => (!outline ? '#1FBBC9' : '#DC211A')};
     }
 
     @media only screen and (max-width: 960px) {
