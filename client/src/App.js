@@ -12,7 +12,7 @@ const App = () => {
     const userProfile = useSelector(state => state.auth.authData);
     const users = useSelector(state => state.auth.users);
     const [isSidebarActive, setIsSitebarActive] = useState(true);
-
+    
     const dispatch = useDispatch();
 
     const toggleSitebar = () => {

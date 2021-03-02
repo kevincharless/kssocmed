@@ -35,8 +35,8 @@ const PageHeader = ({ title, users, isSidebarActive}) => {
                 </InputBackground>
                 <SearchResult isMoreActive={isActive}>
                     {searchResult.map(user => 
-                    <Link to={`/${user._id}`} style={{ textDecoration: 'none' }}>
-                        <SearchResultContent searchUser={searchUser} key={user._id}>
+                    <Link to={`/${user._id}`} style={{ textDecoration: 'none' }} key={user._id}>
+                        <SearchResultContent searchUser={searchUser}>
                             {user?.imageUrl ? (
                                 <UserImage src={user?.imageUrl} isSidebarActive={isSidebarActive} />
                             ) : (

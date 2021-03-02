@@ -1,4 +1,4 @@
-import { AUTH, LOGOUT, ERROR, FETCH_USERS, EDITPROFILE, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE, CLEAR_OTHER_PROFILE } from '../constants/actionTypes';
+import { AUTH, LOGOUT, ERROR, FETCH_USERS, EDITPROFILE, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE, FOLLOW_USER, GET_FOLLOW, CLEAR_OTHER_PROFILE } from '../constants/actionTypes';
 
 const initialState = {
     authData: JSON.parse(localStorage.getItem('profile')),
@@ -11,18 +11,20 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
     switch(action.type) {
         case AUTH:
+        case EDITPROFILE:
+        case FOLLOW_USER:
             localStorage.setItem('profile', JSON.stringify({ ...action.data }));
 
             return {...state, authData: action?.data, errorMessage: '' };
+            // return {
+            //     ...state,
+            //     authData: action.data
+            // }
         case FETCH_USERS:
             return {
                 ...state,
                 users: action?.payload
             }
-        case EDITPROFILE:
-            localStorage.setItem('profile', JSON.stringify({...action.data}));
-
-            return {...state, authData: action?.data, errorMessage: '' };
         case GET_OTHER_PROFILE:
             return {
                 ...state,

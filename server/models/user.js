@@ -6,6 +6,10 @@ const userSchema = mongoose.Schema({
     imageUrl: { type: String },
     email: { type: String, required: true },
     password: { type: String, required: true },
+    followings: {
+        type: [String],
+        default: []
+    },
     followers: {
         type: [String],
         default: []

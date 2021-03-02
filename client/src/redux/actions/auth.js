@@ -1,4 +1,4 @@
-import { AUTH, ERROR, EDITPROFILE, FETCH_USERS, FETCH_LOADING, FETCH_LOADED, GET_OTHER_PROFILE, CLEAR_OTHER_PROFILE } from "../constants/actionTypes";
+import { AUTH, ERROR, EDITPROFILE, FETCH_USERS, FETCH_LOADING, FETCH_LOADED, FOLLOW_USER, GET_FOLLOW, GET_OTHER_PROFILE, CLEAR_OTHER_PROFILE } from "../constants/actionTypes";
 import * as api from '../../axios';
 
 export const fetchLoading = () => ({type: FETCH_LOADING})
@@ -60,6 +60,28 @@ export const getOtherProfile = (userId) => async (dispatch) => {
 
         dispatch({ type: GET_OTHER_PROFILE, data });
         dispatch(fetchLoaded());
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const followUser = (userId) => async (dispatch) => {
+    try {
+        const { data } = await api.followUser(userId);
+
+        dispatch({ type: FOLLOW_USER, data });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const getFollow = (userId) => async (dispatch) => {
+    try {
+        // dispatch(fetchLoading());
+        const { data } = await api.getFollow(userId);
+
+        dispatch({ type: GET_FOLLOW, payload: data });
+        // dispatch(fetchLoaded());
     } catch (error) {
         console.log(error);
     }
