@@ -114,19 +114,19 @@ export const followUser = async (req, res) => {
 
     const user = await User.findById(req.userId);
 
-    const index = user.followings.findIndex((id) => id === String(id));
+    const index = user.followings.findIndex((fid) => fid === String(id));
     
     if (index === -1) {
         user.followings.push(id);
     } else {
-        user.followings = user.followings.filter((id) => id !== String(id));
+        user.followings = user.followings.filter((fid) => fid !== String(id));
     }
+    
     const updatedUser = await User.findByIdAndUpdate(req.userId, user, { new: true });
-
+    
     const token = jwt.sign({ email: user.email, id: user._id }, process.env.jwtSecret, { expiresIn: '1h' });
 
-
-    res.json({ result: updatedUser, token });
+    res.status(200).json({ result: updatedUser, token });
 }
 
 // export const followUser = async (req, res) => {
