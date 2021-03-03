@@ -16,10 +16,6 @@ const authReducer = (state = initialState, action) => {
             localStorage.setItem('profile', JSON.stringify({ ...action.data }));
 
             return {...state, authData: action?.data, errorMessage: '' };
-            // return {
-            //     ...state,
-            //     authData: action.data
-            // }
         case FETCH_USERS:
             return {
                 ...state,

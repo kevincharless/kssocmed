@@ -9,9 +9,10 @@ import { useSelector } from 'react-redux';
 import { Container, Card, ImageContainer, AddImage, AddImageEvent, ProfilePicture, ProfilePictureTag, ButtonContainer, Button, CancelEditButton, SaveChangeButton, CardHeader, ProfileName, ProfileBio, ProfileNameEditMode, ProfileBioEditMode, Row, Col, Count, CountDescription } from './ProfileHeader.elements';
 import addImage from '../../assets/images/add.svg';
 
-const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile, userData }) => {
+const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
     const [formData, setFormData] = useState({ name: '', bio: '', imageUrl: '', email: '' });
     const [editMode, setEditMode] = useState(false);
+    const userData = otherProfile.length === 0 ? userProfile?.result : otherProfile;
     const userId = userProfile?._id;
     const [follow, setFollow] = useState(useSelector(state => state?.auth?.authData?.followings?.includes(otherProfile) || state?.auth?.authData?.result?.followings?.includes(otherProfile)));
     const posts = useSelector(state => state.posts.posts);
@@ -56,13 +57,13 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile, userData })
                             </AddImageEvent>
                         </>
                     )}
-                        {userProfile?.imageUrl ? (
-                            <ProfilePicture src={userProfile?.imageUrl} />
+                        {userData?.imageUrl ? (
+                            <ProfilePicture src={userData?.imageUrl} />
                         ) : (
-                            <ProfilePictureTag>{userProfile?.name?.split(' ').map(function(item){return item[0]}).join('')}</ProfilePictureTag>
+                            <ProfilePictureTag>{userData?.name?.split(' ').map(function(item){return item[0]}).join('')}</ProfilePictureTag>
                         )}
                     </ImageContainer>
-                    {!otherProfile ? (
+                    {otherProfile.length === 0 ? (
                         <ButtonContainer>
                             {editMode ? (
                                 <>
@@ -89,8 +90,8 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile, userData })
                             </>
                         ) : (
                             <>
-                                <ProfileName>{userProfile?.name}</ProfileName>
-                                <ProfileBio onClick={() => setEditMode(true)}>{userProfile?.bio || <p style={{ cursor: 'pointer' }}>add bio</p>}</ProfileBio>
+                                <ProfileName>{userData?.name}</ProfileName>
+                                <ProfileBio onClick={() => setEditMode(true)}>{userData?.bio || <p style={{ cursor: 'pointer' }}>add bio</p>}</ProfileBio>
                             </>
                         )}
                         
