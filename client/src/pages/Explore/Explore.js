@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Sidebar, PageGrid } from '../../components';
-import { HomePage } from './Home.elements';
+import { ExplorePage } from './Explore.elements';
 
-const Home = ({ userProfile, users, isSidebarActive, toggleSitebar }) => {
+const Explore = ({ userProfile, users, isSidebarActive, toggleSitebar }) => {
     const [currentPostId, setCurrentPostId] = useState();
     const history = useHistory();
 
@@ -14,11 +14,11 @@ const Home = ({ userProfile, users, isSidebarActive, toggleSitebar }) => {
     }, [userProfile, history]);
 
     return (
-        <HomePage> 
+        <ExplorePage> 
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} userProfile={userProfile} clearUserProfile={clearUserProfile} />
-            <PageGrid homePage title="Home" isSidebarActive={isSidebarActive} userProfile={userProfile} users={users} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
-        </HomePage>
+            <PageGrid explorePage title="Explore" isSidebarActive={isSidebarActive} userProfile={userProfile} users={users} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
+        </ExplorePage>
     )
 }
 
-export default Home
+export default Explore

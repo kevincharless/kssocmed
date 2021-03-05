@@ -66,8 +66,10 @@ const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile
                                     </ButtonLink>
                                 </ButtonGroupList>
                                 <ButtonGroupList isSidebarActive={isSidebarActive}>
-                                    <ButtonIcon src={explore} isSidebarActive={isSidebarActive} />
-                                    <ButtonText isSidebarActive={isSidebarActive}>Explore</ButtonText>
+                                    <ButtonLink to="/explore">
+                                        <ButtonIcon src={explore} isSidebarActive={isSidebarActive} />
+                                        <ButtonText isSidebarActive={isSidebarActive}>Explore</ButtonText>
+                                    </ButtonLink>
                                 </ButtonGroupList>
                                 <ButtonGroupList isSidebarActive={isSidebarActive}>
                                     <ButtonLink to="/profile">

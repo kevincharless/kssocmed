@@ -5,9 +5,9 @@ import { LoadingSpinner } from '../index';
 
 import { Grid, Center } from './Posts.element';
 
-const Posts = ({ myPosts, isSidebarActive, user, setCurrentPostId }) => {
+const Posts = ({ homePage, explorePage, myPosts, isSidebarActive, user, setCurrentPostId }) => {
     const posts = useSelector(state => state.posts);
-    
+
     return (
         posts.isLoading ? (
             <Center>
@@ -21,9 +21,26 @@ const Posts = ({ myPosts, isSidebarActive, user, setCurrentPostId }) => {
                     )
                     ) 
                 ) : (
-                    posts.posts.map(post => (
-                        <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />
-                    ))
+                    homePage ? (
+                        posts.posts.map(post => 
+                            user?.followings?.map(following => post.creator === following || post.creator === user?._id ? (
+                                <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />  
+                            ) : null
+                            )
+                        )
+                    ) : (
+                        explorePage ? (
+                            posts.posts.map(post => 
+                                post.creator !== user?._id && (
+                                    <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />  
+                                ) 
+                            )
+                        ) : (
+                            posts.posts.map(post => (
+                                <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />
+                            ))
+                        )
+                    )
                 )}
             </Grid>
         )
