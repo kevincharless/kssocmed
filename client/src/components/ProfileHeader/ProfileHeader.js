@@ -29,7 +29,7 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
     
     const handleSubmit = e => {
         e.preventDefault();
-        // dispatch(editProfile(userId, formData));
+        dispatch(editProfile(userId, formData));
         setEditMode(false);
     }
 
@@ -101,11 +101,11 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
                                 <CountDescription>Posts</CountDescription>
                             </Col>
                             <Col>
-                                <Count>2</Count>
+                                <Count>{userData.followers.length}</Count>
                                 <CountDescription>Followers</CountDescription>
                             </Col>
                             <Col>
-                                <Count>2</Count>
+                                <Count>{userData.followings.length}</Count>
                                 <CountDescription>Following</CountDescription>
                             </Col>
 
