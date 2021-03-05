@@ -78,8 +78,10 @@ const Sidebar = ({ isSidebarActive, toggleSitebar, userProfile, clearUserProfile
                                     </ButtonLink>
                                 </ButtonGroupList>
                                 <ButtonGroupList isSidebarActive={isSidebarActive}>
-                                    <ButtonIcon src={faq} isSidebarActive={isSidebarActive} />
-                                    <ButtonText isSidebarActive={isSidebarActive}>Faq</ButtonText>
+                                    <ButtonLink to="/faq">
+                                        <ButtonIcon src={faq} isSidebarActive={isSidebarActive} />
+                                        <ButtonText isSidebarActive={isSidebarActive}>Faq</ButtonText>
+                                    </ButtonLink>
                                 </ButtonGroupList>
                             </ButtonGroup>
                         </SidebarRow>

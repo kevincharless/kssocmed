@@ -18,14 +18,14 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
     const posts = useSelector(state => state.posts.posts);
     const postsCount = posts.filter(post => post.creator === userId || post.creator === userProfile?.googleId).length;
     const dispatch = useDispatch();
-    console.log(follow)
+    
     useEffect(() => {
         if (editMode) {
-            setFormData({ name: userProfile.givenName + userProfile.familyName || userProfile.name, bio: userProfile.bio, imageUrl: userProfile.imageUrl, email: userProfile.email })
+            setFormData({ name: userProfile.result.givenName + userProfile.result.familyName || userProfile.result.name, bio: userProfile.result.bio, imageUrl: userProfile.result.imageUrl, email: userProfile.result.email })
         } else {
             setFormData({ name: '', bio: '', imageUrl: '', email: ''  });
         }
-    }, [editMode, userProfile?.bio, userProfile?.familyName, userProfile?.givenName, userProfile?.imageUrl, userProfile?.name, userProfile?.email])
+    }, [editMode, userProfile?.result.bio, userProfile?.result.familyName, userProfile?.result.givenName, userProfile?.result.imageUrl, userProfile?.result.name, userProfile?.result.email])
     
     const handleSubmit = e => {
         e.preventDefault();

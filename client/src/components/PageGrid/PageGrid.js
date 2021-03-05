@@ -1,7 +1,7 @@
 import React from 'react'
 import { NewPostForm, PageHeader, Posts } from '../';
 
-const PageGrid = ({ homePage, explorePage, users, title, isSidebarActive, userProfile, currentPostId, setCurrentPostId }) => {
+const PageGrid = ({ homePage, users, title, isSidebarActive, userProfile, currentPostId, setCurrentPostId }) => {
     const user = userProfile?.result;
 
     return (

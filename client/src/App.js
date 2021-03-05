@@ -6,7 +6,7 @@ import { getPosts } from './redux/actions/posts';
 
 import GlobalStyle from './GlobalStyle';
 import { Background } from './components'
-import { Home, Authentication, Explore, Profile } from './pages';
+import { Home, Authentication, Explore, Profile, Faq } from './pages';
 
 const App = () => {
     const userProfile = useSelector(state => state.auth.authData);
@@ -37,7 +37,10 @@ const App = () => {
                     <Explore userProfile={userProfile} users={users} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
                 <Route path="/profile" exact>
-                    <Profile userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
+                    <Profile userProfile={userProfile} users={users} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
+                </Route>
+                <Route path="/faq" exact>
+                    <Faq userProfile={userProfile} isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} />
                 </Route>
                 <Route path="/auth" exact>
                     <Authentication />

@@ -27,6 +27,11 @@ export const Title = styled.h3`
     z-index: 1;
 
     color: #176D84;
+
+    @media only screen and (max-width: 960px) {
+    /* For Mobile and Tablet: */
+        font-size: 1rem;
+    }
 `
 
 export const InputDiv = styled.div`
@@ -144,7 +149,7 @@ export const SearchResult = styled.div`
     margin-top: 2.5rem;
 `
 
-export const SearchResultContent = styled.a`
+export const SearchResultContent = styled.div`
     color: black;
     padding: 0.5rem;
     text-decoration: none;

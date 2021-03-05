@@ -5,7 +5,7 @@ import { LoadingSpinner, Sidebar, PageHeader, ProfileHeader, Title, Posts, NewPo
 import { ProfilePage, Container, Center, EditPostDiv } from './Profile.elements'
 import { getOtherProfile, clearOtherProfile } from '../../redux/actions/auth';
 
-const Profile = ({ userProfile, isSidebarActive, toggleSitebar }) => {
+const Profile = ({ users, userProfile, isSidebarActive, toggleSitebar }) => {
     const [currentPostId, setCurrentPostId] = useState();
     const [isMount, setIsMount] = useState(true);
     const otherProfile = useSelector(state => state.auth.otherProfile);
@@ -26,7 +26,7 @@ const Profile = ({ userProfile, isSidebarActive, toggleSitebar }) => {
     }, [userProfile]);
 
     if (isMount) return <Center><LoadingSpinner /></Center>
-
+    
     return (
         <ProfilePage>
             <Sidebar isSidebarActive={isSidebarActive} toggleSitebar={toggleSitebar} userProfile={userProfile} clearUserProfile={clearUserProfile} />
@@ -37,7 +37,7 @@ const Profile = ({ userProfile, isSidebarActive, toggleSitebar }) => {
                     </Center>
                 ) : (
                     <>
-                        <PageHeader title="Profile" isSidebarActive={isSidebarActive} />
+                        <PageHeader title="Profile" noSearch isSidebarActive={isSidebarActive} />
                         <ProfileHeader otherProfile={otherProfile} isSidebarActive={isSidebarActive} userProfile={userProfile} currentPostId={currentPostId} setCurrentPostId={setCurrentPostId} />
                         <Title title="My Post" />
                         {currentPostId && (
