@@ -12,6 +12,6 @@ router.post('/googleLogin', registerGoogleAccount);
 router.patch('/:id/editprofile', editProfile);
 router.get('/:id/getotherprofile', getOtherProfile);
 router.patch('/:id/followUser', auth, followUser);
-router.patch('/:id/getFollow', getFollow);
+router.patch('/:id/getFollow', auth, getFollow);
 
 export default router;

@@ -18,7 +18,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
     const [isLike, setIsLike] = useState(false);
     const [postLike, setPostLike] = useState(0);
     const [isActive, setIsActive] = useState(false);
-    const currentUser = JSON.parse(localStorage.getItem('profile')).result;
+    const currentUser = JSON.parse(localStorage.getItem('profile'))?.result;
 
     const dispatch = useDispatch();
 

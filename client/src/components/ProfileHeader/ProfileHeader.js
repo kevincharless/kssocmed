@@ -13,12 +13,12 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
     const [formData, setFormData] = useState({ name: '', bio: '', imageUrl: '', email: '' });
     const [editMode, setEditMode] = useState(false);
     const userData = otherProfile.length === 0 ? userProfile?.result : otherProfile;
-    const userId = userProfile?._id;
-    const [follow, setFollow] = useState(useSelector(state => state?.auth?.authData?.followings?.includes(otherProfile) || state?.auth?.authData?.result?.followings?.includes(otherProfile)));
+    const userId = userProfile.result._id;
+    const [follow, setFollow] = useState(useSelector(state => state?.auth?.authData?.result?.followings?.includes(otherProfile._id)));
     const posts = useSelector(state => state.posts.posts);
     const postsCount = posts.filter(post => post.creator === userId || post.creator === userProfile?.googleId).length;
     const dispatch = useDispatch();
-
+    console.log(follow)
     useEffect(() => {
         if (editMode) {
             setFormData({ name: userProfile.givenName + userProfile.familyName || userProfile.name, bio: userProfile.bio, imageUrl: userProfile.imageUrl, email: userProfile.email })
@@ -34,8 +34,8 @@ const ProfileHeader = ({ otherProfile, isSidebarActive, userProfile }) => {
     }
 
     const handleFollow = () => {
-        dispatch(followUser(userId));
-        // dispatch(getFollow(userData?.result?._id));
+        dispatch(followUser(otherProfile._id));
+        dispatch(getFollow(otherProfile._id));
         setFollow(!follow);
     }
 

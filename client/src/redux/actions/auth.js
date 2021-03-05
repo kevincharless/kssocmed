@@ -77,11 +77,9 @@ export const followUser = (userId) => async (dispatch) => {
 
 export const getFollow = (userId) => async (dispatch) => {
     try {
-        // dispatch(fetchLoading());
         const { data } = await api.getFollow(userId);
 
-        dispatch({ type: GET_FOLLOW, payload: data });
-        // dispatch(fetchLoaded());
+        dispatch({ type: GET_FOLLOW, data });
     } catch (error) {
         console.log(error);
     }

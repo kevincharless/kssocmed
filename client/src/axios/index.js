@@ -26,4 +26,4 @@ export const googleLogin = (formData) => API.post('/user/googleLogin', formData)
 export const editProfile = (userId, formData) => API.patch(`/user/${userId}/editprofile`, formData);
 export const getOtherProfile = (userId) => API.get(`/user/${userId}/getotherprofile`);
 export const followUser = (id) => API.patch(`/user/${id}/followUser`);
-export const getFollow = (userId) => API.patch(`/user/${userId}/getFollow`);
+export const getFollow = (id) => API.patch(`/user/${id}/getFollow`);

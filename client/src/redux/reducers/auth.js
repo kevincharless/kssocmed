@@ -22,6 +22,7 @@ const authReducer = (state = initialState, action) => {
                 users: action?.payload
             }
         case GET_OTHER_PROFILE:
+        case GET_FOLLOW:
             return {
                 ...state,
                 otherProfile: action.data

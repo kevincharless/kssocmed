@@ -129,40 +129,20 @@ export const followUser = async (req, res) => {
     res.status(200).json({ result: updatedUser, token });
 }
 
-// export const followUser = async (req, res) => {
-//     const { id } = req.params;
-    
-//     const user = await User.findById(id);
-
-//     const index = user.followers.findIndex((id) => id === String(req.userId));
-//     console.log(req)
-//     if (index === -1) {
-//         user.followers.push(req.userId);
-//     } else {
-//         user.followers = user.followers.filter((id) => id !== String(req.userId));
-//     }
-//     const updatedUser = await User.findByIdAndUpdate(id, user, { new: true });
-//     res.status(200).json(updatedUser);
-
-// }
-
 export const getFollow = async (req, res) => {
     const { id } = req.params;
     
-    try {
-        const follower = await User.findById(req.userId);
-
-        const index = user.followers.findIndex((id) => id === String(id));
-
-        if (index === -1) {
-            follower.followings.push(id);
-        } else {
-            follower.followings =  follower.followings.filter((id) => id !== String(id));
-
-        }
-        const updatedUser = await User.findByIdAndUpdate(req.id, follower, { new: true });
-        res.status(200).json(updatedUser);
-    } catch (error) {
-        res.status(404).json({ message: "Something went wrong." });
+    const user = await User.findById(id);
+console.log(id)
+    const index = user.followers.findIndex((fid) => fid === String(req.userId));
+    
+    if (index === -1) {
+        user.followers.push(req.userId);
+    } else {
+        user.followers = user.followers.filter((fid) => fid !== String(req.userId));
     }
+    
+    const updatedUser = await User.findByIdAndUpdate(id, user, { new: true });
+
+    res.status(200).json(updatedUser);
 }
