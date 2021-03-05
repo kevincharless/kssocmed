@@ -33,7 +33,7 @@ export const InputDiv = styled.div`
     display: flex;
     justify-content: center;
     position: relative;
-    z-index: 999;
+    z-index: 5;
 
     margin-bottom: 10px;
     margin: 1rem 0;
