@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const CommentsSection = styled.div`
     height: 62%;
 
-    /* overflow: auto; */
     overflow: hidden;
     max-height: 62%;
 `

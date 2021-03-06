@@ -202,3 +202,9 @@ export const Button = styled.button`
         font-size: 0.4rem;
     }
 `
+
+export const ErrorMessage = styled.p`
+    color: #DC211A;
+    font-size: 0.8rem;
+    padding-left: 3rem;
+`

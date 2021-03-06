@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ImCancelCircle } from 'react-icons/im';
 
 import { updatePost, createPost } from '../../redux/actions/posts';
-import { Container, Avatar, AvatarTag, Input, CancelEditButton, CancelPopOver, AddImage, AddImageEvent, Button } from './NewPostForm.elements';
+import { Container, Avatar, AvatarTag, Input, CancelEditButton, CancelPopOver, AddImage, AddImageEvent, Button, ErrorMessage } from './NewPostForm.elements';
 import addImage from '../../assets/images/add.svg';
 
 const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
     const [isPopOverActive, setIsPopOverActive] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const [postData, setPostData] = useState({ caption: '', selectedFile: '', creatorImage: '' });
     const post = useSelector(state => currentPostId ? state.posts.posts.find(p => p._id === currentPostId) : null);
 
@@ -20,11 +21,15 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        if(currentPostId) {
-            dispatch(updatePost(currentPostId, { ...postData, name: user?.name, creatorImage: user?.imageUrl ? user.imageUrl : user?.name.split(' ').map(function(item){return item[0]}).join('') }));
+        if (postData.caption || postData.selectedFile) {
+            setErrorMessage('');
+            if (currentPostId) {
+                dispatch(updatePost(currentPostId, { ...postData, name: user?.name, creatorImage: user?.imageUrl ? user.imageUrl : user?.name.split(' ').map(function(item){return item[0]}).join('') }));
+            } else {
+                dispatch(createPost({ ...postData, name: user?.name, creatorImage: user?.imageUrl ? user.imageUrl : user?.name.split(' ').map(function(item){return item[0]}).join('') }));
+            }
         } else {
-            dispatch(createPost({ ...postData, name: user?.name, creatorImage: user?.imageUrl ? user.imageUrl : user?.name.split(' ').map(function(item){return item[0]}).join('') }));
+            setErrorMessage('Please Input Something');
         }
         clear();
     }
@@ -81,7 +86,9 @@ const NewPostForm = ({ user, currentPostId, setCurrentPostId }) => {
                 </AddImageEvent>
                 <Button type="submit">Post</Button>
             </div>
-            
+            {errorMessage && (
+                <ErrorMessage>{`* ${errorMessage}`}</ErrorMessage>
+            )}
         </Container>
     )
 }
