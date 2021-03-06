@@ -23,8 +23,6 @@ export const CommentCreatedAt = styled.p`
 `
 
 export const MoreDropDown = styled.div`
-    position: relative;
-    display: inline-block;
 `
 
 export const More = styled.div`

@@ -1,20 +1,88 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Card = styled.div`
-    width: 26rem;
 
-    margin-bottom: 3rem;
-    padding-bottom: 0.5rem;
+export const ModalDiv = styled.div`
+    display: ${({ isDetailActive }) => (isDetailActive ? 'block' : 'none')};
+    position: fixed;
+    z-index: 999;
+    padding-top: 5rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255,255,255);
+    background-color: rgba(255,255,255,0.5);
+`
 
-    background: linear-gradient(106.09deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
-    box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.1);
+export const CloseButton = styled.p`
+    position: absolute;
+    top: 3%;
+    left: 96%;
+    color: white;
+`
+
+/* Modal Content */
+export const ModalContent = styled.div`
+    display: flex;
+
+    position: relative;
+    margin: auto;
+    top: -5%;
+
+    width: 60vw;
+    height: 80vh;
+
+    background: linear-gradient(106.09deg, #FFFFFF 0%, rgba(255, 255, 255, 1) 100%);
+    box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.05);
     border-radius: 20px;
 
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
-        width: 15rem;
+        top: 0%;
     }
+
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.5s;
+    animation-name: animatetop;
+    animation-duration: 0.5s;
+
+    @-webkit-keyframes animatetop {
+        from {top:-15%; opacity:0} 
+        to {top:-5%; opacity:1}
+    }
+
+    @keyframes animatetop {
+        from {top:-15%; opacity:0}
+        to {top:-5%; opacity:1}
+    }
+`
+
+export const ModalImage = styled.div`
+    width: 60%;
+    max-width: auto;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+export const Image = styled.img`
+    width: auto;
+    height: 20em;
+
+    @media only screen and (max-width: 960px) {
+        /* For Mobile and Tablet: */
+            height: 10em;
+        }
+`   
+
+export const Content = styled.div`
+    width: 40%;
+    height: 100%;
+
+    border-left: 1px solid rgba(0,0,0, 0.2);
 `
 
 export const Header = styled.div`
@@ -132,26 +200,6 @@ export const MoreContent = styled.a`
     }
 `
 
-export const PostContentPicture = styled.div`
-    max-width: auto;
-    height: auto;
-    background-color: #176D84;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
-export const PostPicture = styled.img`
-    width: auto;
-    height: 16rem;
-
-    @media only screen and (max-width: 960px) {
-    /* For Mobile and Tablet: */
-        height: 8rem;
-    }
-`
-
 export const ButtonGroup = styled.div`
     width: 100%;
     padding: 0.3rem;
@@ -203,19 +251,5 @@ export const PostCreatedAt = styled.p`
     @media only screen and (max-width: 960px) {
     /* For Mobile and Tablet: */
         font-size: 0.3rem;
-    }
-`
-
-export const ViewAllCommentButton = styled.p`
-    color: #176D84;
-    font-size: 0.7rem;
-    padding-left: 1rem;
-    opacity: 0.8;
-
-    cursor: pointer;
-
-    @media only screen and (max-width: 960px) {
-    /* For Mobile and Tablet: */
-        font-size: 0.4rem;
     }
 `

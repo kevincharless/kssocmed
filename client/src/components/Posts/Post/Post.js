@@ -10,7 +10,8 @@ import { deletePost, likePost } from '../../../redux/actions/posts';
 
 import Comment from '../../Comments/Comments';
 import Modal from '../../Modal/Modal';
-import { Card, Header, Description, AvatarLink, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption, PostCreatedAt } from './Post.element';
+import PostModal from './PostModal/PostModal';
+import { Card, Header, Description, AvatarLink, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, PostContentPicture, PostPicture, ButtonGroup, Button, Caption, PostCreatedAt, ViewAllCommentButton } from './Post.element';
 
 
 const Post = ({ post, user, setCurrentPostId }) => {
@@ -18,6 +19,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
     const [isLike, setIsLike] = useState(false);
     const [postLike, setPostLike] = useState(0);
     const [isActive, setIsActive] = useState(false);
+    const [isDetailActive, setIsDetailActive] = useState(false);
     const currentUser = JSON.parse(localStorage.getItem('profile'))?.result;
 
     const dispatch = useDispatch();
@@ -113,6 +115,9 @@ const Post = ({ post, user, setCurrentPostId }) => {
                         </ButtonGroup>
                     </>
                 )}
+                {post.comments.length > 2 && (
+                    <ViewAllCommentButton onClick={() => setIsDetailActive(true)}>{`View All ${post.comments.length} Comments`}</ViewAllCommentButton>
+                )}
                 <Comment post={post} user={user} />
             </Card>
             <Modal 
@@ -121,6 +126,7 @@ const Post = ({ post, user, setCurrentPostId }) => {
                 deleteFunction={handleDeletePost}
                 description="You want to delete this post ?"
             />
+            <PostModal isDetailActive={isDetailActive} setIsDetailActive={setIsDetailActive} post={post} user={user} setCurrentPostId={setCurrentPostId} />
         </>
     )
 }

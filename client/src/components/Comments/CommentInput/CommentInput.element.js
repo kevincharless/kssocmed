@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Line = styled.hr`
-
     opacity: 0.2;
     margin: 0.3rem 0;
 `

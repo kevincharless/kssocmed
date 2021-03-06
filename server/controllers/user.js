@@ -133,7 +133,7 @@ export const getFollow = async (req, res) => {
     const { id } = req.params;
     
     const user = await User.findById(id);
-console.log(id)
+
     const index = user.followers.findIndex((fid) => fid === String(req.userId));
     
     if (index === -1) {
