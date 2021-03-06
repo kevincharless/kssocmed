@@ -79,10 +79,11 @@ export const Image = styled.img`
 `   
 
 export const Content = styled.div`
-    width: 40%;
+    width: ${({ image }) => (image ? '40%' : '100%')};
     height: 100%;
-
+    
     border-left: 1px solid rgba(0,0,0, 0.2);
+    border: ${({ image }) => (!image && 'none')};
 `
 
 export const Header = styled.div`

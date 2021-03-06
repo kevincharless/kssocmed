@@ -48,10 +48,12 @@ const PostModal = ({ isDetailActive, setIsDetailActive, post, user, setCurrentPo
                 <IoClose onClick={() => setIsDetailActive(false)} style={{ color: '#176D84', fontSize: '1.4rem', cursor: 'pointer' }} />
             </CloseButton>
             <ModalContent>
-                <ModalImage>
-                    <Image src={post.selectedFile} />
-                </ModalImage>
-                <Content>
+                {post.selectedFile && (
+                    <ModalImage>
+                        <Image src={post.selectedFile} />
+                    </ModalImage>
+                )}
+                <Content image={post.selectedFile}>
                     <Header>
                         <Avatar>
                             {post.creatorImage.includes('/') ? (
