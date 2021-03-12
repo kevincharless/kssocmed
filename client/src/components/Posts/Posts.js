@@ -23,9 +23,14 @@ const Posts = ({ homePage, explorePage, myPosts, isSidebarActive, user, setCurre
                 ) : (
                     homePage ? (
                         posts.posts.map(post => 
-                            user?.followings?.map(following => post.creator === following || post.creator === user?._id ? (
-                                <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />  
-                            ) : null
+                            user?.followings?.length !== 0 ? (
+                                user?.followings?.map(following => post.creator === following || post.creator === user._id ? (
+                                    <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />  
+                                ) : null)
+                            ) : (
+                                post.creator === user._id && (
+                                    <Post key={post._id} post={post} user={user} setCurrentPostId={setCurrentPostId} />  
+                                )
                             )
                         )
                     ) : (

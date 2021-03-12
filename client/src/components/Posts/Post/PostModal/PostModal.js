@@ -10,6 +10,7 @@ import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { deletePost, likePost } from '../../../../redux/actions/posts';
 
 import Comment from '../../../Comments/Comments';
+import Modal from '../../../Modal/Modal';
 import { ModalDiv, CloseButton, ModalContent, ModalImage, Image, Content, Header, AvatarLink, Avatar, AvatarPicture, AvatarTag, AvatarName, MoreDropDown, More, MoreContent, Description, ButtonGroup, Button, Caption, PostCreatedAt, } from './PostModal.elements';
 
 const PostModal = ({ isDetailActive, setIsDetailActive, post, user, setCurrentPostId }) => {
@@ -22,6 +23,12 @@ const PostModal = ({ isDetailActive, setIsDetailActive, post, user, setCurrentPo
 
     const handleMoreActive = () => {
         setIsMoreActive(!isMoreActive);
+    }
+
+    const handleDeletePost = () => {
+        dispatch(deletePost(post._id));
+
+        setIsActive(false);
     }
 
     const handleLike = () => {
@@ -93,6 +100,12 @@ const PostModal = ({ isDetailActive, setIsDetailActive, post, user, setCurrentPo
                     <Comment post={post} user={user} />
                 </Content>
             </ModalContent>
+            <Modal 
+                isActive={isActive}
+                setIsActive={setIsActive}
+                deleteFunction={handleDeletePost}
+                description="You want to delete this post ?"
+            />
         </ModalDiv>
     )
 }
