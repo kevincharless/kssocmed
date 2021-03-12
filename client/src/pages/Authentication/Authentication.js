@@ -151,7 +151,7 @@ const Authentication = () => {
                 </AuthenticationRow>
                 <AuthenticationRow>
                     <GoogleLogin
-                        clientId="287895274227-boanf2kgkn2u65sa8qghuq37a17nljld.apps.googleusercontent.com"
+                        clientId="287895274227-hvdks40b9stv3a70np421ko8tbmhe7vb.apps.googleusercontent.com"
                         render={(renderProps) => (
                             <ButtonGoogle
                                 onClick={renderProps.onClick}
